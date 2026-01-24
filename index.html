@@ -11,7 +11,6 @@
         
         :root {
             --napier-red: #E31B23;
-            --emerald-glow: rgba(16, 185, 129, 0.1);
         }
 
         body {
@@ -19,31 +18,75 @@
             -webkit-font-smoothing: antialiased;
             background-color: #f8f9fa;
             color: #1a1a1a;
+            position: relative;
         }
 
         .font-mono {
             font-family: 'JetBrains+Mono', monospace;
         }
 
-        /* --- UNIQUE ANIMATED BACKGROUND --- */
-        .mesh-gradient {
+        /* --- NEW ANIMATED BACKGROUND --- */
+        .blob-cont {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            z-index: -2;
-            background: 
-                radial-gradient(at 0% 0%, rgba(227, 27, 35, 0.03) 0px, transparent 50%),
-                radial-gradient(at 100% 0%, rgba(16, 185, 129, 0.02) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(227, 27, 35, 0.02) 0px, transparent 50%),
-                radial-gradient(at 0% 100%, rgba(16, 185, 129, 0.03) 0px, transparent 50%);
-            animation: meshMove 20s ease infinite alternate;
+            height: 100vh;
+            z-index: -5;
+            overflow: hidden;
+            background: #ffffff;
         }
 
-        @keyframes meshMove {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: float 20s infinite ease-in-out alternate;
+        }
+
+        .blob-1 {
+            background: rgba(227, 27, 35, 0.15); /* Napier Red */
+            width: 600px;
+            height: 600px;
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            background: rgba(16, 185, 129, 0.15); /* Emerald Green */
+            width: 500px;
+            height: 500px;
+            bottom: -50px;
+            right: -100px;
+            animation-delay: -5s;
+            animation-name: float2;
+        }
+
+        .blob-3 {
+            background: rgba(227, 27, 35, 0.1); /* Fainter Red */
+            width: 300px;
+            height: 300px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: -10s;
+            animation-name: float3;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(100px, 100px) scale(1.1); }
+        }
+
+        @keyframes float2 {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(-100px, -50px) scale(1.2); }
+        }
+
+        @keyframes float3 {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, -100px) scale(0.8); }
         }
 
         /* Technical Grid Overlay */
@@ -53,30 +96,12 @@
             mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
         }
 
-        /* Scanning Line Effect */
-        .scanline {
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(to right, transparent, rgba(227, 27, 35, 0.1), transparent);
-            position: fixed;
-            top: -10px;
-            left: 0;
-            z-index: -1;
-            animation: scan 8s linear infinite;
-            opacity: 0.5;
-        }
-
-        @keyframes scan {
-            0% { top: -10%; }
-            100% { top: 110%; }
-        }
-
         /* Floating Data Bits */
         .data-float {
             position: absolute;
             font-family: 'JetBrains+Mono', monospace;
             font-size: 10px;
-            color: rgba(0, 0, 0, 0.05);
+            color: rgba(0, 0, 0, 0.15); /* Darkened slightly for visibility */
             pointer-events: none;
             user-select: none;
             white-space: nowrap;
@@ -84,17 +109,19 @@
 
         /* Enhanced Glassmorphism */
         .glass-card {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .glass-card:hover {
             transform: translateY(-5px);
             background: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-            border-color: rgba(227, 27, 35, 0.2);
+            border-color: rgba(227, 27, 35, 0.3);
+            box-shadow: 0 20px 40px rgba(227, 27, 35, 0.05);
         }
 
         /* Custom Scrollbar */
@@ -110,18 +137,22 @@
 </head>
 <body class="selection:bg-red-50 selection:text-red-900 overflow-x-hidden">
 
-    <!-- THE "TECH" BACKGROUND LAYERS -->
-    <div class="mesh-gradient"></div>
-    <div class="fixed inset-0 bg-grid-pattern opacity-[0.3] pointer-events-none -z-10"></div>
-    <div class="scanline"></div>
+    <!-- NEW BACKGROUND ENGINE -->
+    <div class="blob-cont">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <!-- Grid stays on top of blobs for texture -->
+        <div class="absolute inset-0 bg-grid-pattern opacity-[0.4]"></div>
+    </div>
     
-    <!-- Floating Data Bits (Drifting Background Elements) -->
+    <!-- Floating Data Bits -->
     <div class="data-float" style="top: 15%; left: 5%; animation: drift 15s infinite linear;">0x4A 0x66 0x21</div>
     <div class="data-float" style="top: 45%; right: 10%; animation: drift 20s infinite linear;">RECV_TCP_PACKET_64</div>
     <div class="data-float" style="bottom: 20%; left: 15%; animation: drift 18s infinite linear;">HASH_MD5:7e8...</div>
 
     <!-- Header -->
-    <nav class="fixed w-full z-50 bg-white/40 backdrop-blur-xl border-b border-white/20">
+    <nav class="fixed w-full z-50 bg-white/40 backdrop-blur-xl border-b border-white/30">
         <div class="max-w-6xl mx-auto px-6 lg:px-12">
             <div class="flex justify-between h-20 items-center">
                 <a href="#home" class="group flex items-center gap-3 text-xs font-bold tracking-[0.4em] uppercase">
@@ -167,7 +198,7 @@
                 </p>
 
                 <div class="flex flex-wrap gap-8 items-center">
-                    <a href="#research" class="group flex items-center gap-4 px-8 py-4 bg-white border border-zinc-200 rounded-2xl shadow-xl hover:border-red-600 transition-all">
+                    <a href="#research" class="group flex items-center gap-4 px-8 py-4 bg-white/80 backdrop-blur-sm border border-zinc-200 rounded-2xl shadow-xl hover:border-red-600 transition-all">
                         <span class="text-sm font-bold uppercase tracking-widest">View Dissertation</span>
                         <div class="w-8 h-8 rounded-full bg-zinc-900 text-white flex items-center justify-center group-hover:bg-red-600 transition-colors">
                             <i data-lucide="chevron-right" size="16"></i>
@@ -202,7 +233,7 @@
                         </p>
                     </div>
 
-                    <div class="mt-16 grid grid-cols-2 gap-10 border-t border-zinc-100 pt-16">
+                    <div class="mt-16 grid grid-cols-2 gap-10 border-t border-zinc-200/50 pt-16">
                         <div>
                             <span class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 block mb-6">Expertise</span>
                             <ul class="text-sm space-y-3 font-mono text-zinc-500">
@@ -223,14 +254,11 @@
                 </div>
 
                 <div class="relative group flex justify-center lg:justify-end">
-                    <div id="photo-container" class="w-full max-w-sm aspect-[4/5] bg-zinc-200 rounded-[3rem] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.1)] relative z-10 border-8 border-white group-hover:scale-[1.02] transition-transform duration-700">
-                         <div class="absolute inset-0 flex items-center justify-center text-white/50 bg-zinc-300">
+                    <div id="photo-container" class="w-full max-w-sm aspect-[4/5] bg-white/50 backdrop-blur-md rounded-[3rem] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.1)] relative z-10 border-8 border-white group-hover:scale-[1.02] transition-transform duration-700">
+                         <div class="absolute inset-0 flex items-center justify-center text-zinc-300">
                              <i data-lucide="user" size="80"></i>
                          </div>
                     </div>
-                    <!-- Abstract Decor -->
-                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-red-600/5 rounded-full blur-[80px]"></div>
-                    <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-emerald-600/5 rounded-full blur-[80px]"></div>
                 </div>
             </div>
         </div>
@@ -244,27 +272,25 @@
                     <h2 class="text-[10px] font-bold uppercase tracking-[0.4em] text-red-600 mb-6">Academic Spotlight</h2>
                     <h3 class="text-4xl md:text-5xl font-semibold tracking-tight max-w-2xl leading-tight">AI & the evolution of the phishing threat.</h3>
                 </div>
-                <div class="shrink-0 flex items-center gap-4 px-6 py-3 bg-red-50 rounded-2xl border border-red-100">
+                <div class="shrink-0 flex items-center gap-4 px-6 py-3 bg-white/80 backdrop-blur-sm rounded-2xl border border-zinc-200 shadow-sm">
                     <i data-lucide="check-circle-2" class="text-red-600" size="20"></i>
                     <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-red-700">1st Class Dissertation</span>
                 </div>
             </div>
 
             <div class="glass-card rounded-[3rem] p-10 md:p-20 shadow-2xl relative overflow-hidden">
-                <div class="absolute -top-20 -right-20 w-80 h-80 bg-red-600/5 rounded-full blur-[100px]"></div>
-                
                 <div class="grid lg:grid-cols-3 gap-20 relative z-10">
                     <div class="lg:col-span-2">
                         <p class="text-2xl text-zinc-600 font-light leading-relaxed mb-12">
                             My research examined how LLMs can be used to replicate brand identities for phishing. I combined style-matching metrics with user studies to evaluate the threshold of human detection in the face of automated linguistic realism.
                         </p>
                         <div class="grid md:grid-cols-2 gap-8">
-                            <div class="p-8 border border-zinc-100 rounded-3xl bg-white/40 backdrop-blur-sm">
+                            <div class="p-8 border border-zinc-100 rounded-3xl bg-white/60 backdrop-blur-sm">
                                 <i data-lucide="target" class="text-red-600 mb-4" size="24"></i>
                                 <h4 class="font-bold text-sm mb-3">Goal</h4>
                                 <p class="text-sm text-zinc-500 font-light">Identifying the specific linguistic markers that differentiate AI from human communication in fraudulent contexts.</p>
                             </div>
-                            <div class="p-8 border border-zinc-100 rounded-3xl bg-white/40 backdrop-blur-sm">
+                            <div class="p-8 border border-zinc-100 rounded-3xl bg-white/60 backdrop-blur-sm">
                                 <i data-lucide="book-open" class="text-zinc-900 mb-4" size="24"></i>
                                 <h4 class="font-bold text-sm mb-3">Impact</h4>
                                 <p class="text-sm text-zinc-500 font-light">Supervisors endorsed this research for potential journal publication due to its original data and timely findings.</p>
