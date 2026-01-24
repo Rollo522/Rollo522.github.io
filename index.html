@@ -4,52 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rohail MacDougall Ahmad | Cyber Security & Forensics</title>
-    <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CSS for modern styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons CDN -->
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
-        
-        :root {
-            --napier-red: #E31B23;
-        }
-
-        .font-mono {
-            font-family: 'JetBrains+Mono', monospace;
-        }
-
-        .napier-text {
-            color: var(--napier-red);
-        }
-
-        .napier-border {
-            border-color: var(--napier-red);
-        }
-
-        .napier-bg {
-            background-color: var(--napier-red);
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Prevent layout shift on high-res Mac screens */
-        body {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+        :root { --napier-red: #E31B23; }
+        .font-mono { font-family: 'JetBrains+Mono', monospace; }
+        .napier-text { color: var(--napier-red); }
+        .napier-border { border-color: var(--napier-red); }
+        html { scroll-behavior: smooth; }
+        body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
     </style>
 </head>
-<body class="bg-zinc-50 text-zinc-900 overflow-x-hidden">
+<body class="bg-zinc-50 text-zinc-900 overflow-x-hidden antialiased">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-zinc-200">
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-zinc-200">
         <div class="max-w-[1440px] mx-auto px-8 lg:px-16">
             <div class="flex justify-between h-24 items-center">
-                <div class="flex-shrink-0 flex items-center gap-4 font-bold text-2xl md:text-3xl tracking-tighter napier-text">
-                    <i data-lucide="terminal" size="28"></i>
+                <div class="flex items-center gap-4 font-bold text-2xl md:text-3xl tracking-tighter napier-text font-mono">
+                    <i data-lucide="terminal" class="w-8 h-8"></i>
                     ROHAIL.M.A
                 </div>
                 
@@ -58,24 +34,8 @@
                     <a href="#about" class="text-zinc-500 hover:text-zinc-900 capitalize font-mono text-sm tracking-[0.2em] transition-all">01. about</a>
                     <a href="#research" class="text-zinc-500 hover:text-zinc-900 capitalize font-mono text-sm tracking-[0.2em] transition-all">02. dissertation</a>
                     <a href="#experience" class="text-zinc-500 hover:text-zinc-900 capitalize font-mono text-sm tracking-[0.2em] transition-all">03. experience</a>
-                    <a href="#contact" class="text-zinc-500 hover:text-zinc-900 capitalize font-mono text-sm tracking-[0.2em] transition-all">04. contact</a>
-                </div>
-
-                <div class="md:hidden">
-                    <button onclick="toggleMenu()" class="p-2 text-zinc-600">
-                        <i data-lucide="menu" id="menu-icon" size="32"></i>
-                    </button>
                 </div>
             </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-zinc-200 px-8 pt-6 pb-12 flex flex-col space-y-8 shadow-2xl">
-            <a href="#home" onclick="toggleMenu()" class="text-left text-2xl text-zinc-600 font-mono border-b border-zinc-100 pb-4">home</a>
-            <a href="#about" onclick="toggleMenu()" class="text-left text-2xl text-zinc-600 font-mono border-b border-zinc-100 pb-4">about</a>
-            <a href="#research" onclick="toggleMenu()" class="text-left text-2xl text-zinc-600 font-mono border-b border-zinc-100 pb-4">research</a>
-            <a href="#experience" onclick="toggleMenu()" class="text-left text-2xl text-zinc-600 font-mono border-b border-zinc-100 pb-4">experience</a>
-            <a href="#contact" onclick="toggleMenu()" class="text-left text-2xl text-zinc-600 font-mono border-b border-zinc-100 pb-4">contact</a>
         </div>
     </nav>
 
@@ -121,10 +81,7 @@
                             I am a motivated graduate with a <span class="text-zinc-900 font-medium">First-Class BEng (Hons) in Cybersecurity and Forensics</span> from <span class="font-semibold napier-text">Edinburgh Napier University</span>.
                         </p>
                         <p>
-                            Based at the historic <span class="text-zinc-900 underline decoration-zinc-200 underline-offset-[10px]">Merchiston Campus</span>, I developed a strong foundation in penetration testing, forensic investigation, and secure software development. My academic career was highlighted by a dissertation endorsed for publication and selection for the <span class="text-zinc-900 font-semibold">Turing Summer Scholarship</span>.
-                        </p>
-                        <p>
-                            I bridge the gap between technical security controls and legislative compliance, ensuring data protection is integrated throughout the project lifecycle.
+                            Based at the <span class="text-zinc-900 underline decoration-zinc-200 underline-offset-[10px]">Merchiston Campus</span>, I developed a strong foundation in penetration testing, forensic investigation, and secure software development. My academic career was highlighted by a dissertation endorsed for publication and my selection for the prestigious <span class="text-zinc-900 font-semibold">Turing Summer Scholarship</span>.
                         </p>
                     </div>
 
@@ -135,12 +92,8 @@
                             </h3>
                             <div class="grid grid-cols-1 gap-4 font-mono text-sm md:text-base text-zinc-500">
                                 <div><span class="text-emerald-500 mr-2">▹</span> Practical Networks</div>
-                                <div><span class="text-emerald-500 mr-2">▹</span> Data Analytics</div>
                                 <div><span class="text-emerald-500 mr-2">▹</span> Network Security & Cryptography</div>
-                                <div><span class="text-emerald-500 mr-2">▹</span> Web & Mobile Apps Development</div>
                                 <div><span class="text-emerald-500 mr-2">▹</span> Digital Forensics</div>
-                                <div><span class="text-emerald-500 mr-2">▹</span> Ethical Hacking</div>
-                                <div><span class="text-emerald-500 mr-2">▹</span> Security Systems for IoT</div>
                                 <div><span class="text-emerald-500 mr-2">▹</span> Secure Software Development</div>
                             </div>
                         </div>
@@ -149,28 +102,20 @@
                                 <i data-lucide="terminal" class="napier-text"></i> Technical Toolkit
                             </h3>
                             <div class="grid grid-cols-2 gap-4 font-mono text-sm md:text-base text-zinc-500">
-                                <div><i data-lucide="zap" class="text-amber-400 mr-2 inline" size="14"></i> Splunk</div>
-                                <div><i data-lucide="zap" class="text-amber-400 mr-2 inline" size="14"></i> Metasploit</div>
-                                <div><i data-lucide="zap" class="text-amber-400 mr-2 inline" size="14"></i> Wireshark</div>
-                                <div><i data-lucide="zap" class="text-amber-400 mr-2 inline" size="14"></i> Magnet Axiom</div>
-                                <div><i data-lucide="zap" class="text-amber-400 mr-2 inline" size="14"></i> Nmap</div>
-                                <div><i data-lucide="zap" class="text-amber-400 mr-2 inline" size="14"></i> Cisco</div>
-                                <div><i data-lucide="zap" class="text-amber-400 mr-2 inline" size="14"></i> FTK Imager</div>
-                                <div><i data-lucide="zap" class="text-amber-400 mr-2 inline" size="14"></i> Burp Suite</div>
+                                <div>Splunk</div>
+                                <div>Metasploit</div>
+                                <div>Wireshark</div>
+                                <div>Magnet Axiom</div>
+                                <div>Nmap</div>
+                                <div>FTK Imager</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="lg:col-span-5 relative group pt-16">
-                    <div class="aspect-[4/5] border-2 rounded-[2rem] relative z-10 translate-x-8 translate-y-8 transition-all duration-700 bg-zinc-100 flex items-center justify-center overflow-hidden shadow-2xl napier-border">
-                        <!-- Headshot Placeholder -->
-                        <div id="photo-container" class="w-full h-full flex items-center justify-center bg-zinc-100">
-                            <i data-lucide="user" size="160" class="text-zinc-300"></i>
-                        </div>
-                        <div class="absolute bottom-0 left-0 right-0 bg-black/70 py-6 text-sm text-white text-center font-mono">
-                            Double-click to insert headshot.jpg
-                        </div>
+                    <div id="photo-target" class="aspect-[4/5] border-2 rounded-[2rem] relative z-10 translate-x-8 translate-y-8 transition-all duration-700 bg-zinc-100 flex items-center justify-center overflow-hidden shadow-2xl napier-border">
+                         <i data-lucide="user" size="160" class="text-zinc-300"></i>
                     </div>
                     <div class="absolute inset-0 border-2 border-zinc-200 rounded-[2rem] z-0 translate-x-16 translate-y-16"></div>
                 </div>
@@ -190,46 +135,38 @@
                 </div>
             </div>
 
-            <div class="bg-white border border-zinc-200 rounded-[3rem] overflow-hidden shadow-2xl">
-                <div class="p-12 md:p-24">
-                    <h3 class="text-4xl md:text-7xl font-extrabold mb-12 tracking-tighter leading-[1.1] text-zinc-900">
-                        Evaluating Brand Imitation and Linguistic Realism in AI-Generated Phishing Emails
-                    </h3>
-                    
-                    <div class="grid lg:grid-cols-12 gap-20">
-                        <div class="lg:col-span-8 space-y-12">
-                            <div>
-                                <h4 class="text-xs font-bold text-zinc-400 uppercase tracking-[0.4em] mb-8 flex items-center gap-4">
-                                    <i data-lucide="file-text"></i> Executive Summary
-                                </h4>
-                                <div class="bg-zinc-50 p-10 md:p-14 rounded-3xl border border-dashed border-zinc-300 text-zinc-800 text-xl leading-relaxed shadow-inner font-light">
-                                    This paper investigated the impact that branding has on phishing success and how AI might be utilised to aid attackers in carrying out more deceptive email attacks. The objective is to provide valuable information to help improve phishing detection methods in a world increasingly placing trust and reliance in AI. Object evaluation experiments are carried out to evaluate how well AI carries out linguistical style matching and emotional tone accuracy in replicating a brand's voice within phishing emails. Additionally, a user study is also deployed to analyse how users perceive different types of real and AI-generated emails of the phishing and legitimate variety, with the aim of identifying which aspects influenced misclassification the most and whether users could detect AI-generated content.
-                                </div>
-                            </div>
-                            
-                            <div class="grid md:grid-cols-2 gap-8">
-                                <div class="p-8 bg-emerald-50 rounded-3xl border border-emerald-100 shadow-sm">
-                                    <h5 class="text-emerald-900 font-bold text-2xl mb-3">Impact Analysis</h5>
-                                    <p class="text-emerald-700 text-lg leading-relaxed font-light">Analysed the success rates of brand-mimicking AI against human detection capabilities in controlled experiments.</p>
-                                </div>
-                                <div class="p-8 bg-blue-50 rounded-3xl border border-blue-100 shadow-sm">
-                                    <h5 class="text-blue-900 font-bold text-2xl mb-3">Academic Merit</h5>
-                                    <p class="text-blue-700 text-lg leading-relaxed font-light">Recognised for original research contributing to real-world cybersecurity issues; endorsed for journal submission.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="lg:col-span-4 space-y-12 text-center">
-                            <h4 class="text-xs font-bold text-zinc-400 uppercase tracking-[0.4em] mb-8 flex items-center gap-4 justify-center">
-                                <i data-lucide="bar-chart-2"></i> Data Visualisations
+            <div class="bg-white border border-zinc-200 rounded-[3rem] overflow-hidden shadow-2xl p-12 md:p-24">
+                <h3 class="text-4xl md:text-7xl font-extrabold mb-12 tracking-tighter leading-tight text-zinc-900">
+                    Evaluating Brand Imitation and Linguistic Realism in AI-Generated Phishing Emails
+                </h3>
+                <div class="grid lg:grid-cols-12 gap-20">
+                    <div class="lg:col-span-8 space-y-12">
+                        <div>
+                            <h4 class="text-xs font-bold text-zinc-400 uppercase tracking-[0.4em] mb-8 flex items-center gap-4 font-mono">
+                                <i data-lucide="file-text"></i> Executive Summary
                             </h4>
-                            <div class="aspect-square bg-zinc-50 rounded-3xl border border-dashed border-zinc-300 flex flex-col items-center justify-center p-12 shadow-inner">
-                                <i data-lucide="bar-chart-2" size="64" class="opacity-10 mb-6"></i>
-                                <p class="text-sm font-mono leading-tight uppercase tracking-widest text-zinc-400">
-                                    Insert dissertation charts here
-                                </p>
+                            <div class="bg-zinc-50 p-10 md:p-14 rounded-3xl border border-dashed border-zinc-300 text-zinc-800 text-xl leading-relaxed shadow-inner font-light">
+                                This paper investigated the impact that branding has on phishing success and how AI might be utilised to aid attackers in carrying out more deceptive email attacks. The objective is to provide valuable information to help improve phishing detection methods in a world increasingly placing trust and reliance in AI. Object evaluation experiments are carried out to evaluate how well AI carries out linguistical style matching and emotional tone accuracy in replicating a brand's voice within phishing emails. Additionally, a user study is also deployed to analyse how users perceive different types of real and AI-generated emails of the phishing and legitimate variety, with the aim of identifying which aspects influenced misclassification the most and whether users could detect AI-generated content.
                             </div>
                         </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="p-8 bg-emerald-50 rounded-3xl border border-emerald-100">
+                                <h5 class="text-emerald-900 font-bold text-2xl mb-3 font-mono">Impact Analysis</h5>
+                                <p class="text-emerald-700 text-lg font-light leading-relaxed">Analysed success rates of brand-mimicking AI against human detection capabilities in controlled experimental environments.</p>
+                            </div>
+                            <div class="p-8 bg-blue-50 rounded-3xl border border-blue-100">
+                                <h5 class="text-blue-900 font-bold text-2xl mb-3 font-mono">Academic Merit</h5>
+                                <p class="text-blue-700 text-lg font-light leading-relaxed">Recognised for original research contributing to real-world cybersecurity issues; endorsed for journal submission.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-4 aspect-square bg-zinc-50 rounded-3xl border border-dashed border-zinc-300 flex flex-col items-center justify-center p-12 shadow-inner">
+                        <i data-lucide="bar-chart-2" size="64" class="opacity-10 mb-6 text-zinc-400"></i>
+                        <p class="text-xs font-mono text-zinc-400 text-center uppercase tracking-widest leading-tight">
+                            Insert Dissertation Graphs Here
+                        </p>
                     </div>
                 </div>
             </div>
@@ -244,50 +181,36 @@
             </h2>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
-                <!-- Turing -->
-                <div class="group border border-emerald-200 bg-emerald-50/10 p-12 rounded-[2.5rem] relative overflow-hidden transition-all hover:shadow-2xl">
+                <div class="group border border-emerald-200 bg-emerald-50/10 p-12 rounded-[2.5rem] hover:shadow-2xl transition-all relative overflow-hidden">
                     <i data-lucide="globe" class="mb-10 text-emerald-600 w-12 h-12"></i>
-                    <div class="absolute top-0 right-0 p-8">
-                        <span class="text-xs font-mono font-bold text-emerald-600 border border-emerald-200 px-4 py-1.5 rounded-full bg-white tracking-widest uppercase">Scholarship</span>
-                    </div>
-                    <h3 class="text-3xl font-bold mb-6">Selected Intern | Turing Scholarship</h3>
+                    <h3 class="text-2xl font-bold mb-4">Selected Intern | Turing Scholarship</h3>
                     <p class="text-zinc-600 text-xl mb-10 leading-relaxed font-light">
                         Competitively selected for a funded Computer Science internship in New York, partnering with NJIT & NYU.
                     </p>
-                    <p class="text-xs text-zinc-400 font-mono italic">
+                    <p class="text-xs text-zinc-400 font-mono italic flex items-center gap-3">
                         * Placement cancelled due to U.S. partner withdrawal.
                     </p>
                 </div>
 
-                <!-- Formula Student -->
                 <div class="group border border-zinc-200 p-12 rounded-[2.5rem] transition-all hover:border-zinc-900 hover:shadow-2xl">
                     <i data-lucide="eye" class="mb-10 text-zinc-400 w-12 h-12"></i>
-                    <h3 class="text-3xl font-bold mb-6">Perception Systems Engineer | FSTN</h3>
+                    <h3 class="text-2xl font-bold mb-4">Perception Engineer | FSTN</h3>
                     <p class="text-zinc-600 text-xl mb-10 leading-relaxed font-light">
                         Developed autonomous vehicle algorithms (ROS2, Python), contributing to a 4th-place finish at Silverstone.
                     </p>
-                    <div class="flex flex-wrap gap-4 font-mono text-xs text-zinc-500 font-bold uppercase tracking-[0.2em]">
-                        <span class="px-4 py-1.5 bg-zinc-100 rounded-xl">ROS2</span>
-                        <span class="px-4 py-1.5 bg-zinc-100 rounded-xl">Silverstone</span>
-                    </div>
                 </div>
 
-                <!-- JT-PT -->
                 <div class="group border border-zinc-200 p-12 rounded-[2.5rem] transition-all hover:border-zinc-900 hover:shadow-2xl">
                     <i data-lucide="shield-check" class="mb-10 text-zinc-400 w-12 h-12"></i>
-                    <h3 class="text-3xl font-bold mb-6">Cyber Security Lead | JT-PT</h3>
+                    <h3 class="text-2xl font-bold mb-4">Cyber Security Analyst | JT-PT</h3>
                     <p class="text-zinc-600 text-xl mb-10 leading-relaxed font-light">
-                        Security lead for a fitness application client. Implemented secure authentication and GDPR compliance.
+                        Security lead for a fitness application project. Implemented secure authentication and GDPR compliance.
                     </p>
-                    <div class="flex flex-wrap gap-4 font-mono text-xs text-zinc-500 font-bold uppercase tracking-[0.2em]">
-                        <span class="px-4 py-1.5 bg-zinc-100 rounded-xl">Firebase</span>
-                        <span class="px-4 py-1.5 bg-zinc-100 rounded-xl">GDPR</span>
-                    </div>
                 </div>
             </div>
 
-            <!-- Soft Skills -->
-            <div class="mt-24 bg-zinc-900 rounded-[3rem] p-12 md:p-24 text-white flex flex-col lg:flex-row items-center justify-between gap-16 shadow-2xl relative overflow-hidden group">
+            <!-- Soft Skills Box -->
+            <div class="mt-24 bg-zinc-900 rounded-[3rem] p-12 md:p-24 text-white flex flex-col lg:flex-row items-center justify-between gap-16 shadow-2xl relative overflow-hidden">
                 <div class="flex flex-col md:flex-row items-center gap-14 relative z-10">
                     <div class="w-32 h-32 bg-white/10 rounded-[2rem] flex items-center justify-center shrink-0 border border-white/20">
                         <i data-lucide="users" class="text-emerald-400" size="64"></i>
@@ -295,71 +218,41 @@
                     <div class="text-center md:text-left">
                         <h4 class="font-bold text-4xl mb-6 tracking-tight">Professional Versatility & Soft Skills</h4>
                         <p class="text-zinc-400 text-2xl max-w-3xl leading-relaxed font-light">
-                            High-performance customer-facing experience at <span class="text-white font-medium">Dynamic Earth</span>. Promoted for exceptional communication and public engagement skills.
+                            Extensive experience in high-performance customer-facing roles at <span class="text-white font-medium">Dynamic Earth</span>. Promoted for exceptional communication and public engagement.
                         </p>
                     </div>
-                </div>
-                <div class="shrink-0 font-mono text-sm text-zinc-500 uppercase tracking-[0.4em] border border-white/20 px-10 py-5 rounded-2xl bg-white/5 backdrop-blur-xl">
-                    Validated_Skills
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-56 px-8 lg:px-16 bg-zinc-900 text-white text-center relative overflow-hidden">
-        <div class="max-w-5xl mx-auto relative z-10">
-            <div class="w-24 h-24 bg-emerald-500/10 rounded-full flex items-center justify-center mx-auto mb-12 border border-emerald-500/20">
+    <section id="contact" class="py-56 px-8 lg:px-16 bg-zinc-900 text-white text-center">
+        <div class="max-w-5xl mx-auto">
+            <div class="w-24 h-24 bg-emerald-500/10 rounded-full flex items-center justify-center mx-auto mb-12 border border-emerald-500/20 shadow-[0_0_80px_rgba(16,185,129,0.2)]">
                 <i data-lucide="lock" class="text-emerald-500" size="48"></i>
             </div>
             <h2 class="text-6xl md:text-9xl font-extrabold mb-12 tracking-tighter">Secure Communication.</h2>
-            <p class="text-zinc-400 mb-20 text-2xl md:text-4xl leading-relaxed font-extralight max-w-4xl mx-auto">
-                Seeking to apply technical expertise in a forward-thinking tech environment. Let's discuss how my research can benefit your team.
-            </p>
-            
-            <div class="flex flex-col items-center gap-12 mb-24">
-                <a href="mailto:rohail0202@gmail.com" class="flex items-center gap-6 text-3xl md:text-5xl font-mono hover:text-emerald-400 transition-all underline decoration-zinc-800 underline-offset-[16px] decoration-4 hover:decoration-emerald-400">
-                    <i data-lucide="mail" size="40"></i> rohail0202@gmail.com
-                </a>
-                <a href="https://linkedin.com/in/rohailmacdougall" target="_blank" class="flex items-center gap-6 text-3xl md:text-5xl font-mono hover:text-emerald-400 transition-all underline decoration-zinc-800 underline-offset-[16px] decoration-4 hover:decoration-emerald-400">
-                    <i data-lucide="linkedin" size="40"></i> linkedin/rohailmacdougall
-                </a>
+            <div class="flex flex-col items-center gap-12 font-mono text-2xl md:text-4xl">
+                <a href="mailto:rohail0202@gmail.com" class="hover:text-emerald-400 transition-all underline decoration-zinc-800 underline-offset-[16px] decoration-4 hover:decoration-emerald-400">rohail0202@gmail.com</a>
+                <a href="https://linkedin.com/in/rohailmacdougall" target="_blank" class="hover:text-emerald-400 transition-all underline decoration-zinc-800 underline-offset-[16px] decoration-4 hover:decoration-emerald-400">linkedin/rohailmacdougall</a>
             </div>
-
-            <div class="pt-24 border-t border-white/10 text-zinc-500 font-mono text-sm md:text-base tracking-[0.4em] uppercase">
-                <p class="mb-6 italic">© 2026 Rohail MacDougall Ahmad</p>
-                <p class="opacity-40 font-light">Verified Academic Integrity | Merchiston Campus | Napier University</p>
+            <div class="pt-24 mt-24 border-t border-white/10 text-zinc-500 font-mono text-xs uppercase tracking-[0.4em]">
+                <p>© 2026 Rohail MacDougall Ahmad | Merchiston Campus | Napier University</p>
             </div>
         </div>
     </section>
 
     <script>
-        // Initialize Lucide icons
+        // Start Lucide icons
         lucide.createIcons();
 
-        // Mobile Menu Toggle
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            const icon = document.getElementById('menu-icon');
-            menu.classList.toggle('hidden');
-            
-            // Toggle icon between menu and x
-            if (menu.classList.contains('hidden')) {
-                icon.setAttribute('data-lucide', 'menu');
-            } else {
-                icon.setAttribute('data-lucide', 'x');
-            }
-            lucide.createIcons();
-        }
-
-        // Professional Headshot Replacement Script
-        // If you have headshot.jpg in the same folder, this replaces the icon
+        // Check for headshot image
         window.addEventListener('load', () => {
             const img = new Image();
             img.src = 'headshot.jpg';
             img.onload = () => {
-                document.getElementById('photo-container').innerHTML = 
-                    `<img src="headshot.jpg" alt="Rohail MacDougall Ahmad" class="w-full h-full object-cover">`;
+                document.getElementById('photo-target').innerHTML = `<img src="headshot.jpg" alt="Rohail" class="w-full h-full object-cover">`;
             }
         });
     </script>
