@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operations | Rohail M.A</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+        :root { --neon-red: #ff3333; --zinc-950: #09090b; }
+        body { background-color: var(--zinc-950); color: white; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
+        .font-mono { font-family: 'JetBrains+Mono', monospace; }
+        
+        .texture {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 50;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+
+        .nav-dock {
+            background: rgba(20, 20, 20, 0.4); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .terminal-box {
+            background: #121214;
+            border: 1px solid #2a2a2e;
+            border-radius: 12px;
+            box-shadow: 0 30px 60px -12px rgba(0,0,0,0.8);
+            font-family: 'JetBrains+Mono', monospace;
+        }
+
+        .phone-frame {
+            border: 12px solid #1a1a1c;
+            border-radius: 40px;
+            background: #000;
+            box-shadow: 0 0 0 1px #333, 0 40px 100px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .syntax-k { color: #569cd6; }
+        .syntax-v { color: #9cdcfe; }
+        .syntax-s { color: #ce9178; }
+        .syntax-c { color: #6a9955; }
+    </style>
+</head>
+<body>
+    <div class="texture"></div>
+
+    <nav class="fixed bottom-10 left-0 right-0 z-50 flex justify-center px-4">
+        <div class="nav-dock px-8 py-5 rounded-3xl flex gap-10 items-center">
+            <a href="index.html" class="nav-link font-mono text-[10px] uppercase tracking-[0.3em] opacity-50 hover:opacity-100">Dashboard</a>
+            <a href="research.html" class="nav-link font-mono text-[10px] uppercase tracking-[0.3em] opacity-50 hover:opacity-100">Investigation</a>
+            <a href="projects.html" class="nav-link font-mono text-[10px] uppercase tracking-[0.3em] active text-red-500">Operations</a>
+            <a href="contact.html" class="nav-link font-mono text-[10px] uppercase tracking-[0.3em] opacity-50 hover:opacity-100">Comm-Link</a>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-6 pt-32 pb-48">
+        
+        <header class="mb-24">
+            <div class="font-mono text-red-500 text-xs tracking-[0.4em] uppercase mb-6">> FIELD_REPORTS_V2</div>
+            <h1 class="text-5xl md:text-8xl font-bold tracking-tighter">Applied <br />Engineering.</h1>
+        </header>
+
+        <!-- Project 1: Formula Student -->
+        <div class="grid lg:grid-cols-2 gap-20 items-center mb-48">
+            <div>
+                <h2 class="text-4xl font-bold mb-6">Perception Systems | FSTN</h2>
+                <p class="text-xl text-zinc-500 font-light leading-relaxed mb-10">
+                    Engineered LiDAR-based cone detection for our autonomous vehicle. Integrated ROS2 and Python to filter point-cloud data, contributing to a 4th-place national finish at Silverstone.
+                </p>
+                <div class="flex gap-4">
+                    <div class="px-6 py-3 bg-zinc-900 border border-zinc-800 rounded-2xl">
+                        <span class="block text-[8px] font-mono text-zinc-500 uppercase tracking-widest mb-1">Stack</span>
+                        <span class="text-xs font-mono text-white">ROS2 / Python / C++</span>
+                    </div>
+                    <div class="px-6 py-3 bg-zinc-900 border border-zinc-800 rounded-2xl">
+                        <span class="block text-[8px] font-mono text-zinc-500 uppercase tracking-widest mb-1">Role</span>
+                        <span class="text-xs font-mono text-white">Perception Lead</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Terminal Mockup -->
+            <div class="terminal-box w-full">
+                <div class="flex items-center gap-2 p-4 border-b border-zinc-800/50">
+                    <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+                    <div class="w-3 h-3 rounded-full bg-zinc-700"></div>
+                    <div class="w-3 h-3 rounded-full bg-zinc-700"></div>
+                    <span class="ml-4 text-[10px] text-zinc-600 font-mono">cone_detection.py</span>
+                </div>
+                <div class="p-8 text-sm overflow-x-auto">
+<pre><code class="text-zinc-400">
+<span class="syntax-k">def</span> <span class="syntax-v">process_lidar</span>(self, msg):
+    <span class="syntax-c"># Initialise point cloud buffer</span>
+    cloud = self.buffer.get_points(msg)
+    
+    <span class="syntax-k">for</span> point <span class="syntax-k">in</span> cloud:
+        <span class="syntax-c"># Apply ground-plane removal filters</span>
+        <span class="syntax-k">if</span> point.z < <span class="syntax-s">-0.5</span>:
+            <span class="syntax-k">continue</span>
+            
+        <span class="syntax-c"># Cluster centroids for cone detection</span>
+        self.map.add_centroid(point.x, point.y)
+        
+    <span class="syntax-v">self</span>.update_perception_state()
+</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 2: JT-PT App -->
+        <div class="grid lg:grid-cols-2 gap-20 items-center">
+            <div class="flex justify-center order-2 lg:order-1">
+                <div class="phone-frame w-[300px] h-[620px]">
+                    <div class="absolute inset-0 bg-zinc-900 flex items-center justify-center p-8 text-center">
+                        <div class="space-y-4">
+                            <i data-lucide="smartphone" class="text-zinc-700 mx-auto" size="48"></i>
+                            <p class="text-[10px] font-mono text-zinc-600 uppercase tracking-widest">
+                                Mobile_Security_Architecture_Mockup<br />
+                                <span class="text-red-500">> Loading app_screenshot.png</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-10 left-0 right-0 text-center text-white/20 font-mono text-[8px] tracking-[0.5em]">JT-PT_ENCRYPTED</div>
+                </div>
+            </div>
+
+            <div class="order-1 lg:order-2">
+                <h2 class="text-4xl font-bold mb-6">Secure Fitness Integration</h2>
+                <p class="text-xl text-zinc-500 font-light leading-relaxed mb-10">
+                    Security Lead for a 5-person development team. Architected secure authentication via Firebase and ensured strict GDPR compliance for sensitive health and calorie tracking data.
+                </p>
+                <div class="space-y-4">
+                    <div class="p-6 bg-zinc-900/50 border border-zinc-800 rounded-3xl flex items-center gap-6 group hover:border-red-500 transition-colors">
+                        <i data-lucide="shield-check" class="text-red-600"></i>
+                        <div>
+                            <h4 class="font-bold text-sm">Authentication Protocol</h4>
+                            <p class="text-xs text-zinc-500">JWT-based session handling and encrypted storage.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-zinc-900/50 border border-zinc-800 rounded-3xl flex items-center gap-6 group hover:border-emerald-500 transition-colors">
+                        <i data-lucide="database" class="text-emerald-500"></i>
+                        <div>
+                            <h4 class="font-bold text-sm">GDPR Compliance</h4>
+                            <p class="text-xs text-zinc-500">Data minimisation and anonymisation for health metrics.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
