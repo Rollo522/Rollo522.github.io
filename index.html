@@ -3,7 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rohail MacDougall Ahmad | Cybersecurity Graduate</title>
+    <title>Rohail MacDougall Ahmad | Cybersecurity & Forensics Portfolio</title>
+    
+    <!-- SEO & Social Meta Tags -->
+    <meta name="description" content="Portfolio of Rohail MacDougall Ahmad, a First-Class Cybersecurity Graduate from Edinburgh Napier University specialising in Digital Forensics and AI Threat Analysis.">
+    <meta property="og:title" content="Rohail MacDougall Ahmad | Cybersecurity Graduate">
+    <meta property="og:description" content="View my research on AI-generated phishing and my cybersecurity portfolio.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rollo522.github.io/">
+    <!-- If you have a hosted image URL, put it here, otherwise it uses a default -->
+    <meta property="og:image" content="https://rollo522.github.io/headshot.JPEG">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -16,298 +26,204 @@
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             -webkit-font-smoothing: antialiased;
-            background-color: #f8f9fa;
+            background-color: #ffffff;
             color: #1a1a1a;
-            position: relative;
         }
 
-        .font-mono {
-            font-family: 'JetBrains+Mono', monospace;
-        }
-
-        /* --- NEW ANIMATED BACKGROUND --- */
-        .blob-cont {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            z-index: -5;
-            overflow: hidden;
-            background: #ffffff;
-        }
-
-        .blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.6;
-            animation: float 20s infinite ease-in-out alternate;
-        }
-
-        .blob-1 {
-            background: rgba(227, 27, 35, 0.15); /* Napier Red */
-            width: 600px;
-            height: 600px;
-            top: -100px;
-            left: -100px;
-            animation-delay: 0s;
-        }
-
-        .blob-2 {
-            background: rgba(16, 185, 129, 0.15); /* Emerald Green */
-            width: 500px;
-            height: 500px;
-            bottom: -50px;
-            right: -100px;
-            animation-delay: -5s;
-            animation-name: float2;
-        }
-
-        .blob-3 {
-            background: rgba(227, 27, 35, 0.1); /* Fainter Red */
-            width: 300px;
-            height: 300px;
-            bottom: 20%;
-            left: 20%;
-            animation-delay: -10s;
-            animation-name: float3;
-        }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(100px, 100px) scale(1.1); }
-        }
-
-        @keyframes float2 {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(-100px, -50px) scale(1.2); }
-        }
-
-        @keyframes float3 {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(50px, -100px) scale(0.8); }
-        }
-
-        /* Technical Grid Overlay */
-        .bg-grid-pattern {
-            background-image: radial-gradient(circle, #d1d5db 1px, transparent 1px);
-            background-size: 40px 40px;
-            mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
-        }
-
-        /* Floating Data Bits */
-        .data-float {
-            position: absolute;
-            font-family: 'JetBrains+Mono', monospace;
-            font-size: 10px;
-            color: rgba(0, 0, 0, 0.15); /* Darkened slightly for visibility */
-            pointer-events: none;
-            user-select: none;
-            white-space: nowrap;
-        }
-
-        /* Enhanced Glassmorphism */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .glass-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.8);
-            border-color: rgba(227, 27, 35, 0.3);
-            box-shadow: 0 20px 40px rgba(227, 27, 35, 0.05);
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--napier-red); }
-
+        .font-mono { font-family: 'JetBrains+Mono', monospace; }
         .napier-text { color: var(--napier-red); }
         .napier-bg { background-color: var(--napier-red); }
         html { scroll-behavior: smooth; }
+
+        /* Subtle animated background for the Hero only */
+        .hero-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: 0;
+            animation: float 10s infinite ease-in-out alternate;
+        }
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, 30px); }
+        }
+
+        /* Glass effect for Sticky Nav */
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
     </style>
 </head>
-<body class="selection:bg-red-50 selection:text-red-900 overflow-x-hidden">
+<body class="selection:bg-red-50 selection:text-red-900">
 
-    <!-- NEW BACKGROUND ENGINE -->
-    <div class="blob-cont">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-        <!-- Grid stays on top of blobs for texture -->
-        <div class="absolute inset-0 bg-grid-pattern opacity-[0.4]"></div>
-    </div>
-
-    <!-- Header -->
-    <nav class="fixed w-full z-50 bg-white/40 backdrop-blur-xl border-b border-white/30">
+    <!-- Sticky Navigation Bar -->
+    <nav class="fixed w-full z-50 nav-glass transition-all duration-300">
         <div class="max-w-6xl mx-auto px-6 lg:px-12">
             <div class="flex justify-between h-20 items-center">
-                <a href="#home" class="group flex items-center gap-3 text-xs font-bold tracking-[0.4em] uppercase">
-                    <div class="relative w-8 h-8 flex items-center justify-center">
-                        <i data-lucide="shield" class="absolute inset-0 napier-text opacity-20 scale-125"></i>
-                        <span class="relative">R.A</span>
+                <a href="#home" class="group flex items-center gap-3 text-xs font-bold tracking-[0.2em] uppercase text-zinc-900">
+                    <div class="w-8 h-8 bg-zinc-900 text-white flex items-center justify-center rounded-lg">
+                        <span class="font-mono">R</span>
                     </div>
-                    <span class="hidden sm:inline">Rohail <span class="text-zinc-400 font-light">M.A</span></span>
+                    <span>Rohail <span class="text-zinc-400 font-light">M.A</span></span>
                 </a>
                 
-                <div class="hidden md:flex space-x-10 items-center">
-                    <a href="#about" class="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 hover:text-red-600 transition-colors">History</a>
-                    <a href="#research" class="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 hover:text-red-600 transition-colors">Research</a>
-                    <a href="#experience" class="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 hover:text-red-600 transition-colors">Projects</a>
-                    <a href="#contact" class="px-6 py-2 bg-zinc-900 text-white rounded-full text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-red-600 shadow-xl transition-all">Connect</a>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="text-xs font-bold uppercase tracking-widest text-zinc-500 hover:text-red-600 transition-colors">About</a>
+                    <a href="#dissertation" class="text-xs font-bold uppercase tracking-widest text-zinc-500 hover:text-red-600 transition-colors">Dissertation</a>
+                    <a href="#projects" class="text-xs font-bold uppercase tracking-widest text-zinc-500 hover:text-red-600 transition-colors">Projects</a>
+                    <a href="#contact" class="px-5 py-2.5 bg-zinc-900 text-white rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-red-600 transition-all shadow-md">Contact</a>
                 </div>
 
-                <button onclick="toggleMenu()" class="md:hidden text-zinc-600">
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMenu()" class="md:hidden text-zinc-600 p-2">
                     <i data-lucide="menu"></i>
                 </button>
             </div>
         </div>
+        
+        <!-- Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-white border-b border-zinc-100 shadow-xl p-6 flex flex-col space-y-4">
+            <a href="#about" onclick="toggleMenu()" class="text-sm font-bold uppercase tracking-widest text-zinc-600 py-2 border-b border-zinc-50">About</a>
+            <a href="#dissertation" onclick="toggleMenu()" class="text-sm font-bold uppercase tracking-widest text-zinc-600 py-2 border-b border-zinc-50">Dissertation</a>
+            <a href="#projects" onclick="toggleMenu()" class="text-sm font-bold uppercase tracking-widest text-zinc-600 py-2 border-b border-zinc-50">Projects</a>
+            <a href="#contact" onclick="toggleMenu()" class="text-sm font-bold uppercase tracking-widest text-red-600 py-2">Contact</a>
+        </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative pt-40 pb-24 md:pt-60 md:pb-48 px-6 lg:px-12 overflow-hidden">
-        <div class="max-w-6xl mx-auto relative">
-            <div class="max-w-4xl">
-                <div class="flex items-center gap-4 mb-10">
-                    <div class="h-[1px] w-12 bg-red-600"></div>
-                    <span class="text-[10px] font-mono text-red-600 uppercase tracking-[0.3em] font-bold">First-Class Alumnus</span>
+    <!-- SECTION 1: HERO (Clean White with Subtle Blobs) -->
+    <section id="home" class="relative pt-40 pb-20 md:pt-52 md:pb-32 px-6 lg:px-12 overflow-hidden bg-white">
+        <!-- Background Animation for Hero Only -->
+        <div class="hero-blob bg-red-100 w-96 h-96 top-0 right-0"></div>
+        <div class="hero-blob bg-emerald-50 w-72 h-72 bottom-0 left-0" style="animation-delay: -5s;"></div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="max-w-3xl">
+                <div class="flex items-center gap-3 mb-8 animate-fade-in-up">
+                    <span class="px-3 py-1 bg-zinc-100 text-zinc-600 text-[10px] font-bold uppercase tracking-widest rounded-md border border-zinc-200">
+                        Class of 2025
+                    </span>
+                    <span class="w-8 h-[1px] bg-zinc-300"></span>
+                    <span class="text-[10px] font-mono text-zinc-400 uppercase tracking-widest">Edinburgh Napier University</span>
                 </div>
                 
-                <h1 class="text-5xl md:text-7xl font-semibold tracking-tight text-zinc-900 mb-10 leading-[1.1]">
-                    Bridging the gap between technical defense and <span class="relative inline-block">
-                        <span class="relative z-10 italic font-light text-zinc-500">human vulnerabilities.</span>
-                        <span class="absolute bottom-2 left-0 w-full h-3 bg-red-600/5 -z-0"></span>
-                    </span>
+                <h1 class="text-5xl md:text-7xl font-semibold tracking-tight text-zinc-900 mb-8 leading-[1.1]">
+                    Solving security challenges with <span class="italic font-light text-zinc-500">forensic precision.</span>
                 </h1>
                 
-                <p class="text-xl md:text-2xl text-zinc-500 font-light leading-relaxed mb-14 max-w-2xl">
-                    I'm <span class="text-zinc-900 font-medium">Rohail MacDougall Ahmad</span>. A graduate dedicated to forensics and understanding the emerging role of AI in cyber threats.
+                <p class="text-lg md:text-xl text-zinc-600 font-light leading-relaxed mb-10 max-w-2xl">
+                    Hi, I'm <span class="font-medium text-zinc-900">Rohail MacDougall Ahmad</span>. A First-Class Honours graduate in Cybersecurity & Forensics, specialising in detecting AI-driven threats and securing digital infrastructure.
                 </p>
 
-                <div class="flex flex-wrap gap-8 items-center">
-                    <a href="#research" class="group flex items-center gap-4 px-8 py-4 bg-white/80 backdrop-blur-sm border border-zinc-200 rounded-2xl shadow-xl hover:border-red-600 transition-all">
-                        <span class="text-sm font-bold uppercase tracking-widest">View Dissertation</span>
-                        <div class="w-8 h-8 rounded-full bg-zinc-900 text-white flex items-center justify-center group-hover:bg-red-600 transition-colors">
-                            <i data-lucide="chevron-right" size="16"></i>
-                        </div>
+                <div class="flex flex-wrap gap-4 items-center">
+                    <a href="#dissertation" class="group flex items-center gap-3 px-6 py-3.5 bg-zinc-900 text-white rounded-xl shadow-lg hover:bg-red-600 transition-all">
+                        <span class="text-xs font-bold uppercase tracking-widest">Read Dissertation</span>
+                        <i data-lucide="arrow-right" size="16" class="group-hover:translate-x-1 transition-transform"></i>
                     </a>
-                    <div class="flex items-center gap-3 font-mono text-[10px] text-zinc-400 uppercase tracking-[0.2em]">
-                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                        CompTIA Security+ Pursuit
-                    </div>
+                    <a href="#contact" class="px-6 py-3.5 bg-white border border-zinc-200 text-zinc-600 rounded-xl hover:border-zinc-400 transition-all text-xs font-bold uppercase tracking-widest">
+                        Get in Touch
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Profile Section -->
-    <section id="about" class="py-32 px-6 lg:px-12 relative">
+    <!-- SECTION 2: ABOUT (Light Grey Block for Contrast) -->
+    <section id="about" class="py-24 px-6 lg:px-12 bg-zinc-50 border-t border-zinc-200">
         <div class="max-w-6xl mx-auto">
-            <div class="grid lg:grid-cols-2 gap-20 items-center">
-                <div class="glass-card p-12 md:p-16 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
-                    <!-- Tech decoration -->
-                    <div class="absolute top-0 right-0 p-8 opacity-[0.03] rotate-12">
-                        <i data-lucide="binary" size="120"></i>
-                    </div>
-                    
-                    <h2 class="text-[10px] font-bold uppercase tracking-[0.4em] text-red-600 mb-10">Background Overview</h2>
-                    <div class="space-y-8 text-xl text-zinc-600 font-light leading-relaxed">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-xs font-bold uppercase tracking-[0.3em] text-red-600 mb-8 flex items-center gap-2">
+                        <i data-lucide="user" size="14"></i> About Me
+                    </h2>
+                    <div class="space-y-6 text-lg text-zinc-700 font-light leading-relaxed">
                         <p>
-                            I hold a <span class="text-zinc-900 font-medium">First-Class BEng (Hons)</span> from Edinburgh Napier University. My studies were defined by a rigorous approach to investigating vulnerabilities and digital forensics.
+                            Cybersecurity is as much about understanding people as it is about systems. My academic journey at <span class="font-medium text-zinc-900">Edinburgh Napier University</span> taught me to look beyond the code to identify the human vulnerabilities that attackers exploit.
                         </p>
                         <p>
-                            I enjoy the "puzzle" of security—analysing why systems fail and how to build defensive architectures that protect data without hindering user experience.
+                            I graduated with a <span class="font-medium text-zinc-900">First-Class BEng (Hons)</span>, focusing heavily on digital forensics and ethical hacking. I am driven by the puzzle of security—taking apart complex problems to build stronger, more resilient defences.
                         </p>
                     </div>
 
-                    <div class="mt-16 grid grid-cols-2 gap-10 border-t border-zinc-200/50 pt-16">
+                    <div class="mt-10 pt-10 border-t border-zinc-200 grid grid-cols-2 gap-8">
                         <div>
-                            <span class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 block mb-6">Expertise</span>
-                            <ul class="text-sm space-y-3 font-mono text-zinc-500">
-                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-red-600"></span> Forensics</li>
-                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-zinc-300"></span> Pentesting</li>
-                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-zinc-300"></span> Crypto</li>
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 block mb-4">Core Skills</span>
+                            <ul class="text-sm space-y-2 font-mono text-zinc-600">
+                                <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-red-500"></div> Forensics</li>
+                                <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-zinc-400"></div> Penetration Testing</li>
+                                <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-zinc-400"></div> Network Security</li>
                             </ul>
                         </div>
                         <div>
-                            <span class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 block mb-6">Security Tools</span>
-                            <ul class="text-sm space-y-3 font-mono text-zinc-500">
-                                <li class="flex items-center gap-2">Splunk</li>
-                                <li class="flex items-center gap-2">Magnet Axiom</li>
-                                <li class="flex items-center gap-2">Metasploit</li>
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 block mb-4">Technical Toolkit</span>
+                            <ul class="text-sm space-y-2 font-mono text-zinc-600">
+                                <li>Splunk & Wireshark</li>
+                                <li>Metasploit & Nmap</li>
+                                <li>Magnet Axiom</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
                 <div class="relative group flex justify-center lg:justify-end">
-                    <div id="photo-container" class="w-full max-w-sm aspect-[4/5] bg-white/50 backdrop-blur-md rounded-[3rem] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.1)] relative z-10 border-8 border-white group-hover:scale-[1.02] transition-transform duration-700">
-                         <div class="absolute inset-0 flex items-center justify-center text-zinc-300">
-                             <i data-lucide="user" size="80"></i>
+                    <div id="photo-container" class="w-72 h-96 bg-white rounded-2xl overflow-hidden shadow-2xl relative z-10 border-4 border-white rotate-2 group-hover:rotate-0 transition-all duration-500">
+                         <div class="absolute inset-0 flex items-center justify-center text-zinc-300 bg-zinc-100">
+                             <i data-lucide="user" size="64"></i>
                          </div>
                     </div>
+                    <!-- Aesthetic rectangle behind photo -->
+                    <div class="absolute top-4 right-4 w-72 h-96 border-2 border-zinc-300 rounded-2xl -z-0 -rotate-3 group-hover:rotate-0 transition-all duration-500"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Research Spotlight -->
-    <section id="research" class="py-32 px-6 lg:px-12">
+    <!-- SECTION 3: DISSERTATION (Clean White Block) -->
+    <section id="dissertation" class="py-24 px-6 lg:px-12 bg-white border-t border-zinc-200">
         <div class="max-w-6xl mx-auto">
-            <div class="flex flex-col md:flex-row md:items-center justify-between mb-16 gap-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
                 <div>
-                    <h2 class="text-[10px] font-bold uppercase tracking-[0.4em] text-red-600 mb-6">Academic Spotlight</h2>
-                    <h3 class="text-4xl md:text-5xl font-semibold tracking-tight max-w-2xl leading-tight">AI & the evolution of the phishing threat.</h3>
+                    <h2 class="text-xs font-bold uppercase tracking-[0.3em] text-red-600 mb-4 flex items-center gap-2">
+                        <i data-lucide="book-open" size="14"></i> Dissertation Spotlight
+                    </h2>
+                    <h3 class="text-3xl md:text-4xl font-semibold tracking-tight max-w-2xl leading-tight">
+                        Evaluating linguistic realism in AI-generated phishing.
+                    </h3>
                 </div>
-                <div class="shrink-0 flex items-center gap-4 px-6 py-3 bg-white/80 backdrop-blur-sm rounded-2xl border border-zinc-200 shadow-sm">
-                    <i data-lucide="check-circle-2" class="text-red-600" size="20"></i>
-                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-red-700">1st Class Dissertation</span>
+                <div class="shrink-0 flex items-center gap-3 px-4 py-2 bg-zinc-50 rounded-full border border-zinc-200">
+                    <i data-lucide="award" class="text-amber-500" size="16"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-zinc-600">Endorsed for Publication</span>
                 </div>
             </div>
 
-            <div class="glass-card rounded-[3rem] p-10 md:p-20 shadow-2xl relative overflow-hidden">
-                <div class="grid lg:grid-cols-3 gap-20 relative z-10">
+            <!-- Featured Card -->
+            <div class="bg-zinc-900 rounded-[2rem] p-8 md:p-12 text-white shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-[100px]"></div>
+                
+                <div class="grid lg:grid-cols-3 gap-12 relative z-10">
                     <div class="lg:col-span-2">
-                        <p class="text-2xl text-zinc-600 font-light leading-relaxed mb-12">
-                            My research examined how LLMs can be used to replicate brand identities for phishing. I combined style-matching metrics with user studies to evaluate the threshold of human detection in the face of automated linguistic realism.
+                        <p class="text-xl text-zinc-300 font-light leading-relaxed mb-8">
+                            My research investigated the capability of Large Language Models (LLMs) to replicate brand voices. By conducting style-matching experiments and user studies, I identified the specific emotional triggers that cause users to trust AI-generated emails over genuine ones.
                         </p>
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <div class="p-8 border border-zinc-100 rounded-3xl bg-white/60 backdrop-blur-sm">
-                                <i data-lucide="target" class="text-red-600 mb-4" size="24"></i>
-                                <h4 class="font-bold text-sm mb-3">Goal</h4>
-                                <p class="text-sm text-zinc-500 font-light">Identifying the specific linguistic markers that differentiate AI from human communication in fraudulent contexts.</p>
-                            </div>
-                            <div class="p-8 border border-zinc-100 rounded-3xl bg-white/60 backdrop-blur-sm">
-                                <i data-lucide="book-open" class="text-zinc-900 mb-4" size="24"></i>
-                                <h4 class="font-bold text-sm mb-3">Impact</h4>
-                                <p class="text-sm text-zinc-500 font-light">Supervisors endorsed this research for potential journal publication due to its original data and timely findings.</p>
-                            </div>
+                        <div class="flex flex-wrap gap-4">
+                            <span class="px-4 py-2 bg-white/10 rounded-lg text-xs font-mono border border-white/10">Linguistic Analysis</span>
+                            <span class="px-4 py-2 bg-white/10 rounded-lg text-xs font-mono border border-white/10">Social Engineering</span>
+                            <span class="px-4 py-2 bg-white/10 rounded-lg text-xs font-mono border border-white/10">AI Threat Modelling</span>
                         </div>
                     </div>
                     
-                    <div class="flex flex-col justify-center gap-12 text-center lg:text-left">
-                        <div class="p-8 bg-zinc-900 rounded-[2rem] text-white shadow-2xl relative overflow-hidden group hover:scale-[1.05] transition-transform">
-                            <i data-lucide="code" class="absolute -right-4 -bottom-4 text-white/5 group-hover:scale-125 transition-transform" size="100"></i>
-                            <span class="text-[10px] font-bold uppercase tracking-widest text-zinc-500 block mb-6">Evaluation</span>
-                            <div class="space-y-8">
-                                <div>
-                                    <span class="text-5xl font-bold block mb-1">1st</span>
-                                    <span class="text-[10px] text-zinc-500 uppercase tracking-widest">Final Grade</span>
-                                </div>
-                                <div class="h-[1px] bg-white/10"></div>
-                                <div>
-                                    <span class="text-xl font-medium block">Peer Review</span>
-                                    <span class="text-[10px] text-zinc-500 uppercase tracking-widest">Ready for Submission</span>
-                                </div>
-                            </div>
+                    <div class="flex flex-col justify-center border-l border-white/10 pl-0 lg:pl-12">
+                        <div class="mb-6">
+                            <span class="text-5xl font-bold block mb-1 text-white">1st</span>
+                            <span class="text-[10px] text-zinc-400 uppercase tracking-widest">Classification</span>
+                        </div>
+                        <div>
+                            <span class="text-xl font-medium block text-white">Peer Review</span>
+                            <span class="text-[10px] text-zinc-400 uppercase tracking-widest">Recommended for Journal</span>
                         </div>
                     </div>
                 </div>
@@ -315,83 +231,84 @@
         </div>
     </section>
 
-    <!-- Projects Grid -->
-    <section id="experience" class="py-32 px-6 lg:px-12 relative overflow-hidden">
+    <!-- SECTION 4: PROJECTS (Light Grey Block) -->
+    <section id="projects" class="py-24 px-6 lg:px-12 bg-zinc-50 border-t border-zinc-200">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-24">
-                <h2 class="text-[10px] font-bold uppercase tracking-[0.4em] text-red-600 mb-6">Milestones</h2>
-                <h3 class="text-4xl font-semibold tracking-tight">Key Projects & Honours</h3>
-            </div>
+            <h2 class="text-xs font-bold uppercase tracking-[0.3em] text-red-600 mb-12 flex items-center gap-2">
+                <i data-lucide="briefcase" size="14"></i> Key Experience
+            </h2>
             
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="group p-10 glass-card rounded-[2rem] border-zinc-100 hover:border-red-500 transition-all">
-                    <div class="w-14 h-14 bg-zinc-900 text-white rounded-2xl flex items-center justify-center mb-10 group-hover:scale-110 group-hover:bg-red-600 transition-all shadow-xl">
-                        <i data-lucide="map" size="24"></i>
+                <!-- Card 1 -->
+                <div class="group bg-white p-8 rounded-2xl border border-zinc-200 hover:border-red-500 transition-all shadow-sm hover:shadow-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-100 group-hover:text-red-500 transition-all">
+                        <i data-lucide="arrow-up-right" size="24"></i>
                     </div>
-                    <h3 class="font-bold text-lg mb-4">Turing Scholar</h3>
-                    <p class="text-zinc-500 font-light text-sm leading-relaxed mb-6">
-                        Successfully awarded funding for an internship in New York, collaborating with partners at NJIT and NYU.
+                    <div class="w-12 h-12 bg-zinc-100 rounded-lg flex items-center justify-center mb-6 text-zinc-900">
+                        <i data-lucide="globe" size="20"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3">Turing Scholar</h3>
+                    <p class="text-sm text-zinc-500 leading-relaxed mb-6">
+                        Competitively selected for a funded Computer Science internship in New York (NJIT & NYU).
                     </p>
-                    <span class="text-[9px] font-mono text-zinc-400 uppercase tracking-widest bg-zinc-100 px-3 py-1 rounded-full">Competitive Selection</span>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-zinc-400">Merit Based</span>
                 </div>
 
-                <div class="group p-10 glass-card rounded-[2rem] border-zinc-100 hover:border-red-500 transition-all">
-                    <div class="w-14 h-14 bg-zinc-900 text-white rounded-2xl flex items-center justify-center mb-10 group-hover:scale-110 group-hover:bg-red-600 transition-all shadow-xl">
-                        <i data-lucide="cpu" size="24"></i>
+                <!-- Card 2 -->
+                <div class="group bg-white p-8 rounded-2xl border border-zinc-200 hover:border-red-500 transition-all shadow-sm hover:shadow-xl relative overflow-hidden">
+                    <div class="w-12 h-12 bg-zinc-100 rounded-lg flex items-center justify-center mb-6 text-zinc-900">
+                        <i data-lucide="cpu" size="20"></i>
                     </div>
-                    <h3 class="font-bold text-lg mb-4">Formula Student</h3>
-                    <p class="text-zinc-500 font-light text-sm leading-relaxed mb-6">
-                        Integrated ROS2 and Python for perception systems, helping our vehicle secure 4th place at Silverstone.
+                    <h3 class="font-bold text-lg mb-3">Formula Student</h3>
+                    <p class="text-sm text-zinc-500 leading-relaxed mb-6">
+                        Engineered ROS2 perception algorithms for an autonomous vehicle, placing 4th at Silverstone.
                     </p>
-                    <span class="text-[9px] font-mono text-zinc-400 uppercase tracking-widest bg-zinc-100 px-3 py-1 rounded-full">Systems Engineering</span>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-zinc-400">Systems Engineering</span>
                 </div>
 
-                <div class="group p-10 glass-card rounded-[2rem] border-zinc-100 hover:border-red-500 transition-all">
-                    <div class="w-14 h-14 bg-zinc-900 text-white rounded-2xl flex items-center justify-center mb-10 group-hover:scale-110 group-hover:bg-red-600 transition-all shadow-xl">
-                        <i data-lucide="users" size="24"></i>
+                <!-- Card 3 -->
+                <div class="group bg-white p-8 rounded-2xl border border-zinc-200 hover:border-red-500 transition-all shadow-sm hover:shadow-xl relative overflow-hidden">
+                    <div class="w-12 h-12 bg-zinc-100 rounded-lg flex items-center justify-center mb-6 text-zinc-900">
+                        <i data-lucide="shield-check" size="20"></i>
                     </div>
-                    <h3 class="font-bold text-lg mb-4">Engagement Lead</h3>
-                    <p class="text-zinc-500 font-light text-sm leading-relaxed mb-6">
-                        Refining high-level teamwork and public communication skills at Dynamic Earth's visitor center.
+                    <h3 class="font-bold text-lg mb-3">Security Lead</h3>
+                    <p class="text-sm text-zinc-500 leading-relaxed mb-6">
+                        Managed GDPR compliance and secure authentication for a client fitness application (JT-PT).
                     </p>
-                    <span class="text-[9px] font-mono text-zinc-400 uppercase tracking-widest bg-zinc-100 px-3 py-1 rounded-full">Communication</span>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-zinc-400">Compliance & Auth</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="py-48 bg-zinc-950 text-white px-6 lg:px-12 relative overflow-hidden">
-        <!-- Background Decor -->
-        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-red-600/5 blur-[120px] rounded-full"></div>
-        <div class="absolute bottom-0 left-0 w-[800px] h-[800px] bg-emerald-600/5 blur-[120px] rounded-full"></div>
-
+    <!-- SECTION 5: CONTACT (Dark Block) -->
+    <section id="contact" class="py-32 bg-zinc-950 text-white px-6 lg:px-12 relative overflow-hidden">
         <div class="max-w-4xl mx-auto text-center relative z-10">
-            <h2 class="text-[10px] font-bold uppercase tracking-[0.5em] text-zinc-600 mb-12">Transmission</h2>
-            <h3 class="text-5xl md:text-7xl font-semibold tracking-tighter mb-20 leading-tight">
-                Seeking to solve the <span class="italic font-light opacity-50 underline decoration-red-600 underline-offset-[12px]">unknown.</span>
-            </h3>
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 mb-8">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="text-[10px] font-bold uppercase tracking-widest">Available for work</span>
+            </div>
             
-            <div class="flex flex-col md:flex-row items-center justify-center gap-12">
-                <a href="mailto:rohail0202@gmail.com" class="group flex items-center gap-4 text-2xl font-light hover:text-red-500 transition-colors">
-                    rohail0202@gmail.com
-                    <i data-lucide="send" size="20" class="group-hover:translate-x-2 transition-transform"></i>
+            <h2 class="text-4xl md:text-5xl font-semibold tracking-tight mb-12">
+                Ready to contribute to your security team?
+            </h2>
+            
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+                <a href="mailto:rohail0202@gmail.com" class="flex items-center gap-3 px-8 py-4 bg-white text-zinc-900 rounded-xl font-bold hover:bg-zinc-200 transition-all">
+                    <i data-lucide="mail" size="18"></i> rohail0202@gmail.com
                 </a>
-                <a href="https://linkedin.com/in/rohailmacdougall" target="_blank" class="group flex items-center gap-4 text-2xl font-light hover:text-red-500 transition-colors">
-                    LinkedIn Profile
-                    <i data-lucide="linkedin" size="20" class="group-hover:-translate-y-1 transition-transform"></i>
+                <a href="https://linkedin.com/in/rohailmacdougall" target="_blank" class="flex items-center gap-3 px-8 py-4 border border-zinc-700 rounded-xl font-bold hover:bg-zinc-800 transition-all">
+                    <i data-lucide="linkedin" size="18"></i> LinkedIn
                 </a>
             </div>
 
-            <div class="mt-40 pt-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-                <div class="text-[10px] font-mono tracking-widest text-zinc-700 uppercase">
-                    © 2026 Rohail MacDougall Ahmad • 1st Class BEng (Hons)
-                </div>
-                <div class="flex gap-10 opacity-30">
-                    <i data-lucide="activity"></i>
-                    <i data-lucide="shield-check"></i>
-                    <i data-lucide="database"></i>
-                </div>
+            <div class="mt-24 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-[10px] font-mono tracking-widest text-zinc-500 uppercase">
+                    © 2026 Rohail MacDougall Ahmad
+                </p>
+                <p class="text-[10px] font-mono tracking-widest text-zinc-500 uppercase">
+                    Edinburgh, United Kingdom
+                </p>
             </div>
         </div>
     </section>
@@ -399,15 +316,12 @@
     <script>
         lucide.createIcons();
 
-        // Parallax-lite for floating elements
-        window.addEventListener('mousemove', (e) => {
-            const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
-            const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
-            document.querySelectorAll('.data-float').forEach(el => {
-                el.style.transform = `translate(${moveX}px, ${moveY}px)`;
-            });
-        });
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
 
+        // Only load the image if it exists to avoid broken icon flicker
         window.addEventListener('load', () => {
             const img = new Image();
             img.src = 'headshot.JPEG';
@@ -416,10 +330,6 @@
                     `<img src="headshot.JPEG" alt="Rohail" class="w-full h-full object-cover">`;
             }
         });
-
-        function toggleMenu() {
-            // Mobile menu logic implementation
-        }
     </script>
 </body>
 </html>
