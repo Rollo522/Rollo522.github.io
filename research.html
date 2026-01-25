@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investigation | Rohail M.A</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+        :root { --neon-red: #ff3333; --zinc-950: #09090b; }
+        body { background-color: var(--zinc-950); color: white; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
+        .font-mono { font-family: 'JetBrains+Mono', monospace; }
+        
+        .texture {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 50;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+
+        .nav-dock {
+            background: rgba(20, 20, 20, 0.4); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            transition: border-color 0.3s ease;
+        }
+        .glass-panel:hover { border-color: var(--neon-red); }
+
+        .redacted {
+            background: white; color: white; transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1); cursor: pointer;
+        }
+        .redacted:hover { background: transparent; color: var(--neon-red); }
+    </style>
+</head>
+<body>
+    <div class="texture"></div>
+
+    <nav class="fixed bottom-10 left-0 right-0 z-50 flex justify-center px-4">
+        <div class="nav-dock px-8 py-5 rounded-3xl flex gap-10 items-center">
+            <a href="index.html" class="nav-link font-mono text-[10px] uppercase tracking-[0.3em] opacity-50 hover:opacity-100">Dashboard</a>
+            <a href="research.html" class="nav-link font-mono text-[10px] uppercase tracking-[0.3em] active text-red-500">Investigation</a>
+            <a href="projects.html" class="nav-link font-mono text-[10px] uppercase tracking-[0.3em] opacity-50 hover:opacity-100">Operations</a>
+            <a href="contact.html" class="nav-link font-mono text-[10px] uppercase tracking-[0.3em] opacity-50 hover:opacity-100">Comm-Link</a>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-6 pt-32 pb-48">
+        
+        <!-- Case Header -->
+        <header class="mb-24">
+            <div class="font-mono text-red-500 text-xs tracking-[0.4em] uppercase mb-6">> SUBJECT: BRAND_IMITATION_AI</div>
+            <h1 class="text-5xl md:text-8xl font-bold tracking-tighter mb-8 leading-tight">
+                AI and the <span class="italic font-light text-zinc-500 underline decoration-red-600 underline-offset-[12px]">Linguistic Fingerprint.</span>
+            </h1>
+            <div class="flex gap-4">
+                <span class="px-4 py-2 bg-zinc-900 border border-zinc-800 rounded-full text-[10px] font-mono text-zinc-400">1ST_CLASS_GRADIENT</span>
+                <span class="px-4 py-2 bg-red-500/10 border border-red-500/20 rounded-full text-[10px] font-mono text-red-500 uppercase tracking-widest">Recommended for Journal</span>
+            </div>
+        </header>
+
+        <!-- Stats Matrix -->
+        <section class="grid md:grid-cols-3 gap-8 mb-32">
+            <div class="glass-panel p-10 rounded-[2.5rem]">
+                <h3 class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest mb-4">Metric: Cosine Similarity</h3>
+                <div class="text-6xl font-bold mb-4">0.85</div>
+                <p class="text-zinc-400 text-sm leading-relaxed">AI produced phishing content mathematically indistinguishable from genuine brand communication.</p>
+            </div>
+            <div class="glass-panel p-10 rounded-[2.5rem] border-red-500/20">
+                <h3 class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest mb-4">Misclassification Rate</h3>
+                <div class="text-6xl font-bold text-red-500 mb-4">49%</div>
+                <p class="text-zinc-400 text-sm leading-relaxed">Half of users believed AI-generated brand phishing was legitimate communication.</p>
+            </div>
+            <div class="glass-panel p-10 rounded-[2.5rem]">
+                <h3 class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest mb-4">Detection Method</h3>
+                <div class="text-6xl font-bold mb-4">BERT</div>
+                <p class="text-zinc-400 text-sm leading-relaxed">Deep learning analysis used to quantify the evolution of linguistic realism.</p>
+            </div>
+        </section>
+
+        <!-- Investigation Report -->
+        <section class="grid lg:grid-cols-2 gap-20 items-start">
+            <div class="space-y-10">
+                <div>
+                    <h2 class="text-xs font-bold uppercase tracking-[0.4em] text-zinc-600 mb-8 flex items-center gap-4">
+                        <span class="h-[1px] w-8 bg-zinc-800"></span> Summary Findings
+                    </h2>
+                    <div class="text-xl md:text-2xl text-zinc-300 font-light leading-relaxed space-y-8">
+                        <p>
+                            My research exposed a critical failure in human detection: users rely on <span class="redacted">visual heuristics</span> like layout and logos far more than actual sender verification.
+                        </p>
+                        <p>
+                            By leveraging <span class="text-white font-medium">GPT-4 and BERT embeddings</span>, I proved that AI can effectively mirror a brand's tone, achieving a similarity score that bypasses traditional security training cues.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Heatmap Visualization -->
+            <div class="bg-zinc-900 border border-zinc-800 p-10 rounded-[3rem] shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-8 opacity-[0.03]"><i data-lucide="database" size="140"></i></div>
+                <h4 class="font-mono text-[10px] text-zinc-500 uppercase tracking-[0.3em] mb-10">Visual Evidence: Trust Heatmap</h4>
+                <div class="space-y-6 relative z-10">
+                    <div class="flex items-center gap-6">
+                        <span class="text-[10px] font-mono text-zinc-500 w-24">Branded_AI</span>
+                        <div class="flex-1 flex gap-1 h-12">
+                            <div class="w-[10%] bg-red-950/20 border border-white/5"></div>
+                            <div class="w-[20%] bg-red-900/40 border border-white/5"></div>
+                            <div class="w-[49%] bg-red-600 shadow-[0_0_20px_rgba(255,51,51,0.3)] border border-white/10" title="Misclassification Zone"></div>
+                            <div class="w-[21%] bg-zinc-800 border border-white/5"></div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-6">
+                        <span class="text-[10px] font-mono text-zinc-500 w-24">Real_Legit</span>
+                        <div class="flex-1 flex gap-1 h-12">
+                            <div class="w-[60%] bg-white/10 border border-white/5"></div>
+                            <div class="w-[30%] bg-white/5 border border-white/5"></div>
+                            <div class="w-[10%] bg-zinc-800 border border-white/5"></div>
+                        </div>
+                    </div>
+                    <p class="mt-8 text-[9px] font-mono text-zinc-600 leading-relaxed uppercase tracking-widest italic">
+                        * The primary red indicator highlights the 'Confidence Gap' where users were certain they had correctly identified a legitimate email, despite it being an AI-generated lure.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>
