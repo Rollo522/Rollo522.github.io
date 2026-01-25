@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comm-Link | Rohail M.A</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+        :root { --neon-red: #ff3333; --zinc-950: #09090b; }
+        body { background-color: var(--zinc-950); color: white; font-family: 'Space Grotesk', sans-serif; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+        .font-mono { font-family: 'JetBrains+Mono', monospace; }
+        
+        .texture {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 50;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+
+        .nav-dock {
+            background: rgba(20, 20, 20, 0.4); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .secure-link {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .secure-link:hover {
+            border-color: var(--neon-red);
+            background: rgba(255, 51, 51, 0.05);
+            transform: translateX(10px);
+        }
+
+        .grid-bg {
+            position: absolute; inset: 0;
+            background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), 
+                              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            -webkit-mask-image: radial-gradient(circle at center, black, transparent 80%);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="texture"></div>
+    <div class="grid-bg"></div>
+
+    <nav class="fixed bottom-10 left-0 right-0 z-50 flex justify-center px-4">
+        <div class="nav-dock px-8 py-5 rounded-3xl flex gap-10 items-center">
+            <a href="index.html" class="nav-link font-mono text-[10px] uppercase tracking-[0.3em] opacity-50 hover:opacity-100">Dashboard</a>
+            <a href="research.html" class="nav-link font-mono text-[10px] uppercase tracking-[0.3em] opacity-50 hover:opacity-100">Investigation</a>
+            <a href="projects.html" class="nav-link font-mono text-[10px] uppercase tracking-[0.3em] opacity-50 hover:opacity-100">Operations</a>
+            <a href="contact.html" class="nav-link font-mono text-[10px] uppercase tracking-[0.3em] active text-red-500">Comm-Link</a>
+        </div>
+    </nav>
+
+    <main class="flex-grow flex items-center justify-center px-6">
+        <div class="max-w-3xl w-full text-center">
+            <div class="mb-12">
+                <i data-lucide="satellite" class="text-red-600 mx-auto mb-6 animate-pulse" size="48"></i>
+                <h1 class="text-6xl md:text-8xl font-bold tracking-tighter mb-6">Open Channel.</h1>
+                <p class="text-zinc-500 text-lg uppercase tracking-[0.2em] font-mono font-light">Available for security intelligence roles</p>
+            </div>
+
+            <div class="space-y-4">
+                <a href="mailto:rohail0202@gmail.com" class="secure-link w-full p-8 rounded-3xl flex items-center justify-between group">
+                    <div class="flex items-center gap-6">
+                        <div class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-zinc-400 group-hover:text-red-500 transition-colors">
+                            <i data-lucide="mail"></i>
+                        </div>
+                        <div class="text-left">
+                            <span class="block font-mono text-[9px] text-zinc-500 uppercase tracking-widest">Encrypted_Mail</span>
+                            <span class="text-xl font-medium tracking-tight">rohail0202@gmail.com</span>
+                        </div>
+                    </div>
+                    <i data-lucide="chevron-right" class="text-zinc-800 group-hover:text-red-600 transition-all"></i>
+                </a>
+
+                <a href="https://linkedin.com/in/rohailmacdougall" target="_blank" class="secure-link w-full p-8 rounded-3xl flex items-center justify-between group">
+                    <div class="flex items-center gap-6">
+                        <div class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-zinc-400 group-hover:text-blue-500 transition-colors">
+                            <i data-lucide="linkedin"></i>
+                        </div>
+                        <div class="text-left">
+                            <span class="block font-mono text-[9px] text-zinc-500 uppercase tracking-widest">Professional_Net</span>
+                            <span class="text-xl font-medium tracking-tight">/in/rohailmacdougall</span>
+                        </div>
+                    </div>
+                    <i data-lucide="external-link" class="text-zinc-800 group-hover:text-white transition-all"></i>
+                </a>
+            </div>
+
+            <div class="mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-[9px] font-mono text-zinc-700 tracking-[0.4em] uppercase">© 2026 Rohail MacDougall Ahmad</div>
+                <div class="flex gap-10 opacity-30">
+                    <i data-lucide="shield-alert" class="text-red-600"></i>
+                    <i data-lucide="cpu" class="text-zinc-400"></i>
+                    <i data-lucide="binary" class="text-zinc-400"></i>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>
