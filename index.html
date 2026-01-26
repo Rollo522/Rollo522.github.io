@@ -4,278 +4,179 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rohail M.A | Cybersecurity Intelligence</title>
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Portfolio of Rohail MacDougall Ahmad, a First-Class Cybersecurity Graduate from Edinburgh Napier University.">
-    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
         
         :root { 
-            --neon-red: #ff3333; 
+            --napier-red: #E31B23; 
             --zinc-950: #09090b; 
         }
 
         body { 
             background-color: var(--zinc-950); 
             color: white; 
-            font-family: 'Space Grotesk', sans-serif; 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
             overflow-x: hidden; 
-            cursor: crosshair;
         }
 
         .font-mono { font-family: 'JetBrains+Mono', monospace; }
 
-        /* Cinematic Background Particles */
-        #bg-canvas {
+        /* Cinematic Layered Background */
+        .bg-layer {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
-            opacity: 0.4;
+        }
+
+        /* Abstract Glows to "Lighten" the void */
+        .glow-1 {
+            background: radial-gradient(circle at 10% 20%, rgba(227, 27, 35, 0.1), transparent 40%);
+        }
+        .glow-2 {
+            background: radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.05), transparent 40%);
         }
 
         /* Nike-Style Texture Overlay */
-        .texture {
+        .texture-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 50;
             background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-            opacity: 0.1;
+            opacity: 0.12;
         }
 
         /* Glass Navigation Dock */
         .nav-dock {
-            background: rgba(20, 20, 20, 0.4); 
-            backdrop-filter: blur(20px); 
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(20, 20, 20, 0.5); 
+            backdrop-filter: blur(25px); 
+            -webkit-backdrop-filter: blur(25px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
         }
-
-        .nav-link { 
-            position: relative; opacity: 0.5; transition: all 0.4s; 
-        }
-        .nav-link:hover, .nav-link.active { 
-            opacity: 1; color: white; 
-        }
-        .nav-link::after {
-            content: ''; position: absolute; bottom: -4px; left: 0; width: 0%; height: 1px; 
-            background: var(--neon-red); transition: width 0.3s;
-        }
-        .nav-link:hover::after { width: 100%; }
 
         /* 3D Identity Card */
         .id-card {
-            background: linear-gradient(135deg, rgba(30,30,35,0.8) 0%, rgba(10,10,12,0.9) 100%);
+            background: linear-gradient(135deg, rgba(30,30,35,0.7) 0%, rgba(10,10,12,0.8) 100%);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 40px 100px -15px rgba(0, 0, 0, 0.9);
             transform-style: preserve-3d;
             perspective: 1000px;
         }
 
-        /* Typographic Impact */
+        /* Text Effects */
         .text-outline {
-            -webkit-text-stroke: 1px rgba(255,255,255,0.1);
+            -webkit-text-stroke: 1px rgba(255,255,255,0.15);
             color: transparent;
         }
 
-        .hero-glow {
-            text-shadow: 0 0 30px rgba(255, 51, 51, 0.2);
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        .animate-float { animation: float 6s ease-in-out infinite; }
-
-        /* Custom Reveal Animation */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s ease-out;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
         }
-        .reveal.visible {
+        .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
+
+        @keyframes scan {
+            0% { top: -20%; }
+            100% { top: 120%; }
+        }
+        .scan-line {
+            animation: scan 4s linear infinite;
+        }
     </style>
 </head>
-<body class="antialiased selection:bg-red-500">
+<body class="antialiased">
 
-    <div class="texture"></div>
-    <canvas id="bg-canvas"></canvas>
+    <div class="texture-overlay"></div>
+    <div class="bg-layer glow-1"></div>
+    <div class="bg-layer glow-2"></div>
 
-    <!-- Logo Section -->
-    <div class="fixed top-8 left-8 z-50">
-        <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20 80V20H50C65 20 75 30 75 45C75 55 70 65 55 68L80 80" stroke="white" stroke-width="8" stroke-linejoin="round"/>
-            <path d="M35 50H60" stroke="#ff3333" stroke-width="6"/>
-            <circle cx="50" cy="50" r="45" stroke="white" stroke-width="2" stroke-dasharray="10 5" opacity="0.3"/>
-        </svg>
-    </div>
-
-    <!-- Main Navigation Dock -->
-    <nav class="fixed bottom-10 left-0 right-0 z-50 flex justify-center px-4">
-        <div class="nav-dock px-8 py-5 rounded-3xl flex gap-10 items-center">
-            <a href="index.html" class="active nav-link font-mono text-[10px] uppercase tracking-[0.3em]">Dashboard</a>
-            <a href="research.html" class="nav-link font-mono text-[10px] uppercase tracking-[0.3em]">Investigation</a>
-            <a href="projects.html" class="nav-link font-mono text-[10px] uppercase tracking-[0.3em]">Operations</a>
-            <a href="contact.html" class="nav-link font-mono text-[10px] uppercase tracking-[0.3em]">Comm-Link</a>
+    <!-- Navigation Dock -->
+    <nav class="fixed bottom-8 left-0 right-0 z-50 flex justify-center px-4">
+        <div class="nav-dock px-8 py-5 rounded-full flex gap-10 items-center shadow-2xl">
+            <a href="index.html" class="active font-mono text-[10px] uppercase tracking-[0.3em] text-white underline decoration-red-600 underline-offset-8">Dashboard</a>
+            <a href="research.html" class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Investigation</a>
+            <a href="projects.html" class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Operations</a>
+            <a href="contact.html" class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Comm-Link</a>
         </div>
     </nav>
 
-    <!-- Main Dashboard Section -->
-    <main class="min-h-screen flex flex-col justify-center px-6 lg:px-24">
-        
-        <div class="grid lg:grid-cols-12 gap-12 items-center max-w-7xl mx-auto w-full">
+    <!-- Main Entry Dashboard -->
+    <main class="min-h-screen flex flex-col justify-center px-8 lg:px-24">
+        <div class="grid lg:grid-cols-12 gap-16 items-center max-w-7xl mx-auto w-full">
             
-            <!-- Left Side: Cinematic Typography -->
-            <div class="lg:col-span-7 space-y-8">
-                <div class="reveal">
-                    <span class="font-mono text-red-500 text-xs tracking-[0.4em] uppercase block mb-4">> SESSION_START: ROHAIL_MA</span>
-                    <h1 class="text-6xl md:text-9xl font-bold leading-[0.85] tracking-tighter hero-glow">
-                        DEFENDING <br />
-                        <span class="text-outline">THE CORE.</span>
+            <!-- Left: Impactful Copy -->
+            <div class="lg:col-span-7 space-y-10">
+                <div class="reveal active">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="h-[1px] w-12 bg-red-600"></div>
+                        <span class="font-mono text-red-500 text-[10px] tracking-[0.4em] uppercase">Status: Session_Authenticated</span>
+                    </div>
+                    <h1 class="text-6xl md:text-9xl font-bold leading-[0.85] tracking-tighter">
+                        ROHAIL <br />
+                        <span class="text-outline">AHMAD.</span>
                     </h1>
                 </div>
 
-                <div class="reveal delay-200">
+                <div class="reveal active" style="transition-delay: 200ms;">
                     <p class="text-xl md:text-2xl text-zinc-400 font-light max-w-xl leading-relaxed">
-                        First-Class Honours Graduate in <span class="text-white font-medium">Cybersecurity & Forensics</span>. Investigating the architecture of AI-assisted deception.
+                        First-Class Graduate in <span class="text-white font-medium border-b border-white/20">Cybersecurity & Forensics</span>. Investigating the technical and psychological blueprints of AI-driven deception.
                     </p>
                 </div>
 
-                <div class="flex gap-8 reveal delay-500 pt-6">
-                    <a href="research.html" class="group flex items-center gap-4 px-10 py-5 bg-white text-black font-bold uppercase text-xs tracking-[0.2em] rounded-full hover:bg-red-600 hover:text-white transition-all shadow-[0_0_40px_rgba(255,255,255,0.1)]">
-                        Access Investigation
-                        <i data-lucide="arrow-right" size="16" class="group-hover:translate-x-2 transition-transform"></i>
+                <div class="reveal active flex gap-8 pt-4" style="transition-delay: 400ms;">
+                    <a href="research.html" class="group flex items-center gap-4 px-10 py-5 bg-white text-black font-bold uppercase text-[10px] tracking-[0.3em] rounded-xl hover:bg-red-600 hover:text-white transition-all">
+                        Enter Case Files
+                        <i data-lucide="arrow-right" size="14" class="group-hover:translate-x-1 transition-transform"></i>
                     </a>
                 </div>
             </div>
 
-            <!-- Right Side: The 3D Identity Interface -->
-            <div class="lg:col-span-5 flex justify-center lg:justify-end reveal delay-700">
-                <div id="card-container" class="id-card w-80 h-[480px] rounded-3xl p-8 relative overflow-hidden group">
-                    <!-- Red Tech Accents -->
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-red-600/10 blur-3xl -z-10"></div>
+            <!-- Right: 3D Interface Card -->
+            <div class="lg:col-span-5 flex justify-center lg:justify-end reveal active" style="transition-delay: 600ms;">
+                <div id="tilt-card" class="id-card w-80 h-[480px] rounded-[2.5rem] p-10 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-red-600/5 mix-blend-overlay"></div>
                     
-                    <!-- Content -->
                     <div class="flex flex-col h-full justify-between relative z-10">
                         <div class="flex justify-between items-start">
-                            <div class="font-mono text-[10px] text-zinc-500 tracking-widest">UID_40618116</div>
-                            <div class="px-2 py-1 bg-red-500/10 text-red-500 border border-red-500/20 rounded text-[8px] font-mono">1ST_CLASS</div>
+                            <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 80V20H50C65 20 75 30 75 45C75 55 70 65 55 68L80 80" stroke="white" stroke-width="12"/>
+                            </svg>
+                            <span class="font-mono text-[9px] text-zinc-500 tracking-widest border border-zinc-800 px-2 py-1 rounded">MERCHISTON_V2</span>
                         </div>
 
                         <div class="space-y-6">
-                            <!-- Image Window -->
-                            <div class="w-full aspect-square rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900 group-hover:border-red-500/50 transition-colors">
-                                <img src="headshot.JPEG" alt="Rohail Ahmad" class="w-full h-full object-cover grayscale opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700">
+                            <div class="w-full aspect-square rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900 group-hover:border-red-500/40 transition-colors duration-700 shadow-2xl">
+                                <img src="headshot.JPEG" alt="Rohail" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000 grayscale group-hover:grayscale-0">
                             </div>
                             
                             <div>
-                                <h2 class="text-2xl font-bold tracking-tight mb-1 uppercase">Rohail Ahmad</h2>
-                                <p class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Edinburgh Napier Alumnus</p>
+                                <h2 class="text-xl font-bold tracking-tight mb-1">ROHAIL M.A</h2>
+                                <p class="text-[9px] font-mono text-zinc-500 uppercase tracking-widest">BEng (Hons) Cybersecurity</p>
                             </div>
 
-                            <div class="flex items-center gap-3 pt-4">
-                                <div class="h-[1px] flex-1 bg-zinc-800"></div>
-                                <i data-lucide="shield-check" class="text-red-600" size="20"></i>
-                                <div class="h-[1px] flex-1 bg-zinc-800"></div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                                <span class="text-[9px] font-mono text-emerald-500 uppercase tracking-widest">Identity Verified</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Scan Line Overlay -->
-                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-red-500/5 to-transparent h-20 w-full -top-20 animate-scan"></div>
+                    <div class="scan-line absolute inset-0 bg-gradient-to-b from-transparent via-red-500/10 to-transparent h-16 w-full -top-16 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </div>
             </div>
 
         </div>
     </main>
 
-    <!-- Statistics Ribbon -->
-    <div class="fixed top-1/2 -right-40 transform rotate-90 hidden xl:flex gap-12 font-mono text-[9px] text-zinc-700 uppercase tracking-[0.5em] pointer-events-none">
-        <div>Network_Analysis_Verified</div>
-        <div>Forensic_Integrity_Checked</div>
-        <div>AI_Threat_Detection_Active</div>
-    </div>
-
-    <style>
-        .delay-200 { transition-delay: 0.2s; }
-        .delay-500 { transition-delay: 0.5s; }
-        .delay-700 { transition-delay: 0.7s; }
-        
-        @keyframes scan-move {
-            0% { top: -20%; }
-            100% { top: 120%; }
-        }
-        .animate-scan { animation: scan-move 4s linear infinite; }
-    </style>
-
     <script>
         lucide.createIcons();
-
-        // 1. Reveal Animations
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
-            }, 100);
-        });
-
-        // 2. Interactive Canvas Particles
-        const canvas = document.getElementById('bg-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-
-        function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-
-        class Particle {
-            constructor() {
-                this.reset();
-            }
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2;
-                this.speedX = (Math.random() - 0.5) * 0.5;
-                this.speedY = (Math.random() - 0.5) * 0.5;
-                this.opacity = Math.random() * 0.5;
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
-            }
-            draw() {
-                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        for (let i = 0; i < 100; i++) particles.push(new Particle());
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            requestAnimationFrame(animate);
-        }
-
-        window.addEventListener('resize', resize);
-        resize();
-        animate();
-
-        // 3. 3D Tilt Effect for Card
-        const card = document.getElementById('card-container');
-        window.addEventListener('mousemove', (e) => {
-            const x = (window.innerWidth / 2 - e.pageX) / 30;
-            const y = (window.innerHeight / 2 - e.pageY) / 30;
+        
+        // 3D Tilt Interaction
+        const card = document.getElementById('tilt-card');
+        document.addEventListener('mousemove', (e) => {
+            const x = (window.innerWidth / 2 - e.pageX) / 35;
+            const y = (window.innerHeight / 2 - e.pageY) / 35;
             card.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
         });
     </script>
