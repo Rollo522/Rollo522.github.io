@@ -87,17 +87,26 @@
         <!-- JT-PT App -->
         <div class="grid lg:grid-cols-2 gap-20 items-center">
             <div class="flex justify-center order-2 lg:order-1">
-                <div class="phone-frame w-[300px] h-[620px] bg-zinc-900 flex items-center justify-center p-8 text-center">
-                    <div class="space-y-4">
-                        <i data-lucide="smartphone" class="text-zinc-700 mx-auto" size="48"></i>
-                        <p class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest italic">> Upload app_screenshot.png</p>
+                <div class="phone-frame w-[300px] h-[620px] bg-zinc-900 flex items-center justify-center relative overflow-hidden">
+                    <!-- Image Container with proper sizing and fallback -->
+                    <img src="app_screenshot.png" 
+                         alt="JT-PT App Interface" 
+                         class="absolute inset-0 w-full h-full object-cover"
+                         onerror="this.style.display='none'; document.getElementById('fallback-text').style.display='block';">
+                    
+                    <!-- Fallback Text if image fails -->
+                    <div id="fallback-text" class="text-center p-8 hidden">
+                        <i data-lucide="smartphone" class="text-zinc-700 mx-auto mb-4" size="48"></i>
+                        <p class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest italic">
+                            > Upload app_screenshot.png
+                        </p>
                     </div>
                 </div>
             </div>
             <div class="order-1 lg:order-2 space-y-8">
                 <h2 class="text-4xl font-bold">Secure Mobile Architecture</h2>
                 <p class="text-xl text-zinc-500 font-light leading-relaxed">
-                    Security Lead for a client-facing fitness app. Architected backend security via Firebase, focusing on <span class="text-white font-medium">secure authentication</span> and strict GDPR compliance for health data.
+                    Security Lead for a client-facing fitness app. Architected backend security via Firebase, focusing on <span class="text-white font-medium">secure authentication flows</span> and strict GDPR compliance for health data.
                 </p>
                 <div class="grid grid-cols-2 gap-4">
                     <div class="p-6 bg-zinc-900 border border-zinc-800 rounded-3xl group hover:border-red-500 transition-colors">
