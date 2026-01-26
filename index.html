@@ -9,170 +9,107 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
         
-        :root { 
-            --napier-red: #E31B23; 
-            --zinc-950: #09090b; 
+        :root { --napier-red: #E31B23; --zinc-950: #09090b; }
+        body { background-color: var(--zinc-950); color: white; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+
+        /* CINEMATIC IMAGE BACKGROUND ENGINE */
+        .hero-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
+            background-image: url('background.jpg'); /* Upload your image to GitHub as background.jpg */
+            background-size: cover; background-position: center;
+            filter: brightness(0.3) saturate(0.8);
         }
 
-        body { 
-            background-color: var(--zinc-950); 
-            color: white; 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            overflow-x: hidden; 
-        }
-
-        .font-mono { font-family: 'JetBrains+Mono', monospace; }
-
-        /* Cinematic Layered Background */
-        .bg-layer {
+        .hero-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            background: radial-gradient(circle at 20% 30%, rgba(227, 27, 35, 0.15), transparent 50%),
+                        linear-gradient(to bottom, transparent, var(--zinc-950));
         }
 
-        /* Abstract Glows to "Lighten" the void */
-        .glow-1 {
-            background: radial-gradient(circle at 10% 20%, rgba(227, 27, 35, 0.1), transparent 40%);
-        }
-        .glow-2 {
-            background: radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.05), transparent 40%);
-        }
-
-        /* Nike-Style Texture Overlay */
         .texture-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 50;
             background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-            opacity: 0.12;
+            opacity: 0.15;
         }
 
-        /* Glass Navigation Dock */
         .nav-dock {
-            background: rgba(20, 20, 20, 0.5); 
-            backdrop-filter: blur(25px); 
-            -webkit-backdrop-filter: blur(25px);
+            background: rgba(20, 20, 20, 0.5); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* 3D Identity Card */
         .id-card {
-            background: linear-gradient(135deg, rgba(30,30,35,0.7) 0%, rgba(10,10,12,0.8) 100%);
+            background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 40px 100px -15px rgba(0, 0, 0, 0.9);
-            transform-style: preserve-3d;
-            perspective: 1000px;
+            transform-style: preserve-3d; perspective: 1000px;
         }
 
-        /* Text Effects */
-        .text-outline {
-            -webkit-text-stroke: 1px rgba(255,255,255,0.15);
-            color: transparent;
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @keyframes scan {
-            0% { top: -20%; }
-            100% { top: 120%; }
-        }
-        .scan-line {
-            animation: scan 4s linear infinite;
-        }
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 1s cubic-bezier(0.19, 1, 0.22, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body class="antialiased">
 
     <div class="texture-overlay"></div>
-    <div class="bg-layer glow-1"></div>
-    <div class="bg-layer glow-2"></div>
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
 
     <!-- Navigation Dock -->
     <nav class="fixed bottom-8 left-0 right-0 z-50 flex justify-center px-4">
         <div class="nav-dock px-8 py-5 rounded-full flex gap-10 items-center shadow-2xl">
-            <a href="index.html" class="active font-mono text-[10px] uppercase tracking-[0.3em] text-white underline decoration-red-600 underline-offset-8">Dashboard</a>
+            <a href="index.html" class="font-mono text-[10px] uppercase tracking-[0.3em] text-white underline decoration-red-600 underline-offset-8">Dashboard</a>
             <a href="research.html" class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Investigation</a>
             <a href="projects.html" class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Operations</a>
             <a href="contact.html" class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Comm-Link</a>
         </div>
     </nav>
 
-    <!-- Main Entry Dashboard -->
     <main class="min-h-screen flex flex-col justify-center px-8 lg:px-24">
         <div class="grid lg:grid-cols-12 gap-16 items-center max-w-7xl mx-auto w-full">
-            
-            <!-- Left: Impactful Copy -->
             <div class="lg:col-span-7 space-y-10">
                 <div class="reveal active">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="h-[1px] w-12 bg-red-600"></div>
-                        <span class="font-mono text-red-500 text-[10px] tracking-[0.4em] uppercase">Status: Session_Authenticated</span>
-                    </div>
-                    <h1 class="text-6xl md:text-9xl font-bold leading-[0.85] tracking-tighter">
-                        ROHAIL <br />
-                        <span class="text-outline">AHMAD.</span>
+                    <span class="font-mono text-red-500 text-[10px] tracking-[0.5em] uppercase block mb-6">> Access_Granted: Rohail_MA</span>
+                    <h1 class="text-7xl md:text-[120px] font-bold leading-[0.8] tracking-tighter mb-8">
+                        DIGITAL <br /> <span class="text-zinc-500/50">FORENSICS.</span>
                     </h1>
                 </div>
-
                 <div class="reveal active" style="transition-delay: 200ms;">
-                    <p class="text-xl md:text-2xl text-zinc-400 font-light max-w-xl leading-relaxed">
-                        First-Class Graduate in <span class="text-white font-medium border-b border-white/20">Cybersecurity & Forensics</span>. Investigating the technical and psychological blueprints of AI-driven deception.
+                    <p class="text-xl md:text-2xl text-zinc-300 font-light max-w-xl leading-relaxed">
+                        First-Class Honours Graduate from <span class="text-white font-medium">Edinburgh Napier</span>. Solving the security paradox where AI speed meets human psychology.
                     </p>
                 </div>
-
                 <div class="reveal active flex gap-8 pt-4" style="transition-delay: 400ms;">
                     <a href="research.html" class="group flex items-center gap-4 px-10 py-5 bg-white text-black font-bold uppercase text-[10px] tracking-[0.3em] rounded-xl hover:bg-red-600 hover:text-white transition-all">
-                        Enter Case Files
+                        Launch Investigation
                         <i data-lucide="arrow-right" size="14" class="group-hover:translate-x-1 transition-transform"></i>
                     </a>
                 </div>
             </div>
 
-            <!-- Right: 3D Interface Card -->
-            <div class="lg:col-span-5 flex justify-center lg:justify-end reveal active" style="transition-delay: 600ms;">
-                <div id="tilt-card" class="id-card w-80 h-[480px] rounded-[2.5rem] p-10 relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-red-600/5 mix-blend-overlay"></div>
-                    
+            <div class="lg:col-span-5 flex justify-end">
+                <div id="tilt-card" class="id-card w-80 h-[480px] rounded-[3rem] p-10 relative overflow-hidden group">
                     <div class="flex flex-col h-full justify-between relative z-10">
                         <div class="flex justify-between items-start">
-                            <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20 80V20H50C65 20 75 30 75 45C75 55 70 65 55 68L80 80" stroke="white" stroke-width="12"/>
-                            </svg>
-                            <span class="font-mono text-[9px] text-zinc-500 tracking-widest border border-zinc-800 px-2 py-1 rounded">MERCHISTON_V2</span>
+                            <i data-lucide="shield-check" class="text-red-600"></i>
+                            <span class="font-mono text-[9px] text-zinc-500 tracking-widest border border-zinc-800 px-2 py-1 rounded">BEng_HONS</span>
                         </div>
-
-                        <div class="space-y-6">
-                            <div class="w-full aspect-square rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900 group-hover:border-red-500/40 transition-colors duration-700 shadow-2xl">
-                                <img src="headshot.JPEG" alt="Rohail" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000 grayscale group-hover:grayscale-0">
+                        <div class="space-y-6 text-center lg:text-left">
+                            <div class="w-full aspect-square rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900 group-hover:border-red-500/40 transition-all duration-700">
+                                <img src="headshot.JPEG" alt="Rohail" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all">
                             </div>
-                            
                             <div>
-                                <h2 class="text-xl font-bold tracking-tight mb-1">ROHAIL M.A</h2>
-                                <p class="text-[9px] font-mono text-zinc-500 uppercase tracking-widest">BEng (Hons) Cybersecurity</p>
-                            </div>
-
-                            <div class="flex items-center gap-3">
-                                <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-                                <span class="text-[9px] font-mono text-emerald-500 uppercase tracking-widest">Identity Verified</span>
+                                <h2 class="text-xl font-bold tracking-tight mb-1">ROHAIL AHMAD</h2>
+                                <p class="text-[9px] font-mono text-zinc-500 uppercase tracking-widest">Edinburgh Napier University</p>
                             </div>
                         </div>
                     </div>
-
-                    <div class="scan-line absolute inset-0 bg-gradient-to-b from-transparent via-red-500/10 to-transparent h-16 w-full -top-16 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </div>
             </div>
-
         </div>
     </main>
 
     <script>
         lucide.createIcons();
-        
-        // 3D Tilt Interaction
         const card = document.getElementById('tilt-card');
         document.addEventListener('mousemove', (e) => {
             const x = (window.innerWidth / 2 - e.pageX) / 35;
