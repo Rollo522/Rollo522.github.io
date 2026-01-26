@@ -22,12 +22,13 @@
 
         .glass-panel {
             background: rgba(20, 20, 20, 0.7); backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.08); padding: 4rem; border-radius: 4rem;
+            border: 1px solid rgba(255, 255, 255, 0.08); padding: 3rem; border-radius: 2rem;
         }
 
         .fade-in { opacity: 0; transform: translateY(40px); transition: all 1s ease-out; }
         .fade-in.active { opacity: 1; transform: translateY(0); }
 
+        .stat-huge { font-size: clamp(4rem, 10vw, 8rem); line-height: 1; font-weight: 800; letter-spacing: -0.05em; }
         .redacted { background: white; color: white; transition: 0.4s ease; padding: 0 4px; cursor: help; }
         .redacted:hover { background: transparent; color: var(--napier-red); }
 
@@ -51,15 +52,16 @@
     <section class="section-wrap px-8 lg:px-24">
         <div class="max-w-6xl mx-auto w-full">
             <div class="fade-in active">
-                <span class="font-mono text-red-500 text-[10px] tracking-[0.5em] uppercase block mb-8">> CASE_FILE: BRAND_IMITATION_AI</span>
+                <span class="font-mono text-red-500 text-[10px] tracking-[0.5em] uppercase block mb-8">> DISSERTATION: HONOURS_PROJECT_2025</span>
                 <h1 class="text-6xl md:text-[100px] font-bold tracking-tighter mb-12 leading-[0.85]">
                     Linguistic <br /> <span class="opacity-30 italic font-light">Realism.</span>
                 </h1>
                 <p class="text-2xl md:text-4xl text-zinc-400 font-light leading-relaxed max-w-5xl">
-                    A deep investigation into how <span class="text-white font-medium">AI-driven LLMs</span> automate the erosion of digital trust through sophisticated brand mimicry.
+                    Evaluating brand imitation in AI-generated phishing. A 23,000-word investigation into how <span class="text-white font-medium italic underline decoration-red-600 underline-offset-8">Large Language Models (LLMs)</span> automate the erosion of digital trust.
                 </p>
-                <div class="mt-12">
+                <div class="mt-12 flex gap-6 items-center">
                     <span class="px-5 py-2 bg-red-600 text-white font-bold text-[10px] uppercase rounded-full tracking-widest shadow-xl">Recommended for Publishing</span>
+                    <span class="text-zinc-500 font-mono text-[10px] uppercase tracking-widest">Supervisor Endorsed</span>
                 </div>
             </div>
         </div>
@@ -67,23 +69,40 @@
 
     <!-- 02: LITERATURE REVIEW -->
     <section class="section-wrap px-8 lg:px-24 bg-white/[0.01]">
-        <div class="max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-20 items-center">
+        <div class="max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-20 items-start">
             <div class="fade-in">
-                <h2 class="text-xs font-bold uppercase tracking-[0.4em] text-red-600 mb-10">02. Literature Review</h2>
-                <h3 class="text-4xl font-bold mb-8 tracking-tight">Psychological Priming.</h3>
-                <p class="text-xl text-zinc-400 font-light leading-relaxed mb-10">
-                    Applying the <span class="text-white italic">V-Triad Framework</span>, my research traces the evolution of phishing from the \$100m <span class="text-white font-medium">Sony 2014 Breach</span> to current automated deception.
+                <h2 class="text-xs font-bold uppercase tracking-[0.4em] text-red-600 mb-10">01. The Problem Space</h2>
+                <h3 class="text-4xl font-bold mb-8 tracking-tight">From Sony to ChatGPT.</h3>
+                <p class="text-xl text-zinc-400 font-light leading-relaxed mb-8">
+                    My literature review traced the evolution of phishing from the manual, high-effort spear-phishing of the <span class="text-white font-medium">Sony 2014 Breach</span> (costing $100m) to today's automated AI arms race.
                 </p>
-                <div class="glass-panel p-8">
-                    <p class="text-sm text-zinc-400 italic">"Traditional heuristics like bad grammar are <span class="redacted">obsolete</span> in the era of GPT-4."</p>
+                <p class="text-lg text-zinc-500 font-light leading-relaxed mb-8">
+                    The core issue is scalability. What once required a team of hackers to mimic a brand's voice can now be done in seconds by a generative model.
+                </p>
+                <div class="p-6 bg-white/5 border border-white/10 rounded-2xl">
+                    <h4 class="font-bold text-xs uppercase mb-2 text-zinc-300">The V-Triad Framework</h4>
+                    <p class="text-sm text-zinc-400 leading-relaxed">
+                        I applied this psychological model to explain <em>why</em> we click. Attackers exploit <span class="text-white">Credibility</span> (brand logos) and <span class="text-white">Urgency</span> (deadlines) to bypass logical filters.
+                    </p>
                 </div>
             </div>
             <div class="fade-in">
-                <div class="glass-panel border-white/5 shadow-2xl">
-                    <h4 class="font-mono text-[10px] text-zinc-500 uppercase tracking-[0.3em] mb-8">Focus_Area</h4>
-                    <p class="text-xl text-zinc-300 font-light leading-relaxed">
-                        Visual heuristics (logos and corporate tone) often override a user's logical verification, allowing AI-generated lures to slip under the radar.
-                    </p>
+                <div class="glass-panel border-red-600/20 sticky top-32">
+                    <h4 class="font-mono text-[10px] text-zinc-500 uppercase tracking-[0.3em] mb-10">Historical_Context</h4>
+                    <ul class="space-y-6 text-zinc-300 font-light">
+                        <li class="flex gap-4">
+                            <span class="font-mono text-red-500">2014</span>
+                            <span>Sony Breach: Manual, high-effort, high-impact.</span>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="font-mono text-red-500">2020</span>
+                            <span>GPT-3 Release: The beginning of automated text generation.</span>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="font-mono text-red-500">2024</span>
+                            <span>Current State: 1.3 million phishing attacks per quarter.</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -92,21 +111,42 @@
     <!-- 03: METHODOLOGY -->
     <section class="section-wrap px-8 lg:px-24">
         <div class="max-w-6xl mx-auto w-full">
-            <div class="fade-in mb-20 text-center">
-                <h2 class="text-xs font-bold uppercase tracking-[0.4em] text-red-600 mb-6">03. Methodology Lab</h2>
+            <div class="fade-in mb-20">
+                <h2 class="text-xs font-bold uppercase tracking-[0.4em] text-red-600 mb-6">02. Methodology Lab</h2>
                 <h3 class="text-5xl md:text-7xl font-bold tracking-tighter">Mathematical Forensics.</h3>
+                <p class="text-xl text-zinc-400 mt-6 max-w-2xl">
+                    How do you measure "realism"? I didn't just read emails; I converted them into data points to measure their similarity mathematically.
+                </p>
             </div>
+
             <div class="grid md:grid-cols-2 gap-10">
                 <div class="glass-panel fade-in">
-                    <i data-lucide="binary" class="text-red-600 mb-6"></i>
-                    <h4 class="font-bold tracking-widest text-xs uppercase mb-4">BERT Embeddings</h4>
-                    <p class="text-zinc-400 font-light leading-relaxed">Numerical vector analysis used to quantify the semantic drift between real brand emails and AI clones.</p>
-                    <div class="font-mono text-[9px] text-zinc-600 bg-black/40 p-4 rounded-xl mt-6">Cosine_Similarity: 0.8490</div>
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 bg-red-600/10 flex items-center justify-center rounded-2xl text-red-600"><i data-lucide="binary"></i></div>
+                        <h4 class="font-bold tracking-widest text-xs uppercase">BERT Semantic Embedding</h4>
+                    </div>
+                    <p class="text-zinc-400 font-light leading-relaxed mb-8">
+                        Think of BERT as a translator that turns sentences into GPS coordinates. I converted 60+ emails into numerical vectors using <span class="text-white">all-MiniLM-L6-v2</span>.
+                    </p>
+                    <p class="text-zinc-400 font-light leading-relaxed mb-8">
+                        By calculating the distance between the "Real Brand" vector and the "AI Clone" vector, I proved they occupy almost the exact same semantic space.
+                    </p>
+                    <div class="font-mono text-[9px] text-zinc-600 bg-black/40 p-4 rounded-xl border border-white/5">
+                        Calculated_Cosine_Similarity: 0.8490
+                    </div>
                 </div>
+
                 <div class="glass-panel fade-in" style="transition-delay: 200ms;">
-                    <i data-lucide="activity" class="text-emerald-600 mb-6"></i>
-                    <h4 class="font-bold tracking-widest text-xs uppercase mb-4">Empath Analysis</h4>
-                    <p class="text-zinc-400 font-light leading-relaxed">Lexical classification across 30+ emotional categories to identify hidden linguistic markers.</p>
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 bg-emerald-600/10 flex items-center justify-center rounded-2xl text-emerald-600"><i data-lucide="activity"></i></div>
+                        <h4 class="font-bold tracking-widest text-xs uppercase">Empath Tone Analysis</h4>
+                    </div>
+                    <p class="text-zinc-400 font-light leading-relaxed mb-8">
+                        I used Empath to analyze lexical categories like <span class="italic text-white">'Money', 'Urgency', and 'Trust'</span>. 
+                    </p>
+                    <p class="text-zinc-400 font-light leading-relaxed mb-8">
+                        The findings showed that AI is excellent at mimicking corporate authority but often lacks the subtle "entropy" or randomness of human writing—a key marker for future detection tools.
+                    </p>
                 </div>
             </div>
         </div>
@@ -116,14 +156,36 @@
     <section class="section-wrap px-8 lg:px-24 bg-zinc-900/50">
         <div class="max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-20 items-center">
             <div class="fade-in">
-                <div class="text-8xl font-bold text-red-600 mb-6">49.2%</div>
-                <h3 class="text-4xl font-bold mb-6 tracking-tighter">The Misclassification Trap.</h3>
-                <p class="text-xl text-zinc-400 font-light leading-relaxed">Nearly half of participants mistook AI-generated brand phishing for legitimate communication.</p>
+                <h2 class="text-xs font-bold uppercase tracking-[0.4em] text-red-600 mb-6">03. The Verdict</h2>
+                <div class="stat-huge text-white mb-6">49.2%</div>
+                <h3 class="text-3xl font-bold mb-6 tracking-tighter">The Misclassification Trap.</h3>
+                <p class="text-xl text-zinc-400 font-light leading-relaxed mb-8">
+                    The most alarming finding: Nearly half of study participants mistook AI-generated branded phishing for <span class="text-white underline decoration-red-600 underline-offset-8">legitimate communication</span>.
+                </p>
+                <p class="text-lg text-zinc-500 font-light leading-relaxed">
+                    This 50/50 split proves that human intuition is no longer a reliable firewall. When the "Linguistic Fingerprint" is cloned perfectly, the user cannot defend themselves.
+                </p>
             </div>
             <div class="fade-in">
                 <div class="glass-panel border-white/10">
-                    <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-8">Authorship Judgment</h4>
-                    <p class="text-sm text-zinc-400 leading-relaxed italic">"Average users can no longer rely on instinct for AI detection. When tone is perfected, trust becomes a technical vulnerability."</p>
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-8">The Confidence Gap (Fig 11)</h4>
+                    <div class="space-y-6">
+                        <div class="relative">
+                            <div class="flex justify-between text-[10px] font-mono text-zinc-400 mb-2">
+                                <span>High Confidence (Wrong)</span>
+                                <span>Low Confidence</span>
+                            </div>
+                            <div class="h-2 w-full bg-zinc-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-red-600 to-zinc-800 w-[65%]"></div>
+                            </div>
+                            <p class="text-[10px] text-zinc-500 mt-2">Participants were often "Very Confident" that a phishing email was real.</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-8 border-t border-white/5">
+                        <p class="text-sm text-zinc-300 leading-relaxed italic">
+                            "We are entering an era where detection must rely on technical infrastructure verification, as the visual and linguistic cues we rely on have been fully compromised."
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
