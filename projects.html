@@ -3,138 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investigation | Rohail M.A</title>
+    <title>Projects | Rohail M.A</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
         :root { --napier-red: #E31B23; --zinc-950: #09090b; }
-        body { background-color: var(--zinc-950); color: white; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        body { background-color: var(--zinc-950); color: white; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
         .font-mono { font-family: 'JetBrains+Mono', monospace; }
-
-        .section-wrap { min-height: 100vh; display: flex; align-items: center; position: relative; padding: 120px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-
-        .bg-fixed {
+        
+        .fixed-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
-            background-image: url('background.jpg'), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000');
-            background-size: cover; filter: brightness(0.2) blur(8px);
+            background-image: url('background.jpg'), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000');
+            background-size: cover; filter: brightness(0.2);
         }
 
-        .glass-panel {
-            background: rgba(20, 20, 20, 0.7); backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.08); padding: 4rem; border-radius: 4rem;
+        .nav-dock {
+            background: rgba(20, 20, 20, 0.4); backdrop-filter: blur(30px); border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .fade-in { opacity: 0; transform: translateY(40px); transition: all 1s ease-out; }
-        .fade-in.active { opacity: 1; transform: translateY(0); }
+        .terminal-box {
+            background: #121214; border: 1px solid #2a2a2e; border-radius: 12px;
+            box-shadow: 0 30px 60px -12px rgba(0,0,0,0.8); font-family: 'JetBrains+Mono', monospace;
+        }
 
-        .redacted { background: white; color: white; transition: 0.4s ease; padding: 0 4px; cursor: help; }
-        .redacted:hover { background: transparent; color: var(--napier-red); }
-
-        .nav-dock { background: rgba(20, 20, 20, 0.5); backdrop-filter: blur(30px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .phone-frame {
+            border: 12px solid #1a1a1c; border-radius: 40px; background: #000;
+            box-shadow: 0 0 0 1px #333, 0 40px 100px rgba(0,0,0,0.5);
+            position: relative; overflow: hidden;
+        }
+        .syntax-k { color: #569cd6; } .syntax-v { color: #9cdcfe; } .syntax-c { color: #6a9955; }
     </style>
 </head>
-<body class="antialiased">
-
-    <div class="bg-fixed"></div>
+<body>
+    <div class="fixed-bg"></div>
 
     <nav class="fixed bottom-8 left-0 right-0 z-50 flex justify-center px-4">
         <div class="nav-dock px-8 py-5 rounded-full flex gap-10 items-center shadow-2xl">
             <a href="index.html" class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">About</a>
-            <a href="research.html" class="active font-mono text-[10px] uppercase tracking-[0.3em] text-white underline decoration-red-600 underline-offset-8">Dissertation</a>
-            <a href="projects.html" class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Projects</a>
+            <a href="research.html" class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Dissertation</a>
+            <a href="projects.html" class="active font-mono text-[10px] uppercase tracking-[0.3em] text-white underline decoration-red-600 underline-offset-8">Projects</a>
             <a href="contact.html" class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Contact</a>
         </div>
     </nav>
 
-    <!-- 01: INTRODUCTION -->
-    <section class="section-wrap px-8 lg:px-24">
-        <div class="max-w-6xl mx-auto w-full">
-            <div class="fade-in active">
-                <span class="font-mono text-red-500 text-[10px] tracking-[0.5em] uppercase block mb-8">> CASE_FILE: BRAND_IMITATION_AI</span>
-                <h1 class="text-6xl md:text-[100px] font-bold tracking-tighter mb-12 leading-[0.85]">
-                    Linguistic <br /> <span class="opacity-30 italic font-light">Realism.</span>
-                </h1>
-                <p class="text-2xl md:text-4xl text-zinc-400 font-light leading-relaxed max-w-5xl">
-                    A deep investigation into how <span class="text-white font-medium">AI-driven LLMs</span> automate the erosion of digital trust through sophisticated brand mimicry.
+    <main class="max-w-7xl mx-auto px-6 pt-32 pb-48">
+        <header class="mb-24 text-center lg:text-left">
+            <div class="font-mono text-red-500 text-xs tracking-[0.4em] uppercase mb-6">> DATA_EXPORT: FIELD_OPS</div>
+            <h1 class="text-6xl md:text-8xl font-bold tracking-tighter leading-tight">Applied <br /> Engineering.</h1>
+        </header>
+
+        <!-- Formula Student -->
+        <div class="grid lg:grid-cols-2 gap-20 items-center mb-48">
+            <div class="space-y-8">
+                <h2 class="text-4xl font-bold">Perception Systems | FSTN</h2>
+                <p class="text-xl text-zinc-400 font-light leading-relaxed">
+                    Lead Perception Engineer for an autonomous vehicle project. Implemented LiDAR-based detection using ROS2, contributing to a <span class="text-white font-medium">4th-place finish at Silverstone</span>.
                 </p>
-                <div class="mt-12">
-                    <span class="px-5 py-2 bg-red-600 text-white font-bold text-[10px] uppercase rounded-full tracking-widest shadow-xl">Recommended for Publishing</span>
+                <div class="flex gap-4">
+                    <div class="px-6 py-3 bg-zinc-900 border border-zinc-800 rounded-2xl font-mono text-[10px] uppercase text-zinc-400">ROS2 / C++ / Python</div>
+                </div>
+            </div>
+            <div class="terminal-box w-full overflow-hidden">
+                <div class="flex items-center gap-2 p-4 border-b border-zinc-800/50 bg-zinc-900/50">
+                    <div class="w-2 h-2 rounded-full bg-red-500/50"></div>
+                    <span class="text-[9px] text-zinc-500 font-mono">cone_detection.py</span>
+                </div>
+                <div class="p-8 text-xs overflow-x-auto">
+<pre><code class="text-zinc-500">
+<span class="syntax-k">def</span> <span class="syntax-v">process_cloud</span>(self, points):
+    <span class="syntax-c"># Applying Euclidean clustering for cone ID</span>
+    centroids = []
+    <span class="syntax-k">for</span> group <span class="syntax-k">in</span> self.segmentation(points):
+        x_avg = sum(p.x <span class="syntax-k">for</span> p <span class="syntax-k">in</span> group) / len(group)
+        y_avg = sum(p.y <span class="syntax-k">for</span> p <span class="syntax-k">in</span> group) / len(group)
+        centroids.append((x_avg, y_avg))
+    <span class="syntax-k">return</span> centroids
+</code></pre>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- 02: LITERATURE REVIEW -->
-    <section class="section-wrap px-8 lg:px-24 bg-white/[0.01]">
-        <div class="max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-20 items-center">
-            <div class="fade-in">
-                <h2 class="text-xs font-bold uppercase tracking-[0.4em] text-red-600 mb-10">02. Literature Review</h2>
-                <h3 class="text-4xl font-bold mb-8 tracking-tight">Psychological Priming.</h3>
-                <p class="text-xl text-zinc-400 font-light leading-relaxed mb-10">
-                    Applying the <span class="text-white italic">V-Triad Framework</span>, my research traces the evolution of phishing from the \$100m <span class="text-white font-medium">Sony 2014 Breach</span> to current automated deception.
+        <!-- JT-PT App -->
+        <div class="grid lg:grid-cols-2 gap-20 items-center">
+            <div class="flex justify-center order-2 lg:order-1">
+                <div class="phone-frame w-[300px] h-[620px] bg-zinc-900 flex items-center justify-center p-8 text-center">
+                    <div class="space-y-4">
+                        <i data-lucide="smartphone" class="text-zinc-700 mx-auto" size="48"></i>
+                        <p class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest italic">> Upload app_screenshot.png</p>
+                    </div>
+                </div>
+            </div>
+            <div class="order-1 lg:order-2 space-y-8">
+                <h2 class="text-4xl font-bold">Secure Mobile Architecture</h2>
+                <p class="text-xl text-zinc-500 font-light leading-relaxed">
+                    Security Lead for a client-facing fitness app. Architected backend security via Firebase, focusing on <span class="text-white font-medium">secure authentication</span> and strict GDPR compliance for health data.
                 </p>
-                <div class="glass-panel p-8">
-                    <p class="text-sm text-zinc-400 italic">"Traditional heuristics like bad grammar are <span class="redacted">obsolete</span> in the era of GPT-4."</p>
-                </div>
-            </div>
-            <div class="fade-in">
-                <div class="glass-panel border-white/5 shadow-2xl">
-                    <h4 class="font-mono text-[10px] text-zinc-500 uppercase tracking-[0.3em] mb-8">Focus_Area</h4>
-                    <p class="text-xl text-zinc-300 font-light leading-relaxed">
-                        Visual heuristics (logos and corporate tone) often override a user's logical verification, allowing AI-generated lures to slip under the radar.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 03: METHODOLOGY -->
-    <section class="section-wrap px-8 lg:px-24">
-        <div class="max-w-6xl mx-auto w-full">
-            <div class="fade-in mb-20 text-center">
-                <h2 class="text-xs font-bold uppercase tracking-[0.4em] text-red-600 mb-6">03. Methodology Lab</h2>
-                <h3 class="text-5xl md:text-7xl font-bold tracking-tighter">Mathematical Forensics.</h3>
-            </div>
-            <div class="grid md:grid-cols-2 gap-10">
-                <div class="glass-panel fade-in">
-                    <i data-lucide="binary" class="text-red-600 mb-6"></i>
-                    <h4 class="font-bold tracking-widest text-xs uppercase mb-4">BERT Embeddings</h4>
-                    <p class="text-zinc-400 font-light leading-relaxed">Numerical vector analysis used to quantify the semantic drift between real brand emails and AI clones.</p>
-                    <div class="font-mono text-[9px] text-zinc-600 bg-black/40 p-4 rounded-xl mt-6">Cosine_Similarity: 0.8490</div>
-                </div>
-                <div class="glass-panel fade-in" style="transition-delay: 200ms;">
-                    <i data-lucide="activity" class="text-emerald-600 mb-6"></i>
-                    <h4 class="font-bold tracking-widest text-xs uppercase mb-4">Empath Analysis</h4>
-                    <p class="text-zinc-400 font-light leading-relaxed">Lexical classification across 30+ emotional categories to identify hidden linguistic markers.</p>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-6 bg-zinc-900 border border-zinc-800 rounded-3xl group hover:border-red-500 transition-colors">
+                        <i data-lucide="lock" class="text-red-600 mb-4"></i>
+                        <h4 class="font-bold text-[10px] uppercase tracking-widest">Firebase Auth</h4>
+                    </div>
+                    <div class="p-6 bg-zinc-900 border border-zinc-800 rounded-3xl group hover:border-emerald-500 transition-colors">
+                        <i data-lucide="database" class="text-emerald-600 mb-4"></i>
+                        <h4 class="font-bold text-[10px] uppercase tracking-widest">GDPR Compliance</h4>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- 04: RESULTS -->
-    <section class="section-wrap px-8 lg:px-24 bg-zinc-900/50">
-        <div class="max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-20 items-center">
-            <div class="fade-in">
-                <div class="text-8xl font-bold text-red-600 mb-6">49.2%</div>
-                <h3 class="text-4xl font-bold mb-6 tracking-tighter">The Misclassification Trap.</h3>
-                <p class="text-xl text-zinc-400 font-light leading-relaxed">Nearly half of participants mistook AI-generated brand phishing for legitimate communication.</p>
-            </div>
-            <div class="fade-in">
-                <div class="glass-panel border-white/10">
-                    <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-8">Authorship Judgment</h4>
-                    <p class="text-sm text-zinc-400 leading-relaxed italic">"Average users can no longer rely on instinct for AI detection. When tone is perfected, trust becomes a technical vulnerability."</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        lucide.createIcons();
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-    </script>
+    </main>
+    <script>lucide.createIcons();</script>
 </body>
 </html>
