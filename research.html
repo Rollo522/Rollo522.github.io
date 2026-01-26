@@ -3,133 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investigation | Rohail M.A</title>
+    <title>Operations | Rohail M.A</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-        :root { --neon-red: #ff3333; --zinc-950: #09090b; }
-        body { background-color: var(--zinc-950); color: white; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+        :root { --napier-red: #E31B23; --zinc-950: #09090b; }
+        body { background-color: var(--zinc-950); color: white; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
         .font-mono { font-family: 'JetBrains+Mono', monospace; }
         
-        .texture {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 50;
-            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-            opacity: 0.1;
+        .fixed-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
+            background-image: url('background.jpg'); background-size: cover; background-position: center;
+            filter: brightness(0.2);
         }
 
         .nav-dock {
-            background: rgba(20, 20, 20, 0.4); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(20, 20, 20, 0.4); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            transition: border-color 0.3s ease;
+        .terminal-box {
+            background: #121214; border: 1px solid #2a2a2e; border-radius: 12px;
+            box-shadow: 0 30px 60px -12px rgba(0,0,0,0.8); font-family: 'JetBrains+Mono', monospace;
         }
-        .glass-panel:hover { border-color: var(--neon-red); }
 
-        .redacted {
-            background: white; color: white; transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1); cursor: pointer;
+        .phone-frame {
+            border: 12px solid #1a1a1c; border-radius: 40px; background: #000;
+            box-shadow: 0 0 0 1px #333, 0 40px 100px rgba(0,0,0,0.5);
+            position: relative; overflow: hidden;
         }
-        .redacted:hover { background: transparent; color: var(--neon-red); }
+        .syntax-k { color: #569cd6; } .syntax-v { color: #9cdcfe; } .syntax-c { color: #6a9955; }
     </style>
 </head>
 <body>
-    <div class="texture"></div>
+    <div class="fixed-bg"></div>
 
-    <nav class="fixed bottom-10 left-0 right-0 z-50 flex justify-center px-4">
-        <div class="nav-dock px-8 py-5 rounded-3xl flex gap-10 items-center">
-            <a href="index.html" class="nav-link font-mono text-[10px] uppercase tracking-[0.3em] opacity-50 hover:opacity-100">Dashboard</a>
-            <a href="research.html" class="nav-link font-mono text-[10px] uppercase tracking-[0.3em] active text-red-500">Investigation</a>
-            <a href="projects.html" class="nav-link font-mono text-[10px] uppercase tracking-[0.3em] opacity-50 hover:opacity-100">Operations</a>
-            <a href="contact.html" class="nav-link font-mono text-[10px] uppercase tracking-[0.3em] opacity-50 hover:opacity-100">Comm-Link</a>
+    <nav class="fixed bottom-8 left-0 right-0 z-50 flex justify-center px-4">
+        <div class="nav-dock px-8 py-5 rounded-full flex gap-10 items-center shadow-2xl">
+            <a href="index.html" class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white">Dashboard</a>
+            <a href="research.html" class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white">Investigation</a>
+            <a href="projects.html" class="active font-mono text-[10px] uppercase tracking-[0.3em] text-white underline decoration-red-600 underline-offset-8">Operations</a>
+            <a href="contact.html" class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white">Comm-Link</a>
         </div>
     </nav>
 
     <main class="max-w-7xl mx-auto px-6 pt-32 pb-48">
-        
-        <!-- Case Header -->
         <header class="mb-24">
-            <div class="font-mono text-red-500 text-xs tracking-[0.4em] uppercase mb-6">> SUBJECT: BRAND_IMITATION_AI</div>
-            <h1 class="text-5xl md:text-8xl font-bold tracking-tighter mb-8 leading-tight">
-                AI and the <span class="italic font-light text-zinc-500 underline decoration-red-600 underline-offset-[12px]">Linguistic Fingerprint.</span>
-            </h1>
-            <div class="flex gap-4">
-                <span class="px-4 py-2 bg-zinc-900 border border-zinc-800 rounded-full text-[10px] font-mono text-zinc-400">1ST_CLASS_GRADIENT</span>
-                <span class="px-4 py-2 bg-red-500/10 border border-red-500/20 rounded-full text-[10px] font-mono text-red-500 uppercase tracking-widest">Recommended for Journal</span>
-            </div>
+            <div class="font-mono text-red-500 text-xs tracking-[0.4em] uppercase mb-6">> FIELD_DATA_EXPORT</div>
+            <h1 class="text-6xl md:text-8xl font-bold tracking-tighter">Applied <br /> Engineering.</h1>
         </header>
 
-        <!-- Stats Matrix -->
-        <section class="grid md:grid-cols-3 gap-8 mb-32">
-            <div class="glass-panel p-10 rounded-[2.5rem]">
-                <h3 class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest mb-4">Metric: Cosine Similarity</h3>
-                <div class="text-6xl font-bold mb-4">0.85</div>
-                <p class="text-zinc-400 text-sm leading-relaxed">AI produced phishing content mathematically indistinguishable from genuine brand communication.</p>
+        <!-- Project 1: FSTN -->
+        <div class="grid lg:grid-cols-2 gap-20 items-center mb-48">
+            <div>
+                <h2 class="text-4xl font-bold mb-6">Perception Systems | FSTN</h2>
+                <p class="text-xl text-zinc-500 font-light leading-relaxed mb-10">
+                    Lead Perception Engineer for an autonomous vehicle project. Implemented LiDAR-based cone detection and track mapping algorithms using ROS2 and Python, helping the team achieve a 4th-place finish at Silverstone.
+                </p>
+                <div class="flex gap-4">
+                    <div class="px-6 py-3 bg-zinc-900 border border-zinc-800 rounded-2xl font-mono text-[10px] uppercase text-zinc-400">ROS2 / Python</div>
+                </div>
             </div>
-            <div class="glass-panel p-10 rounded-[2.5rem] border-red-500/20">
-                <h3 class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest mb-4">Misclassification Rate</h3>
-                <div class="text-6xl font-bold text-red-500 mb-4">49%</div>
-                <p class="text-zinc-400 text-sm leading-relaxed">Half of users believed AI-generated brand phishing was legitimate communication.</p>
+            <div class="terminal-box w-full overflow-hidden">
+                <div class="flex items-center gap-2 p-4 border-b border-zinc-800/50 bg-zinc-900/50">
+                    <div class="w-2 h-2 rounded-full bg-red-500/50"></div>
+                    <span class="text-[9px] text-zinc-500 font-mono">cone_perception.py</span>
+                </div>
+                <div class="p-8 text-xs overflow-x-auto">
+<pre><code class="text-zinc-500">
+<span class="syntax-k">def</span> <span class="syntax-v">cluster_scan</span>(self, points):
+    <span class="syntax-c"># Applying Euclidean clustering for cone ID</span>
+    centroids = []
+    <span class="syntax-k">for</span> group <span class="syntax-k">in</span> self.segmentation(points):
+        x_avg = sum(p.x <span class="syntax-k">for</span> p <span class="syntax-k">in</span> group) / len(group)
+        y_avg = sum(p.y <span class="syntax-k">for</span> p <span class="syntax-k">in</span> group) / len(group)
+        centroids.append((x_avg, y_avg))
+    <span class="syntax-k">return</span> centroids
+</code></pre>
+                </div>
             </div>
-            <div class="glass-panel p-10 rounded-[2.5rem]">
-                <h3 class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest mb-4">Detection Method</h3>
-                <div class="text-6xl font-bold mb-4">BERT</div>
-                <p class="text-zinc-400 text-sm leading-relaxed">Deep learning analysis used to quantify the evolution of linguistic realism.</p>
-            </div>
-        </section>
+        </div>
 
-        <!-- Investigation Report -->
-        <section class="grid lg:grid-cols-2 gap-20 items-start">
-            <div class="space-y-10">
-                <div>
-                    <h2 class="text-xs font-bold uppercase tracking-[0.4em] text-zinc-600 mb-8 flex items-center gap-4">
-                        <span class="h-[1px] w-8 bg-zinc-800"></span> Summary Findings
-                    </h2>
-                    <div class="text-xl md:text-2xl text-zinc-300 font-light leading-relaxed space-y-8">
-                        <p>
-                            My research exposed a critical failure in human detection: users rely on <span class="redacted">visual heuristics</span> like layout and logos far more than actual sender verification.
-                        </p>
-                        <p>
-                            By leveraging <span class="text-white font-medium">GPT-4 and BERT embeddings</span>, I proved that AI can effectively mirror a brand's tone, achieving a similarity score that bypasses traditional security training cues.
-                        </p>
+        <!-- Project 2: JT-PT -->
+        <div class="grid lg:grid-cols-2 gap-20 items-center">
+            <div class="flex justify-center order-2 lg:order-1">
+                <div class="phone-frame w-[300px] h-[620px] bg-zinc-900 flex items-center justify-center p-8 text-center">
+                    <div class="space-y-4">
+                        <i data-lucide="smartphone" class="text-zinc-700 mx-auto" size="48"></i>
+                        <p class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest italic">> Loading app_screenshot.png</p>
                     </div>
                 </div>
             </div>
-
-            <!-- Heatmap Visualization -->
-            <div class="bg-zinc-900 border border-zinc-800 p-10 rounded-[3rem] shadow-2xl relative overflow-hidden">
-                <div class="absolute top-0 right-0 p-8 opacity-[0.03]"><i data-lucide="database" size="140"></i></div>
-                <h4 class="font-mono text-[10px] text-zinc-500 uppercase tracking-[0.3em] mb-10">Visual Evidence: Trust Heatmap</h4>
-                <div class="space-y-6 relative z-10">
-                    <div class="flex items-center gap-6">
-                        <span class="text-[10px] font-mono text-zinc-500 w-24">Branded_AI</span>
-                        <div class="flex-1 flex gap-1 h-12">
-                            <div class="w-[10%] bg-red-950/20 border border-white/5"></div>
-                            <div class="w-[20%] bg-red-900/40 border border-white/5"></div>
-                            <div class="w-[49%] bg-red-600 shadow-[0_0_20px_rgba(255,51,51,0.3)] border border-white/10" title="Misclassification Zone"></div>
-                            <div class="w-[21%] bg-zinc-800 border border-white/5"></div>
-                        </div>
+            <div class="order-1 lg:order-2">
+                <h2 class="text-4xl font-bold mb-6">JT-PT Fitness App</h2>
+                <p class="text-xl text-zinc-500 font-light leading-relaxed mb-10">
+                    Security Lead for a client-facing fitness app. Managed the Firebase backend architecture, focusing on secure authentication flows and strict GDPR compliance for user health data.
+                </p>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-6 bg-zinc-900 border border-zinc-800 rounded-3xl group hover:border-red-500 transition-colors">
+                        <i data-lucide="lock" class="text-red-600 mb-4"></i>
+                        <h4 class="font-bold text-xs uppercase">Secure Auth</h4>
                     </div>
-                    <div class="flex items-center gap-6">
-                        <span class="text-[10px] font-mono text-zinc-500 w-24">Real_Legit</span>
-                        <div class="flex-1 flex gap-1 h-12">
-                            <div class="w-[60%] bg-white/10 border border-white/5"></div>
-                            <div class="w-[30%] bg-white/5 border border-white/5"></div>
-                            <div class="w-[10%] bg-zinc-800 border border-white/5"></div>
-                        </div>
-                    </div>
-                    <p class="mt-8 text-[9px] font-mono text-zinc-600 leading-relaxed uppercase tracking-widest italic">
-                        * The primary red indicator highlights the 'Confidence Gap' where users were certain they had correctly identified a legitimate email, despite it being an AI-generated lure.
-                    </p>
                 </div>
             </div>
-        </section>
-
+        </div>
     </main>
-
     <script>lucide.createIcons();</script>
 </body>
 </html>
