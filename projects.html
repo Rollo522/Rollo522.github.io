@@ -3,183 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Investigation | Rohail M.A</title>
+    <title>Investigation | Rohail M.A</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-        
         :root { --napier-red: #E31B23; --zinc-950: #09090b; }
         body { background-color: var(--zinc-950); color: white; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
         .font-mono { font-family: 'JetBrains+Mono', monospace; }
 
-        /* Story Background Sections */
-        .section-wrap {
-            min-height: 100vh; display: flex; align-items: center; position: relative; padding: 100px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
+        .section-wrap { min-height: 100vh; display: flex; align-items: center; position: relative; padding: 120px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
 
         .bg-fixed {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none;
-            opacity: 0.15; filter: contrast(1.2);
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
+            background-image: url('background.jpg'); background-size: cover; filter: brightness(0.2) blur(5px);
         }
 
-        /* Glassmorphism Cards */
-        .case-card {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 3rem; border-radius: 3rem;
-            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        .glass-panel {
+            background: rgba(20, 20, 20, 0.6); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.08); padding: 4rem; border-radius: 4rem;
         }
-        .case-card:hover { border-color: var(--napier-red); background: rgba(255, 255, 255, 0.04); }
 
-        /* Animation Classes */
-        .fade-in { opacity: 0; transform: translateY(40px); transition: all 1s ease-out; }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 1s ease-out; }
         .fade-in.active { opacity: 1; transform: translateY(0); }
 
-        .redacted {
-            background: white; color: white; transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1); cursor: help; padding: 0 4px;
-        }
+        .stat-huge { font-size: clamp(4rem, 10vw, 8rem); line-height: 1; font-weight: 800; letter-spacing: -0.05em; }
+        .redacted { background: white; color: white; transition: 0.4s ease; padding: 0 4px; cursor: help; }
         .redacted:hover { background: transparent; color: var(--napier-red); }
-
-        .nav-dock { background: rgba(20, 20, 20, 0.5); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.1); }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Abstract Background Grid -->
-    <div class="bg-fixed opacity-5">
-        <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-    </div>
+    <div class="bg-fixed"></div>
 
-    <!-- Navigation -->
     <nav class="fixed bottom-8 left-0 right-0 z-50 flex justify-center px-4">
-        <div class="nav-dock px-8 py-5 rounded-full flex gap-10 items-center shadow-2xl">
+        <div class="px-8 py-5 rounded-full flex gap-10 items-center bg-zinc-900/50 backdrop-blur-2xl border border-white/10 shadow-2xl">
             <a href="index.html" class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white">Dashboard</a>
-            <a href="research.html" class="active font-mono text-[10px] uppercase tracking-[0.3em] text-white underline decoration-red-600 underline-offset-8">Investigation</a>
+            <a href="research.html" class="font-mono text-[10px] uppercase tracking-[0.3em] text-white underline decoration-red-600 underline-offset-8">Investigation</a>
             <a href="projects.html" class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Operations</a>
             <a href="contact.html" class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Comm-Link</a>
         </div>
     </nav>
 
-    <!-- SECTION 1: THE HOOK -->
+    <!-- SECTION 1: INTRODUCTION -->
     <section class="section-wrap px-8 lg:px-24">
-        <div class="max-w-5xl mx-auto w-full">
+        <div class="max-w-6xl mx-auto w-full">
             <div class="fade-in active">
-                <span class="font-mono text-red-500 text-[10px] tracking-[0.5em] uppercase block mb-8">> CASE_HISTORY: 2014_SONY_BREACH</span>
-                <h1 class="text-5xl md:text-8xl font-bold tracking-tighter mb-10 leading-tight">
-                    The Evolution of <br /> <span class="italic font-light text-zinc-500">Deceptive Intelligence.</span>
+                <span class="font-mono text-red-500 text-[10px] tracking-[0.5em] uppercase block mb-8">> CHAPTER_01: THE_PROBLEM</span>
+                <h1 class="text-6xl md:text-[100px] font-bold tracking-tighter mb-12 leading-[0.85]">
+                    The Blurred <br /> <span class="text-zinc-500">Frontier.</span>
                 </h1>
-                <p class="text-2xl md:text-3xl text-zinc-400 font-light leading-relaxed max-w-4xl">
-                    Phishing has moved from the generic spam of 2014 to a <span class="text-white font-medium border-b border-red-600">targeted arms race</span>. In 2024, 1.3 million attacks were recorded in a single quarter. My research explores how AI is winning this race.
+                <p class="text-2xl md:text-4xl text-zinc-400 font-light leading-relaxed max-w-5xl">
+                    Phishing has evolved from the generic spam of 2014 to an AI-powered <span class="text-white font-medium italic">arms race</span>. My research exposes how attackers use LLMs to automate the "human touch," making deception scalable.
                 </p>
-                <div class="mt-16 flex gap-6">
-                    <a href="#v-triad" class="p-5 border border-zinc-800 rounded-2xl hover:border-red-600 transition-colors">
-                        <i data-lucide="chevron-down" class="text-red-600 animate-bounce"></i>
-                    </a>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 2: THE PSYCHOLOGY (V-TRIAD) -->
-    <section id="v-triad" class="section-wrap px-8 lg:px-24 bg-white/[0.01]">
+    <!-- SECTION 2: LITERATURE REVIEW & V-TRIAD -->
+    <section class="section-wrap px-8 lg:px-24 bg-white/[0.02]">
         <div class="max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-20 items-center">
             <div class="fade-in">
-                <h2 class="text-xs font-bold uppercase tracking-[0.4em] text-red-600 mb-10">01. Psychological Blueprint</h2>
-                <h3 class="text-4xl font-bold mb-8 tracking-tight">The V-Triad Framework.</h3>
+                <h2 class="text-xs font-bold uppercase tracking-[0.4em] text-red-600 mb-10">02. Literature Review</h2>
+                <h3 class="text-4xl font-bold mb-8 tracking-tight">The Psychology of the Click.</h3>
                 <p class="text-xl text-zinc-400 font-light leading-relaxed mb-10">
-                    Attackers exploit innate behavioural flaws. My study focuses on <span class="text-white">Credibility</span>: how familiar brand names, colours, and fonts bypass suspicion to build instant, synthetic trust.
+                    I applied the <span class="text-white font-medium italic">V-Triad Framework</span> to understand cognitive bias. Attackers bypass suspicion not through technical hacks, but through <span class="redacted">Implicit Manipulation</span>—mimicking brand logos, colours, and tones that we have been trained to trust for decades.
                 </p>
-                <div class="space-y-4">
-                    <div class="p-6 bg-white/5 rounded-2xl border border-white/5 flex items-center gap-6">
-                        <div class="w-12 h-12 bg-red-600/10 rounded-full flex items-center justify-center text-red-600"><i data-lucide="eye" size="20"></i></div>
-                        <div>
-                            <h4 class="font-bold text-sm">Visual Heuristics</h4>
-                            <p class="text-[10px] text-zinc-500 uppercase tracking-widest">Implicit Trust Cues</p>
-                        </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-6 bg-white/5 border border-white/10 rounded-2xl">
+                        <i data-lucide="zap" class="text-red-600 mb-4"></i>
+                        <h4 class="font-bold text-xs uppercase tracking-widest">Sony 2014</h4>
+                        <p class="text-[10px] text-zinc-500 mt-2">The landmark \$100m spear-phishing case study.</p>
+                    </div>
+                    <div class="p-6 bg-white/5 border border-white/10 rounded-2xl">
+                        <i data-lucide="eye" class="text-emerald-500 mb-4"></i>
+                        <h4 class="font-bold text-xs uppercase tracking-widest">Visual Cues</h4>
+                        <p class="text-[10px] text-zinc-500 mt-2">Why logos override critical thinking.</p>
                     </div>
                 </div>
             </div>
             <div class="fade-in">
-                <div class="case-card">
-                    <h4 class="font-mono text-[10px] text-zinc-500 uppercase tracking-[0.3em] mb-10">Observation_File</h4>
-                    <p class="text-lg italic text-zinc-300 font-light leading-relaxed">
-                        "Users recognised brand presence through <span class="redacted">style and format</span> more than the actual brand name itself. Implicit manipulation allows attacks to feel routine and slip under suspicion."
+                <div class="glass-panel">
+                    <h4 class="font-mono text-[10px] text-zinc-500 uppercase tracking-[0.3em] mb-10">Discovery_Log</h4>
+                    <p class="text-2xl italic text-zinc-300 font-light leading-relaxed">
+                        "Traditional detection heuristics—like looking for bad grammar—are <span class="text-red-500">obsolete</span> in the era of GPT-4."
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 3: THE METHODOLOGY LAB -->
+    <!-- SECTION 3: METHODOLOGY (THE LAB) -->
     <section class="section-wrap px-8 lg:px-24">
         <div class="max-w-6xl mx-auto w-full">
-            <div class="fade-in mb-16">
-                <h2 class="text-xs font-bold uppercase tracking-[0.4em] text-red-600 mb-6">02. Methodology Lab</h2>
-                <h3 class="text-4xl md:text-6xl font-bold tracking-tighter">Quantifying Realism.</h3>
+            <div class="fade-in mb-20 text-center">
+                <h2 class="text-xs font-bold uppercase tracking-[0.4em] text-red-600 mb-6">03. Methodology Lab</h2>
+                <h3 class="text-5xl md:text-7xl font-bold tracking-tighter">Quantifying Deception.</h3>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="case-card fade-in">
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="glass-panel fade-in">
                     <div class="flex items-center gap-4 mb-8">
-                        <i data-lucide="binary" class="text-red-600"></i>
-                        <h4 class="font-bold tracking-widest text-[10px] uppercase">BERT Semantic Analysis</h4>
+                        <div class="w-10 h-10 bg-red-600/20 flex items-center justify-center rounded-xl text-red-600"><i data-lucide="binary"></i></div>
+                        <h4 class="font-bold tracking-widest text-xs uppercase">BERT Semantic Analysis</h4>
                     </div>
                     <p class="text-zinc-400 font-light leading-relaxed mb-8">
-                        Using BERT based models (all-MiniLM-L6-v2), I converted emails into numerical vectors in a high-dimensional space to measure semantic alignment.
+                        I used <span class="text-white">all-MiniLM-L6-v2</span> to convert 60+ emails into high-dimensional numerical vectors. This allowed for a mathematical comparison between AI phishing and genuine brand communications.
                     </p>
-                    <div class="p-6 bg-black rounded-2xl font-mono text-[10px] text-zinc-500">
-                        <span class="text-emerald-500">>></span> cosine_similarity(ai_vec, real_vec) <br />
-                        <span class="text-red-500">>></span> Result: <span class="text-white">0.8490</span>
+                    <div class="font-mono text-[10px] text-zinc-500 p-4 bg-black/40 rounded-xl">
+                        STATUS: Embedding_Complete...
                     </div>
                 </div>
 
-                <div class="case-card fade-in" style="transition-delay: 200ms;">
+                <div class="glass-panel fade-in" style="transition-delay: 200ms;">
                     <div class="flex items-center gap-4 mb-8">
-                        <i data-lucide="activity" class="text-emerald-500"></i>
-                        <h4 class="font-bold tracking-widest text-[10px] uppercase">Empath Tone Analysis</h4>
+                        <div class="w-10 h-10 bg-emerald-600/20 flex items-center justify-center rounded-xl text-emerald-500"><i data-lucide="activity"></i></div>
+                        <h4 class="font-bold tracking-widest text-xs uppercase">Empath Tone Analysis</h4>
                     </div>
                     <p class="text-zinc-400 font-light leading-relaxed mb-8">
-                        Emotional text classification used to identify differences in deep linguistic patterns across 30+ categories including money, internet, and positive emotion.
+                        I mapped linguistic styles across categories like <span class="text-white italic">'Internet', 'Money', and 'Positive Emotion'</span>. My findings revealed that AI-phishing is structurally identical but lacks certain "warmth" nuances.
                     </p>
-                    <div class="flex gap-4">
-                        <span class="px-3 py-1 bg-white/5 rounded text-[8px] font-mono">LEXICAL_MAPPING</span>
-                        <span class="px-3 py-1 bg-white/5 rounded text-[8px] font-mono">TONE_CONSISTENCY</span>
+                    <div class="font-mono text-[10px] text-zinc-500 p-4 bg-black/40 rounded-xl">
+                        STATUS: Lexical_Mapping_Success
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 4: THE REVEAL -->
-    <section class="section-wrap px-8 lg:px-24 bg-zinc-900/30">
-        <div class="max-w-6xl mx-auto w-full">
-            <div class="fade-in mb-20 text-center">
-                <h2 class="text-xs font-bold uppercase tracking-[0.4em] text-red-600 mb-6">03. The Evidence</h2>
-                <h3 class="text-5xl md:text-7xl font-bold tracking-tighter">The Misclassification Gap.</h3>
+    <!-- SECTION 4: RESULTS (THE TRAP) -->
+    <section class="section-wrap px-8 lg:px-24 bg-zinc-900/50">
+        <div class="max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-16 items-center">
+            <div class="fade-in">
+                <div class="stat-huge text-red-600 mb-4">49.2%</div>
+                <h3 class="text-3xl font-bold mb-6 uppercase tracking-tighter">The Misclassification Trap.</h3>
+                <p class="text-xl text-zinc-400 font-light leading-relaxed">
+                    The most alarming result of my user study: Nearly half of participants mistook branded AI-generated phishing for <span class="text-white underline decoration-red-600">legitimate mail</span>. 
+                </p>
+                <div class="mt-12 space-y-6">
+                    <div class="flex justify-between text-xs font-mono text-zinc-500"><span>AI Realism Score</span><span>0.85</span></div>
+                    <div class="w-full bg-zinc-800 h-1 rounded-full"><div class="bg-red-600 h-full w-[85%]"></div></div>
+                </div>
             </div>
-
-            <div class="grid lg:grid-cols-3 gap-12">
-                <!-- Stat 1 -->
-                <div class="text-center fade-in">
-                    <div class="text-7xl font-bold mb-4">0.85</div>
-                    <div class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest mb-4">Cosine Score</div>
-                    <p class="text-sm text-zinc-500 font-light">AI communication is now mathematically indistinguishable from brand teams.</p>
-                </div>
-                <!-- Stat 2 -->
-                <div class="text-center fade-in" style="transition-delay: 200ms;">
-                    <div class="text-7xl font-bold text-red-600 mb-4">49.2%</div>
-                    <div class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest mb-4">Human Error</div>
-                    <p class="text-sm text-zinc-500 font-light">Half of participants mistook branded AI-phishing for legitimate mail.</p>
-                </div>
-                <!-- Stat 3 -->
-                <div class="text-center fade-in" style="transition-delay: 400ms;">
-                    <div class="text-7xl font-bold mb-4">1st</div>
-                    <div class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest mb-4">Academic Rating</div>
-                    <p class="text-sm text-zinc-500 font-light">Awarded First-Class classification and recommended for publishing.</p>
+            <div class="fade-in">
+                <div class="glass-panel border-red-600/30">
+                    <h4 class="font-bold text-xs uppercase mb-8 tracking-widest text-zinc-400">Authorship Judgment (Fig 12)</h4>
+                    <p class="text-zinc-500 text-sm leading-relaxed">
+                        Participants were evenly split on whether emails were AI or Human. This confirms that <span class="italic text-zinc-300">"average users do not have reliable instincts for detecting AI-written text."</span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -189,14 +160,14 @@
     <section class="section-wrap px-8 lg:px-24">
         <div class="max-w-4xl mx-auto text-center w-full">
             <div class="fade-in">
-                <i data-lucide="file-check" class="text-red-600 mx-auto mb-10" size="48"></i>
-                <h2 class="text-4xl md:text-6xl font-bold tracking-tighter mb-12">Closing Statement.</h2>
-                <p class="text-2xl text-zinc-400 font-light leading-relaxed mb-16">
-                    "The line between genuine and malicious has become dangerously blurred. Perfect writing and logos no longer guarantee legitimacy. If we do not adapt, the <span class="text-white font-medium border-b border-red-600">confidence gap</span> will only widen."
+                <i data-lucide="file-check" class="text-red-600 mx-auto mb-10" size="64"></i>
+                <h2 class="text-5xl md:text-7xl font-bold tracking-tighter mb-12 italic">Closing Verdict.</h2>
+                <p class="text-2xl md:text-3xl text-zinc-400 font-light leading-relaxed mb-16">
+                    "The line between genuine and malicious has become dangerously blurred. If we do not adapt our defense frameworks to match AI speed, the <span class="text-white border-b border-red-600">confidence gap</span> will become an open door for attackers."
                 </p>
-                <a href="projects.html" class="inline-flex items-center gap-4 px-10 py-5 bg-zinc-900 border border-white/10 rounded-2xl hover:bg-red-600 transition-all group">
-                    <span class="font-bold uppercase text-[10px] tracking-[0.4em]">Proceed to Operations</span>
-                    <i data-lucide="chevron-right" class="group-hover:translate-x-1 transition-transform"></i>
+                <a href="projects.html" class="inline-flex items-center gap-6 px-12 py-6 bg-white text-black rounded-2xl hover:bg-red-600 hover:text-white transition-all group">
+                    <span class="font-bold uppercase text-xs tracking-[0.4em]">Proceed to Operations</span>
+                    <i data-lucide="chevron-right" class="group-hover:translate-x-2 transition-transform"></i>
                 </a>
             </div>
         </div>
@@ -204,16 +175,11 @@
 
     <script>
         lucide.createIcons();
-
-        // Intersection Observer for scroll animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
+                if (entry.isIntersecting) { entry.target.classList.add('active'); }
             });
-        }, { threshold: 0.15 });
-
+        }, { threshold: 0.1 });
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
 </body>
