@@ -1,49 +1,119 @@
 <!DOCTYPE html>
 <html lang="en-GB">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Rohail M.A</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-        :root { --napier-red: #E31B23; --zinc-950: #09090b; }
-        body { background-color: var(--zinc-950); color: white; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
-        .font-mono { font-family: 'JetBrains+Mono', monospace; }
-        
+
+        :root {
+            --napier-red: #E31B23;
+            --zinc-950: #09090b;
+        }
+
+        body {
+            background-color: var(--zinc-950);
+            color: white;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .font-mono {
+            font-family: 'JetBrains+Mono', monospace;
+        }
+
         .fixed-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
             background-image: url('background.jpg'), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000');
-            background-size: cover; filter: brightness(0.2);
+            background-size: cover;
+            filter: brightness(0.2);
         }
 
         .nav-dock {
-            background: rgba(20, 20, 20, 0.4); backdrop-filter: blur(30px); border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(20, 20, 20, 0.4);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .terminal-box {
-            background: #121214; border: 1px solid #2a2a2e; border-radius: 12px;
-            box-shadow: 0 30px 60px -12px rgba(0,0,0,0.8); font-family: 'JetBrains+Mono', monospace;
+            background: #121214;
+            border: 1px solid #2a2a2e;
+            border-radius: 12px;
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.8);
+            font-family: 'JetBrains+Mono', monospace;
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .terminal-box:hover {
+            border-color: rgba(227, 27, 35, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.9), 0 0 30px rgba(227, 27, 35, 0.2);
         }
 
         .phone-frame {
-            border: 12px solid #1a1a1c; border-radius: 40px; background: #000;
-            box-shadow: 0 0 0 1px #333, 0 40px 100px rgba(0,0,0,0.5);
-            position: relative; overflow: hidden;
+            border: 12px solid #1a1a1c;
+            border-radius: 40px;
+            background: #000;
+            box-shadow: 0 0 0 1px #333, 0 40px 100px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
         }
-        .syntax-k { color: #569cd6; } .syntax-v { color: #9cdcfe; } .syntax-c { color: #6a9955; }
+
+        .phone-frame:hover {
+            border-color: rgba(227, 27, 35, 0.5);
+            box-shadow: 0 0 0 1px rgba(227, 27, 35, 0.3), 0 50px 120px rgba(227, 27, 35, 0.3);
+            transform: scale(1.05);
+        }
+
+        .syntax-k {
+            color: #569cd6;
+        }
+
+        .syntax-v {
+            color: #9cdcfe;
+        }
+
+        .syntax-c {
+            color: #6a9955;
+        }
+
+        /* Project Card Animations */
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .project-card:hover {
+            transform: translateX(10px);
+        }
     </style>
 </head>
+
 <body>
     <div class="fixed-bg"></div>
 
     <nav class="fixed bottom-8 left-0 right-0 z-50 flex justify-center px-4">
         <div class="nav-dock px-8 py-5 rounded-full flex gap-10 items-center shadow-2xl">
-            <a href="index.html" class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">About</a>
-            <a href="research.html" class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Dissertation</a>
-            <a href="projects.html" class="active font-mono text-[10px] uppercase tracking-[0.3em] text-white underline decoration-red-600 underline-offset-8">Projects</a>
-            <a href="contact.html" class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Contact</a>
+            <a href="index.html"
+                class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">About</a>
+            <a href="research.html"
+                class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Dissertation</a>
+            <a href="projects.html"
+                class="active font-mono text-[10px] uppercase tracking-[0.3em] text-white underline decoration-red-600 underline-offset-8">Projects</a>
+            <a href="games.html"
+                class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Games</a>
+            <a href="contact.html"
+                class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Contact</a>
         </div>
     </nav>
 
@@ -54,14 +124,17 @@
         </header>
 
         <!-- Formula Student -->
-        <div class="grid lg:grid-cols-2 gap-20 items-center mb-48">
+        <div class="grid lg:grid-cols-2 gap-20 items-center mb-48 project-card">
             <div class="space-y-8">
                 <h2 class="text-4xl font-bold">Perception Systems | FSTN</h2>
                 <p class="text-xl text-zinc-400 font-light leading-relaxed">
-                    Lead Perception Engineer for an autonomous vehicle project. Implemented LiDAR-based detection using ROS2, contributing to a <span class="text-white font-medium">4th-place finish at Silverstone</span>.
+                    Lead Perception Engineer for an autonomous vehicle project. Implemented LiDAR-based detection using
+                    ROS2, contributing to a <span class="text-white font-medium">4th-place finish at Silverstone</span>.
                 </p>
                 <div class="flex gap-4">
-                    <div class="px-6 py-3 bg-zinc-900 border border-zinc-800 rounded-2xl font-mono text-[10px] uppercase text-zinc-400">ROS2 / C++ / Python</div>
+                    <div
+                        class="px-6 py-3 bg-zinc-900 border border-zinc-800 rounded-2xl font-mono text-[10px] uppercase text-zinc-400">
+                        ROS2 / C++ / Python</div>
                 </div>
             </div>
             <div class="terminal-box w-full overflow-hidden">
@@ -70,7 +143,7 @@
                     <span class="text-[9px] text-zinc-500 font-mono">cone_detection.py</span>
                 </div>
                 <div class="p-8 text-xs overflow-x-auto">
-<pre><code class="text-zinc-500">
+                    <pre><code class="text-zinc-500">
 <span class="syntax-k">def</span> <span class="syntax-v">process_cloud</span>(self, points):
     <span class="syntax-c"># Applying Euclidean clustering for cone ID</span>
     centroids = []
@@ -85,15 +158,15 @@
         </div>
 
         <!-- JT-PT App -->
-        <div class="grid lg:grid-cols-2 gap-20 items-center">
+        <div class="grid lg:grid-cols-2 gap-20 items-center project-card">
             <div class="flex justify-center order-2 lg:order-1">
-                <div class="phone-frame w-[300px] h-[620px] bg-zinc-900 flex items-center justify-center relative overflow-hidden">
+                <div
+                    class="phone-frame w-[300px] h-[620px] bg-zinc-900 flex items-center justify-center relative overflow-hidden">
                     <!-- Image Container with proper sizing and fallback -->
-                    <img src="app_screenshot.png" 
-                         alt="JT-PT App Interface" 
-                         class="absolute inset-0 w-full h-full object-cover"
-                         onerror="this.style.display='none'; document.getElementById('fallback-text').style.display='block';">
-                    
+                    <img src="app_screenshot.png" alt="JT-PT App Interface"
+                        class="absolute inset-0 w-full h-full object-cover"
+                        onerror="this.style.display='none'; document.getElementById('fallback-text').style.display='block';">
+
                     <!-- Fallback Text if image fails -->
                     <div id="fallback-text" class="text-center p-8 hidden">
                         <i data-lucide="smartphone" class="text-zinc-700 mx-auto mb-4" size="48"></i>
@@ -106,14 +179,18 @@
             <div class="order-1 lg:order-2 space-y-8">
                 <h2 class="text-4xl font-bold">Secure Mobile Architecture</h2>
                 <p class="text-xl text-zinc-500 font-light leading-relaxed">
-                    Security Lead for a client-facing fitness app. Architected backend security via Firebase, focusing on <span class="text-white font-medium">secure authentication flows</span> and strict GDPR compliance for health data.
+                    Security Lead for a client-facing fitness app. Architected backend security via Firebase, focusing
+                    on <span class="text-white font-medium">secure authentication flows</span> and strict GDPR
+                    compliance for health data.
                 </p>
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="p-6 bg-zinc-900 border border-zinc-800 rounded-3xl group hover:border-red-500 transition-colors">
+                    <div
+                        class="p-6 bg-zinc-900 border border-zinc-800 rounded-3xl group hover:border-red-500 transition-colors">
                         <i data-lucide="lock" class="text-red-600 mb-4"></i>
                         <h4 class="font-bold text-[10px] uppercase tracking-widest">Firebase Auth</h4>
                     </div>
-                    <div class="p-6 bg-zinc-900 border border-zinc-800 rounded-3xl group hover:border-emerald-500 transition-colors">
+                    <div
+                        class="p-6 bg-zinc-900 border border-zinc-800 rounded-3xl group hover:border-emerald-500 transition-colors">
                         <i data-lucide="database" class="text-emerald-600 mb-4"></i>
                         <h4 class="font-bold text-[10px] uppercase tracking-widest">GDPR Compliance</h4>
                     </div>
@@ -121,6 +198,39 @@
             </div>
         </div>
     </main>
-    <script>lucide.createIcons();</script>
+    <script src="animations.js"></script>
+    <script>
+        lucide.createIcons();
+
+        // Add floating animation to project sections
+        const projectSections = document.querySelectorAll('.project-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        projectSections.forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'all 0.8s cubic-bezier(0.19, 1, 0.22, 1)';
+            observer.observe(section);
+        });
+
+        // Add ripple effect to tech badges
+        document.querySelectorAll('.px-6.py-3').forEach(badge => {
+            badge.addEventListener('click', window.AnimationEngine.createRipple);
+            badge.style.cursor = 'pointer';
+            badge.style.position = 'relative';
+            badge.style.overflow = 'hidden';
+        });
+    </script>
 </body>
+
 </html>
