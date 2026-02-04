@@ -1,94 +1,195 @@
 <!DOCTYPE html>
 <html lang="en-GB">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rohail M.A | Cybersecurity Intelligence</title>
-    
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Portfolio of Rohail MacDougall Ahmad, a First-Class Cybersecurity Graduate from Edinburgh Napier University.">
-    
+    <meta name="description"
+        content="Portfolio of Rohail MacDougall Ahmad, a First-Class Cybersecurity Graduate from Edinburgh Napier University.">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-        
-        :root { --napier-red: #E31B23; --zinc-950: #09090b; }
-        body { background-color: var(--zinc-950); color: white; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+
+        :root {
+            --napier-red: #E31B23;
+            --zinc-950: #09090b;
+        }
+
+        body {
+            background-color: var(--zinc-950);
+            color: white;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
 
         /* CINEMATIC BACKGROUND ENGINE */
         .fixed-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
             background-image: url('background.jpg'), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000');
-            background-size: cover; background-position: center;
+            background-size: cover;
+            background-position: center;
             filter: brightness(0.3) saturate(0.6);
             transition: transform 0.1s ease-out;
         }
 
         .hero-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
             background: radial-gradient(circle at 20% 30%, rgba(227, 27, 35, 0.1), transparent 50%),
-                        linear-gradient(to bottom, transparent, var(--zinc-950));
+                linear-gradient(to bottom, transparent, var(--zinc-950));
         }
 
         .texture-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 50;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50;
             background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
             opacity: 0.15;
         }
 
         .nav-dock {
-            background: rgba(20, 20, 20, 0.5); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+            background: rgba(20, 20, 20, 0.5);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-dock:hover {
+            background: rgba(20, 20, 20, 0.7);
+            border-color: rgba(227, 27, 35, 0.3);
         }
 
         .id-card {
-            background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(25px);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(25px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 40px 100px -15px rgba(0, 0, 0, 0.9);
-            transform-style: preserve-3d; perspective: 1000px;
+            transform-style: preserve-3d;
+            transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .id-card:hover {
+            border-color: rgba(227, 27, 35, 0.3);
+            box-shadow: 0 40px 100px -15px rgba(227, 27, 35, 0.2);
         }
 
         .glass-panel {
-            background: rgba(20, 20, 20, 0.4); backdrop-filter: blur(20px);
+            background: rgba(20, 20, 20, 0.4);
+            backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
-        .reveal { opacity: 0; transform: translateY(20px); transition: all 1s cubic-bezier(0.19, 1, 0.22, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        .glass-panel:hover {
+            background: rgba(20, 20, 20, 0.6);
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Gradient Orbs */
+        .gradient-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: -1;
+            transition: all 0.3s ease;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(227, 27, 35, 0.4), transparent);
+            top: 10%;
+            left: 5%;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 51, 51, 0.3), transparent);
+            bottom: 20%;
+            right: 10%;
+        }
     </style>
 </head>
+
 <body class="antialiased">
 
     <div class="texture-overlay"></div>
-    <div class="fixed-bg" id="bg-parallax"></div>
+    <div class="fixed-bg"></div>
     <div class="hero-overlay"></div>
+
+    <!-- Animated Gradient Orbs -->
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
 
     <!-- Navigation Dock -->
     <nav class="fixed bottom-8 left-0 right-0 z-50 flex justify-center px-4">
         <div class="nav-dock px-8 py-5 rounded-full flex gap-10 items-center shadow-2xl">
-            <a href="index.html" class="font-mono text-[10px] uppercase tracking-[0.3em] text-white underline decoration-red-600 underline-offset-8">About</a>
-            <a href="research.html" class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Dissertation</a>
-            <a href="projects.html" class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Projects</a>
-            <a href="contact.html" class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Contact</a>
+            <a href="index.html"
+                class="font-mono text-[10px] uppercase tracking-[0.3em] text-white underline decoration-red-600 underline-offset-8">About</a>
+            <a href="research.html"
+                class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Dissertation</a>
+            <a href="projects.html"
+                class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Projects</a>
+            <a href="games.html"
+                class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Games</a>
+            <a href="contact.html"
+                class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Contact</a>
         </div>
     </nav>
 
     <!-- Main Dashboard -->
     <main class="min-h-screen flex flex-col justify-center px-8 lg:px-24 pt-20 pb-40">
         <div class="grid lg:grid-cols-12 gap-16 items-start max-w-7xl mx-auto w-full">
-            
+
             <div class="lg:col-span-7 space-y-12">
                 <div class="reveal active">
-                    <span class="font-mono text-red-500 text-[10px] tracking-[0.5em] uppercase block mb-6">> Session_Initialised: Rohail_MA | 1st_Class_Hons</span>
+                    <span class="font-mono text-red-500 text-[10px] tracking-[0.5em] uppercase block mb-6">>
+                        Session_Initialised: Rohail_MA | 1st_Class_Hons</span>
                     <h1 class="text-7xl md:text-[110px] font-bold leading-[0.8] tracking-tighter mb-8">
                         DIGITAL <br /> <span class="text-zinc-500/40">INTELLIGENCE.</span>
                     </h1>
                 </div>
-                
+
                 <div class="reveal active" style="transition-delay: 200ms;">
                     <p class="text-xl md:text-2xl text-zinc-300 font-light max-w-xl leading-relaxed">
-                        Cybersecurity Graduate from <span class="text-white font-medium border-b border-red-600">Edinburgh Napier University</span>. Specialising in forensic analysis and the emerging threat landscape of generative AI.
+                        Cybersecurity Graduate from <span
+                            class="text-white font-medium border-b border-red-600">Edinburgh Napier University</span>.
+                        Specialising in forensic analysis and the emerging threat landscape of generative AI.
                     </p>
                 </div>
 
@@ -119,9 +220,11 @@
                 </div>
 
                 <div class="reveal active flex gap-8 pt-4" style="transition-delay: 400ms;">
-                    <a href="research.html" class="group flex items-center gap-4 px-10 py-5 bg-white text-black font-bold uppercase text-[10px] tracking-[0.3em] rounded-xl hover:bg-red-600 hover:text-white transition-all">
+                    <a href="research.html"
+                        class="group flex items-center gap-4 px-10 py-5 bg-white text-black font-bold uppercase text-[10px] tracking-[0.3em] rounded-xl hover:bg-red-600 hover:text-white transition-all">
                         Launch Investigation
-                        <i data-lucide="arrow-right" size="14" class="group-hover:translate-x-1 transition-transform"></i>
+                        <i data-lucide="arrow-right" size="14"
+                            class="group-hover:translate-x-1 transition-transform"></i>
                     </a>
                 </div>
             </div>
@@ -132,16 +235,21 @@
                     <div class="flex flex-col h-full justify-between relative z-10">
                         <div class="flex justify-between items-start">
                             <i data-lucide="shield-check" class="text-red-600"></i>
-                            <span class="font-mono text-[9px] text-zinc-500 tracking-widest border border-zinc-800 px-2 py-1 rounded">GRAD_2025</span>
+                            <span
+                                class="font-mono text-[9px] text-zinc-500 tracking-widest border border-zinc-800 px-2 py-1 rounded">GRAD_2025</span>
                         </div>
-                        
+
                         <div class="space-y-6 text-center lg:text-left">
-                            <div class="w-full aspect-square rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900 group-hover:border-red-500/40 transition-all duration-700">
-                                <img src="headshot.JPEG" alt="Rohail" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110">
+                            <div
+                                class="w-full aspect-square rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900 group-hover:border-red-500/40 transition-all duration-700">
+                                <img src="headshot.JPEG" alt="Rohail"
+                                    class="w-full h-full object-cover opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110">
                             </div>
                             <div>
                                 <h2 class="text-xl font-bold tracking-tight mb-1 uppercase">Rohail Ahmad</h2>
-                                <p class="text-[9px] font-mono text-zinc-500 uppercase tracking-widest italic text-center">First-Class BEng (Hons)</p>
+                                <p
+                                    class="text-[9px] font-mono text-zinc-500 uppercase tracking-widest italic text-center">
+                                    First-Class BEng (Hons)</p>
                             </div>
                         </div>
                     </div>
@@ -169,16 +277,91 @@
         </div>
     </main>
 
+    <script src="animations.js"></script>
     <script>
         lucide.createIcons();
+
+        // Enhanced 3D card with magnetic effect
         const card = document.getElementById('tilt-card');
-        const bg = document.getElementById('bg-parallax');
-        document.addEventListener('mousemove', (e) => {
-            const x = (window.innerWidth / 2 - e.pageX) / 35;
-            const y = (window.innerHeight / 2 - e.pageY) / 35;
-            card.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
-            if (bg) bg.style.transform = `translate(${x * 0.5}px, ${y * 0.5}px) scale(1.05)`;
+        if (card) {
+            let bounds = card.getBoundingClientRect();
+
+            window.addEventListener('resize', () => {
+                bounds = card.getBoundingClientRect();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (window.innerWidth < 768) return; // Skip on mobile
+
+                const mouseX = e.clientX;
+                const mouseY = e.clientY;
+
+                // Card magnetic effect
+                const centerX = bounds.left + bounds.width / 2;
+                const centerY = bounds.top + bounds.height / 2;
+
+                const deltaX = (mouseX - centerX) / 30;
+                const deltaY = (mouseY - centerY) / 30;
+
+                // Enhanced 3D transform
+                card.style.transform = `
+                    perspective(1000px)
+                    rotateY(${deltaX}deg)
+                    rotateX(${-deltaY}deg)
+                    translateZ(20px)
+                    scale(1.02)
+                `;
+
+                // Animate gradient orbs to follow cursor subtly
+                const orbs = document.querySelectorAll('.gradient-orb');
+                orbs.forEach((orb, index) => {
+                    const speed = (index + 1) * 0.01;
+                    const x = (mouseX - window.innerWidth / 2) * speed;
+                    const y = (mouseY - window.innerHeight / 2) * speed;
+                    orb.style.transform = `translate(${x}px, ${y}px)`;
+                });
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) translateZ(0px) scale(1)';
+            });
+        }
+
+        // Animate skill percentages (example - add data-counter attributes to elements you want to animate)
+        window.addEventListener('load', () => {
+            // You can add counters to specific elements
+            // Example: <span data-counter="85">0</span>%
+            const counters = document.querySelectorAll('[data-counter]');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-counter'));
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            window.AnimationEngine.animateCounter(counter, 0, target, 2000, '');
+                            observer.unobserve(counter);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                observer.observe(counter);
+            });
+        });
+
+        // Enhanced reveal animations
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            revealObserver.observe(el);
         });
     </script>
 </body>
+
 </html>
