@@ -1,50 +1,146 @@
-<!DOCTYPE html>
+=<!DOCTYPE html>
 <html lang="en-GB">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Investigation | Rohail M.A</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-        :root { --napier-red: #E31B23; --zinc-950: #09090b; }
-        body { background-color: var(--zinc-950); color: white; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
-        .font-mono { font-family: 'JetBrains+Mono', monospace; }
 
-        .section-wrap { min-height: 100vh; display: flex; align-items: center; position: relative; padding: 120px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        :root {
+            --napier-red: #E31B23;
+            --zinc-950: #09090b;
+        }
+
+        body {
+            background-color: var(--zinc-950);
+            color: white;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .font-mono {
+            font-family: 'JetBrains+Mono', monospace;
+        }
+
+        .section-wrap {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 120px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
 
         .bg-fixed {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
             background-image: url('background.jpg'), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000');
-            background-size: cover; filter: brightness(0.2) blur(8px);
+            background-size: cover;
+            filter: brightness(0.2) blur(8px);
         }
 
         .glass-panel {
-            background: rgba(20, 20, 20, 0.7); backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.08); padding: 3rem; border-radius: 2rem;
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 3rem;
+            border-radius: 2rem;
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
-        .fade-in { opacity: 0; transform: translateY(40px); transition: all 1s ease-out; }
-        .fade-in.active { opacity: 1; transform: translateY(0); }
+        .glass-panel:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+            transform: translateY(-5px);
+        }
 
-        .stat-huge { font-size: clamp(4rem, 10vw, 8rem); line-height: 1; font-weight: 800; letter-spacing: -0.05em; }
-        .redacted { background: white; color: white; transition: 0.4s ease; padding: 0 4px; cursor: help; }
-        .redacted:hover { background: transparent; color: var(--napier-red); }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s ease-out;
+        }
 
-        .nav-dock { background: rgba(20, 20, 20, 0.5); backdrop-filter: blur(30px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-huge {
+            font-size: clamp(4rem, 10vw, 8rem);
+            line-height: 1;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            position: relative;
+            display: inline-block;
+        }
+
+        .stat-huge::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--napier-red), transparent);
+            animation: expandWidth 2s ease-out forwards;
+        }
+
+        @keyframes expandWidth {
+            from {
+                width: 0%;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        .redacted {
+            background: white;
+            color: white;
+            transition: 0.4s ease;
+            padding: 0 4px;
+            cursor: help;
+        }
+
+        .redacted:hover {
+            background: transparent;
+            color: var(--napier-red);
+        }
+
+        .nav-dock {
+            background: rgba(20, 20, 20, 0.5);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
     </style>
 </head>
+
 <body class="antialiased">
 
     <div class="bg-fixed"></div>
 
     <nav class="fixed bottom-8 left-0 right-0 z-50 flex justify-center px-4">
         <div class="nav-dock px-8 py-5 rounded-full flex gap-10 items-center shadow-2xl">
-            <a href="index.html" class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">About</a>
-            <a href="research.html" class="active font-mono text-[10px] uppercase tracking-[0.3em] text-white underline decoration-red-600 underline-offset-8">Dissertation</a>
-            <a href="projects.html" class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Projects</a>
-            <a href="contact.html" class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Contact</a>
+            <a href="index.html"
+                class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">About</a>
+            <a href="research.html"
+                class="active font-mono text-[10px] uppercase tracking-[0.3em] text-white underline decoration-red-600 underline-offset-8">Dissertation</a>
+            <a href="projects.html"
+                class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Projects</a>
+            <a href="games.html"
+                class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Games</a>
+            <a href="contact.html"
+                class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Contact</a>
         </div>
     </nav>
 
@@ -52,16 +148,22 @@
     <section class="section-wrap px-8 lg:px-24">
         <div class="max-w-6xl mx-auto w-full">
             <div class="fade-in active">
-                <span class="font-mono text-red-500 text-[10px] tracking-[0.5em] uppercase block mb-8">> DISSERTATION: HONOURS_PROJECT_2025</span>
+                <span class="font-mono text-red-500 text-[10px] tracking-[0.5em] uppercase block mb-8">> DISSERTATION:
+                    HONOURS_PROJECT_2025</span>
                 <h1 class="text-6xl md:text-[100px] font-bold tracking-tighter mb-12 leading-[0.85]">
                     Linguistic <br /> <span class="opacity-30 italic font-light">Realism.</span>
                 </h1>
                 <p class="text-2xl md:text-4xl text-zinc-400 font-light leading-relaxed max-w-5xl">
-                    Evaluating brand imitation in AI-generated phishing. A 23,000-word investigation into how <span class="text-white font-medium italic underline decoration-red-600 underline-offset-8">Large Language Models (LLMs)</span> automate the erosion of digital trust.
+                    Evaluating brand imitation in AI-generated phishing. A 23,000-word investigation into how <span
+                        class="text-white font-medium italic underline decoration-red-600 underline-offset-8">Large
+                        Language Models (LLMs)</span> automate the erosion of digital trust.
                 </p>
                 <div class="mt-12 flex gap-6 items-center">
-                    <span class="px-5 py-2 bg-red-600 text-white font-bold text-[10px] uppercase rounded-full tracking-widest shadow-xl">Recommended for Publishing</span>
-                    <span class="text-zinc-500 font-mono text-[10px] uppercase tracking-widest">Supervisor Endorsed</span>
+                    <span
+                        class="px-5 py-2 bg-red-600 text-white font-bold text-[10px] uppercase rounded-full tracking-widest shadow-xl">Recommended
+                        for Publishing</span>
+                    <span class="text-zinc-500 font-mono text-[10px] uppercase tracking-widest">Supervisor
+                        Endorsed</span>
                 </div>
             </div>
         </div>
@@ -74,21 +176,27 @@
                 <h2 class="text-xs font-bold uppercase tracking-[0.4em] text-red-600 mb-10">01. The Problem Space</h2>
                 <h3 class="text-4xl font-bold mb-8 tracking-tight">From Sony to ChatGPT.</h3>
                 <p class="text-xl text-zinc-400 font-light leading-relaxed mb-8">
-                    My literature review traced the evolution of phishing from the manual, high-effort spear-phishing of the <span class="text-white font-medium">Sony 2014 Breach</span> (costing $100m) to today's automated AI arms race.
+                    My literature review traced the evolution of phishing from the manual, high-effort spear-phishing of
+                    the <span class="text-white font-medium">Sony 2014 Breach</span> (costing $100m) to today's
+                    automated AI arms race.
                 </p>
                 <p class="text-lg text-zinc-500 font-light leading-relaxed mb-8">
-                    The core issue is scalability. What once required a team of hackers to mimic a brand's voice can now be done in seconds by a generative model.
+                    The core issue is scalability. What once required a team of hackers to mimic a brand's voice can now
+                    be done in seconds by a generative model.
                 </p>
                 <div class="p-6 bg-white/5 border border-white/10 rounded-2xl">
                     <h4 class="font-bold text-xs uppercase mb-2 text-zinc-300">The V-Triad Framework</h4>
                     <p class="text-sm text-zinc-400 leading-relaxed">
-                        I applied this psychological model to explain <em>why</em> we click. Attackers exploit <span class="text-white">Credibility</span> (brand logos) and <span class="text-white">Urgency</span> (deadlines) to bypass logical filters.
+                        I applied this psychological model to explain <em>why</em> we click. Attackers exploit <span
+                            class="text-white">Credibility</span> (brand logos) and <span
+                            class="text-white">Urgency</span> (deadlines) to bypass logical filters.
                     </p>
                 </div>
             </div>
             <div class="fade-in">
                 <div class="glass-panel border-red-600/20 sticky top-32">
-                    <h4 class="font-mono text-[10px] text-zinc-500 uppercase tracking-[0.3em] mb-10">Historical_Context</h4>
+                    <h4 class="font-mono text-[10px] text-zinc-500 uppercase tracking-[0.3em] mb-10">Historical_Context
+                    </h4>
                     <ul class="space-y-6 text-zinc-300 font-light">
                         <li class="flex gap-4">
                             <span class="font-mono text-red-500">2014</span>
@@ -115,21 +223,26 @@
                 <h2 class="text-xs font-bold uppercase tracking-[0.4em] text-red-600 mb-6">02. Methodology Lab</h2>
                 <h3 class="text-5xl md:text-7xl font-bold tracking-tighter">Mathematical Forensics.</h3>
                 <p class="text-xl text-zinc-400 mt-6 max-w-2xl">
-                    How do you measure "realism"? I didn't just read emails; I converted them into data points to measure their similarity mathematically.
+                    How do you measure "realism"? I didn't just read emails; I converted them into data points to
+                    measure their similarity mathematically.
                 </p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-10">
                 <div class="glass-panel fade-in">
                     <div class="flex items-center gap-4 mb-8">
-                        <div class="w-12 h-12 bg-red-600/10 flex items-center justify-center rounded-2xl text-red-600"><i data-lucide="binary"></i></div>
+                        <div class="w-12 h-12 bg-red-600/10 flex items-center justify-center rounded-2xl text-red-600">
+                            <i data-lucide="binary"></i>
+                        </div>
                         <h4 class="font-bold tracking-widest text-xs uppercase">BERT Semantic Embedding</h4>
                     </div>
                     <p class="text-zinc-400 font-light leading-relaxed mb-8">
-                        Think of BERT as a translator that turns sentences into GPS coordinates. I converted 60+ emails into numerical vectors using <span class="text-white">all-MiniLM-L6-v2</span>.
+                        Think of BERT as a translator that turns sentences into GPS coordinates. I converted 60+ emails
+                        into numerical vectors using <span class="text-white">all-MiniLM-L6-v2</span>.
                     </p>
                     <p class="text-zinc-400 font-light leading-relaxed mb-8">
-                        By calculating the distance between the "Real Brand" vector and the "AI Clone" vector, I proved they occupy almost the exact same semantic space.
+                        By calculating the distance between the "Real Brand" vector and the "AI Clone" vector, I proved
+                        they occupy almost the exact same semantic space.
                     </p>
                     <div class="font-mono text-[9px] text-zinc-600 bg-black/40 p-4 rounded-xl border border-white/5">
                         Calculated_Cosine_Similarity: 0.8490
@@ -138,14 +251,19 @@
 
                 <div class="glass-panel fade-in" style="transition-delay: 200ms;">
                     <div class="flex items-center gap-4 mb-8">
-                        <div class="w-12 h-12 bg-emerald-600/10 flex items-center justify-center rounded-2xl text-emerald-600"><i data-lucide="activity"></i></div>
+                        <div
+                            class="w-12 h-12 bg-emerald-600/10 flex items-center justify-center rounded-2xl text-emerald-600">
+                            <i data-lucide="activity"></i>
+                        </div>
                         <h4 class="font-bold tracking-widest text-xs uppercase">Empath Tone Analysis</h4>
                     </div>
                     <p class="text-zinc-400 font-light leading-relaxed mb-8">
-                        I used Empath to analyze lexical categories like <span class="italic text-white">'Money', 'Urgency', and 'Trust'</span>. 
+                        I used Empath to analyze lexical categories like <span class="italic text-white">'Money',
+                            'Urgency', and 'Trust'</span>.
                     </p>
                     <p class="text-zinc-400 font-light leading-relaxed mb-8">
-                        The findings showed that AI is excellent at mimicking corporate authority but often lacks the subtle "entropy" or randomness of human writing—a key marker for future detection tools.
+                        The findings showed that AI is excellent at mimicking corporate authority but often lacks the
+                        subtle "entropy" or randomness of human writing—a key marker for future detection tools.
                     </p>
                 </div>
             </div>
@@ -160,15 +278,19 @@
                 <div class="stat-huge text-white mb-6">49.2%</div>
                 <h3 class="text-3xl font-bold mb-6 tracking-tighter">The Misclassification Trap.</h3>
                 <p class="text-xl text-zinc-400 font-light leading-relaxed mb-8">
-                    The most alarming finding: Nearly half of study participants mistook AI-generated branded phishing for <span class="text-white underline decoration-red-600 underline-offset-8">legitimate communication</span>.
+                    The most alarming finding: Nearly half of study participants mistook AI-generated branded phishing
+                    for <span class="text-white underline decoration-red-600 underline-offset-8">legitimate
+                        communication</span>.
                 </p>
                 <p class="text-lg text-zinc-500 font-light leading-relaxed">
-                    This 50/50 split proves that human intuition is no longer a reliable firewall. When the "Linguistic Fingerprint" is cloned perfectly, the user cannot defend themselves.
+                    This 50/50 split proves that human intuition is no longer a reliable firewall. When the "Linguistic
+                    Fingerprint" is cloned perfectly, the user cannot defend themselves.
                 </p>
             </div>
             <div class="fade-in">
                 <div class="glass-panel border-white/10">
-                    <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-8">The Confidence Gap (Fig 11)</h4>
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-8">The Confidence Gap (Fig
+                        11)</h4>
                     <div class="space-y-6">
                         <div class="relative">
                             <div class="flex justify-between text-[10px] font-mono text-zinc-400 mb-2">
@@ -178,12 +300,14 @@
                             <div class="h-2 w-full bg-zinc-800 rounded-full overflow-hidden">
                                 <div class="h-full bg-gradient-to-r from-red-600 to-zinc-800 w-[65%]"></div>
                             </div>
-                            <p class="text-[10px] text-zinc-500 mt-2">Participants were often "Very Confident" that a phishing email was real.</p>
+                            <p class="text-[10px] text-zinc-500 mt-2">Participants were often "Very Confident" that a
+                                phishing email was real.</p>
                         </div>
                     </div>
                     <div class="mt-8 pt-8 border-t border-white/5">
                         <p class="text-sm text-zinc-300 leading-relaxed italic">
-                            "We are entering an era where detection must rely on technical infrastructure verification, as the visual and linguistic cues we rely on have been fully compromised."
+                            "We are entering an era where detection must rely on technical infrastructure verification,
+                            as the visual and linguistic cues we rely on have been fully compromised."
                         </p>
                     </div>
                 </div>
@@ -191,12 +315,100 @@
         </div>
     </section>
 
+    <script src="animations.js"></script>
     <script>
         lucide.createIcons();
+
+        // Enhanced scroll animations with staggered delays
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
         }, { threshold: 0.1 });
+
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Animated counter for the 49.2% stat
+        const statElement = document.querySelector('.stat-huge');
+        if (statElement) {
+            const statObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.dataset.animated) {
+                        // Store the original value
+                        const targetValue = 49.2;
+                        entry.target.textContent = '0%';
+
+                        // Animate from 0 to 49.2
+                        let current = 0;
+                        const increment = targetValue / 100;
+                        const duration = 2000;
+                        const stepTime = duration / 100;
+
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= targetValue) {
+                                entry.target.textContent = targetValue + '%';
+                                clearInterval(timer);
+                            } else {
+                                entry.target.textContent = current.toFixed(1) + '%';
+                            }
+                        }, stepTime);
+
+                        entry.target.dataset.animated = 'true';
+                        statObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            statObserver.observe(statElement);
+        }
+
+        // Animate progress bars on scroll
+        const progressBars = document.querySelectorAll('.h-2 > div');
+        progressBars.forEach(bar => {
+            const progressObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const width = entry.target.style.width || '0%';
+                        entry.target.style.width = '0%';
+                        setTimeout(() => {
+                            entry.target.style.transition = 'width 1.5s cubic-bezier(0.19, 1, 0.22, 1)';
+                            entry.target.style.width = width;
+                        }, 100);
+                        progressObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            progressObserver.observe(bar);
+        });
+
+        // Timeline scroll progress
+        window.addEventListener('scroll', () => {
+            const timeline = document.querySelector('.glass-panel.border-red-600\/20');
+            if (timeline) {
+                const rect = timeline.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                const scrolled = Math.max(0, Math.min(1, (windowHeight - rect.top) / (windowHeight + rect.height)));
+                timeline.style.opacity = 0.3 + (scrolled * 0.7);
+            }
+        });
+
+        // Add hover effect to year markers
+        document.querySelectorAll('.font-mono.text-red-500').forEach(year => {
+            year.style.transition = 'all 0.3s ease';
+            year.addEventListener('mouseenter', () => {
+                year.style.transform = 'scale(1.2)';
+                year.style.textShadow = '0 0 10px rgba(227, 27, 35, 0.8)';
+            });
+            year.addEventListener('mouseleave', () => {
+                year.style.transform = 'scale(1)';
+                year.style.textShadow = 'none';
+            });
+        });
     </script>
 </body>
+
 </html>
