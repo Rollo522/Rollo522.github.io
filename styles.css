@@ -1,0 +1,469 @@
+/* ========================================
+   GLOBAL PREMIUM STYLES & ANIMATIONS
+   Centralized design system for portfolio
+   ======================================== */
+
+:root {
+    /* Color Tokens */
+    --napier-red: #E31B23;
+    --zinc-950: #09090b;
+    --accent-red: #ff3333;
+    --accent-emerald: #10b981;
+    --accent-blue: #3b82f6;
+    
+    /* Glassmorphism */
+    --glass-bg: rgba(20, 20, 20, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-blur: 30px;
+    
+    /* Animation Timings */
+    --timing-fast: 200ms;
+    --timing-base: 400ms;
+    --timing-slow: 700ms;
+    --timing-premium: cubic-bezier(0.19, 1, 0.22, 1);
+    
+    /* Shadows */
+    --shadow-sm: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 20px 60px -15px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 40px 100px -20px rgba(0, 0, 0, 0.8);
+    --shadow-glow-red: 0 0 30px rgba(227, 27, 35, 0.3);
+}
+
+/* ========================================
+   SCROLL PROGRESS INDICATOR
+   ======================================== */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--napier-red), var(--accent-red));
+    z-index: 9999;
+    transition: width 0.1s ease-out;
+    box-shadow: 0 0 10px rgba(227, 27, 35, 0.5);
+}
+
+/* ========================================
+   CUSTOM CURSOR
+   ======================================== */
+.custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(227, 27, 35, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transition: transform 0.15s ease-out, border-color 0.3s ease;
+    transform: translate(-50%, -50%);
+}
+
+.custom-cursor.hover {
+    transform: translate(-50%, -50%) scale(1.5);
+    border-color: var(--napier-red);
+    background: rgba(227, 27, 35, 0.1);
+}
+
+.custom-cursor-follower {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: var(--napier-red);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9997;
+    transition: transform 0.2s ease-out;
+    transform: translate(-50%, -50%);
+    box-shadow: var(--shadow-glow-red);
+}
+
+/* ========================================
+   PARTICLE CANVAS
+   ======================================== */
+#particle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* ========================================
+   PREMIUM ANIMATIONS
+   ======================================== */
+
+/* Fade In Up */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade In Left */
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Fade In Right */
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Scale In */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Pulse */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Glow */
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(227, 27, 35, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(227, 27, 35, 0.6), 0 0 30px rgba(227, 27, 35, 0.4);
+    }
+}
+
+/* Float */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Shimmer */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+/* Counter Animation */
+@keyframes countUp {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+/* Animation Utilities */
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s var(--timing-premium) forwards;
+}
+
+.animate-fade-in-left {
+    animation: fadeInLeft 0.8s var(--timing-premium) forwards;
+}
+
+.animate-fade-in-right {
+    animation: fadeInRight 0.8s var(--timing-premium) forwards;
+}
+
+.animate-scale-in {
+    animation: scaleIn 0.6s var(--timing-premium) forwards;
+}
+
+.animate-pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.animate-glow {
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* Delay Utilities */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+
+/* Opacity initial state for animations */
+.animate-on-scroll {
+    opacity: 0;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+}
+
+/* ========================================
+   PREMIUM HOVER EFFECTS
+   ======================================== */
+
+.hover-lift {
+    transition: transform var(--timing-base) var(--timing-premium), 
+                box-shadow var(--timing-base) var(--timing-premium);
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.hover-glow {
+    transition: box-shadow var(--timing-base) ease;
+}
+
+.hover-glow:hover {
+    box-shadow: var(--shadow-glow-red);
+}
+
+.hover-scale {
+    transition: transform var(--timing-base) var(--timing-premium);
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+/* ========================================
+   CARD EFFECTS
+   ======================================== */
+
+.magnetic-card {
+    transition: transform 0.1s ease-out;
+    transform-style: preserve-3d;
+}
+
+.flip-card {
+    perspective: 1000px;
+    position: relative;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+}
+
+/* ========================================
+   GLASS MORPHISM VARIANTS
+   ======================================== */
+
+.glass-premium {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow-md);
+}
+
+.glass-intense {
+    background: rgba(20, 20, 20, 0.7);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* ========================================
+   LOADING & TRANSITIONS
+   ======================================== */
+
+.page-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--zinc-950);
+    z-index: 10000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.page-transition.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--zinc-950);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10001;
+    transition: opacity 0.5s ease;
+}
+
+.preloader.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loader-ring {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top-color: var(--napier-red);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ========================================
+   NOTIFICATION SYSTEM
+   ======================================== */
+
+.notification {
+    position: fixed;
+    top: 100px;
+    right: 30px;
+    padding: 20px 30px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    color: white;
+    z-index: 9999;
+    transform: translateX(400px);
+    transition: transform 0.5s var(--timing-premium);
+    box-shadow: var(--shadow-lg);
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+.notification.success {
+    border-left: 4px solid var(--accent-emerald);
+}
+
+.notification.error {
+    border-left: 4px solid var(--napier-red);
+}
+
+/* ========================================
+   RESPONSIVE UTILITIES
+   ======================================== */
+
+@media (max-width: 768px) {
+    .custom-cursor,
+    .custom-cursor-follower {
+        display: none;
+    }
+    
+    .magnetic-card {
+        transform: none !important;
+    }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .glass-premium,
+    .glass-intense {
+        border-width: 2px;
+    }
+}
