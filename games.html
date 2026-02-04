@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Operations | Rohail M.A</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+        :root {
+            --napier-red: #E31B23;
+            --zinc-950: #09090b;
+            --terminal-green: #10b981;
+        }
+
+        body {
+            background-color: var(--zinc-950);
+            color: white;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Ambient Background */
+        .fixed-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background-image: url('background.jpg'), url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2000');
+            background-size: cover;
+            filter: brightness(0.2) saturate(0.8) hue-rotate(10deg);
+        }
+
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+        }
+
+        .nav-dock {
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Module Containers */
+        .cyber-panel {
+            background: rgba(9, 9, 11, 0.7);
+            backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .cyber-panel:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Module 1: Analyser */
+        .analyser-input {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #d4d4d8;
+            transition: all 0.2s ease;
+        }
+
+        .analyser-input:focus {
+            outline: none;
+            border-color: var(--napier-red);
+            box-shadow: 0 0 15px rgba(227, 27, 35, 0.15);
+        }
+
+        .scan-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .scan-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .scan-btn:hover::after {
+            left: 100%;
+        }
+
+        /* Module 2: Terminal */
+        .terminal-window {
+            background: #0c0c0c;
+            border: 1px solid #333;
+            box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.8);
+            font-family: 'JetBrains Mono', monospace;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .terminal-window::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        .scanline {
+            width: 100%;
+            height: 100px;
+            z-index: 10;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(255, 255, 255, 0.04) 50%, rgba(0, 0, 0, 0) 100%);
+            opacity: 0.1;
+            position: absolute;
+            bottom: 100%;
+            pointer-events: none;
+            animation: scanline 10s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% {
+                bottom: 100%;
+            }
+
+            80% {
+                bottom: -100%;
+            }
+
+            100% {
+                bottom: -100%;
+            }
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background: var(--terminal-green);
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .glow-text {
+            text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+        }
+
+        .progress-bar {
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Achievements Modal */
+        .modal-overlay {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 2px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body class="antialiased min-h-screen flex flex-col">
+
+    <div class="fixed-bg"></div>
+    <div class="grid-overlay"></div>
+
+    <!-- Navigation Dock -->
+    <nav class="fixed bottom-8 left-0 right-0 z-50 flex justify-center px-4">
+        <div class="nav-dock px-8 py-5 rounded-full flex gap-10 items-center shadow-2xl">
+            <a href="index.html"
+                class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">About</a>
+            <a href="research.html"
+                class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Dissertation</a>
+            <a href="projects.html"
+                class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Projects</a>
+            <a href="games.html"
+                class="active font-mono text-[10px] uppercase tracking-[0.3em] text-white underline decoration-red-600 underline-offset-8">Games</a>
+            <a href="contact.html"
+                class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Contact</a>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-24 pb-40 px-6 lg:px-12 max-w-7xl mx-auto w-full">
+        <!-- Header -->
+        <header class="mb-16 text-center lg:text-left animate-in fade-in slide-in-from-bottom-4 duration-700">
+            <span class="font-mono text-red-500 text-[10px] tracking-[0.5em] uppercase block mb-6">> CLEARANCE_LEVEL:
+                4</span>
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tighter mb-4">Interactive <br /><span
+                    class="text-zinc-500">Operations.</span></h1>
+            <p class="text-zinc-400 font-light max-w-2xl">Use these tools to explore the forensic methodologies used in
+                my research or access the hidden file system.</p>
+        </header>
+
+        <div class="grid lg:grid-cols-2 gap-12">
+
+            <!-- MODULE 1: Linguistic Analyser -->
+            <div class="cyber-panel rounded-3xl p-8 flex flex-col h-full relative overflow-hidden group">
+                <div class="absolute top-0 right-0 p-4 opacity-50">
+                    <i data-lucide="brain-circuit" class="text-red-500 w-12 h-12 stroke-[1px]"></i>
+                </div>
+
+                <div class="mb-8">
+                    <h2 class="text-xl font-bold flex items-center gap-3">
+                        <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                        Linguistic Analyser
+                    </h2>
+                    <p class="text-xs text-zinc-500 font-mono mt-2 uppercase tracking-widest">Model: BERT_Forensic_v2.0
+                    </p>
+                </div>
+
+                <div class="flex-grow space-y-6">
+                    <div class="relative">
+                        <label class="text-[10px] uppercase tracking-widest text-zinc-400 mb-2 block">Input Suspicious
+                            Comms</label>
+                        <textarea id="analyser-input"
+                            class="analyser-input w-full h-40 rounded-xl p-4 font-mono text-xs resize-none"
+                            placeholder="Paste email text here for deep scanning...&#10;> Example: 'URGENT: Your account will be suspended in 24 hours.'"></textarea>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <button onclick="runAnalysis()"
+                            class="scan-btn flex-1 bg-red-600 hover:bg-red-700 text-white py-3 rounded-lg text-xs font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-2">
+                            <i data-lucide="scan-line" size="14"></i> Initiate Scan
+                        </button>
+                        <button onclick="clearAnalysis()"
+                            class="px-6 border border-zinc-700 hover:border-zinc-500 text-zinc-400 hover:text-white rounded-lg transition-colors">
+                            <i data-lucide="trash-2" size="14"></i>
+                        </button>
+                    </div>
+
+                    <!-- Analysis Output -->
+                    <div id="analysis-output" class="hidden space-y-6 pt-6 border-t border-zinc-800">
+                        <div class="flex justify-between items-end">
+                            <div class="text-[10px] font-mono text-zinc-500">THREAT_PROBABILITY</div>
+                            <div id="score-display" class="text-4xl font-bold text-red-500">0%</div>
+                        </div>
+
+                        <!-- Progress Bar -->
+                        <div class="w-full bg-zinc-900 h-1 rounded-full overflow-hidden">
+                            <div id="threat-bar" class="h-full bg-red-500 w-0 progress-bar"></div>
+                        </div>
+
+                        <!-- Metrics -->
+                        <div class="grid grid-cols-3 gap-2">
+                            <div class="metric-card p-3">
+                                <div class="text-[9px] text-zinc-500 uppercase mb-1">Urgency</div>
+                                <div id="urgency-score" class="text-sm font-mono text-white">--</div>
+                            </div>
+                            <div class="metric-card p-3">
+                                <div class="text-[9px] text-zinc-500 uppercase mb-1">Authority</div>
+                                <div id="authority-score" class="text-sm font-mono text-white">--</div>
+                            </div>
+                            <div class="metric-card p-3">
+                                <div class="text-[9px] text-zinc-500 uppercase mb-1">Warmth</div>
+                                <div id="warmth-score" class="text-sm font-mono text-white">--</div>
+                            </div>
+                        </div>
+
+                        <div id="verdict-text"
+                            class="text-xs text-zinc-400 leading-relaxed bg-red-500/5 p-4 rounded-lg border border-red-500/10">
+                            Waiting for input...
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 2: Root Shell -->
+            <div class="cyber-panel rounded-3xl p-1 overflow-hidden h-[600px] flex flex-col">
+                <div class="bg-zinc-900/80 px-4 py-2 flex items-center justify-between border-b border-zinc-800">
+                    <div class="flex gap-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50"></div>
+                    </div>
+                    <div class="text-[10px] font-mono text-zinc-600 uppercase">root@rohail-kali:~</div>
+                </div>
+
+                <div id="terminal" class="terminal-window p-6 flex-grow overflow-y-auto text-xs md:text-sm"
+                    onclick="document.getElementById('cli-input').focus()">
+                    <div class="scanline"></div>
+                    <div class="text-zinc-500 mb-4">
+                        Kali GNU/Linux Rolling [Version 2026.1]<br>
+                        (c) 2026 Rohail M.A. All rights reserved.<br>
+                        <br>
+                        Type <span class="text-white">'help'</span> to view available commands.
+                    </div>
+                    <div id="terminal-output"></div>
+
+                    <div class="flex items-center text-green-500 mt-2 relative group">
+                        <span class="mr-2 whitespace-nowrap" id="prompt-text">root@rohail:~$</span>
+
+                        <!-- Input Interface -->
+                        <div class="relative flex-grow flex items-center">
+                            <!-- Visual Mirror (What user sees) -->
+                            <div class="flex items-center">
+                                <span id="input-mirror"
+                                    class="whitespace-pre-wrap break-all text-white font-mono"></span>
+                                <span class="cursor w-2 h-4 bg-green-500 block"></span>
+                            </div>
+
+                            <!-- Actual Input (Invisible but captures typing) -->
+                            <input type="text" id="cli-input"
+                                class="absolute inset-0 w-full h-full opacity-0 cursor-text font-mono"
+                                autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- CTF Success Modal -->
+    <div id="ctf-modal"
+        class="fixed inset-0 z-[100] hidden items-center justify-center modal-overlay opacity-0 transition-opacity duration-500">
+        <div class="bg-zinc-950 border border-green-500/30 p-8 rounded-2xl max-w-sm w-full text-center shadow-[0_0_50px_rgba(16,185,129,0.2)] transform scale-95 transition-transform duration-300"
+            id="ctf-content">
+            <div
+                class="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-6 text-green-500">
+                <i data-lucide="flag" size="32"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">CTF FLAG CAPTURED</h3>
+            <p class="text-zinc-400 text-sm mb-6">You successfully escalated privileges and uncovered the hidden data.
+                This demonstrates persistence.</p>
+            <div class="font-mono text-xs bg-black p-3 rounded text-green-500 mb-6">flag{sudo_make_me_a_sandwich_2026}
+            </div>
+            <button onclick="closeModal()"
+                class="w-full py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-bold uppercase text-xs tracking-widest transition-colors">
+                Close Connection
+            </button>
+        </div>
+    </div>
+
+    <script src="animations.js"></script>
+    <script>
+        lucide.createIcons();
+
+        // --- LINGUISTIC ANALYSER ENGINE ---
+        function runAnalysis() {
+            const input = document.getElementById('analyser-input').value.toLowerCase();
+            const outputDiv = document.getElementById('analysis-output');
+            const scoreDisplay = document.getElementById('score-display');
+            const verdictText = document.getElementById('verdict-text');
+            const threatBar = document.getElementById('threat-bar');
+
+            if (!input.trim()) return;
+
+            // Reveal Output
+            outputDiv.classList.remove('hidden');
+            outputDiv.classList.add('animate-in', 'fade-in');
+
+            // Simulation Loading
+            verdictText.innerHTML = "<span class='animate-pulse'>Mapping Semantic Vectors...</span>";
+
+            setTimeout(() => {
+                // Scoring Logic
+                let urgencyCount = 0;
+                let authorityCount = 0;
+                let warmthCount = 0;
+
+                const urgencyWords = ['urgent', 'immediate', 'suspend', '24 hours', 'deadline', 'warning', 'critical'];
+                const authorityWords = ['ceo', 'admin', 'policy', 'security', 'verification', 'compliance', 'department'];
+                const warmthWords = ['kindly', 'dear', 'help', 'valued', 'customer', 'apologies'];
+
+                urgencyWords.forEach(w => { if (input.includes(w)) urgencyCount++; });
+                authorityWords.forEach(w => { if (input.includes(w)) authorityCount++; });
+                warmthWords.forEach(w => { if (input.includes(w)) warmthCount++; });
+
+                // Calculate Deception Score
+                // Weighted: Urgency (heavy) + Authority (med) + Warmth (light/masking)
+                let rawScore = (urgencyCount * 15) + (authorityCount * 10) + (warmthCount * 5);
+                let finalScore = Math.min(Math.round(rawScore + (Math.random() * 10)), 99); // Add some chaos
+
+                if (input.length > 10 && finalScore < 10) finalScore = 12; // Baseline for noise
+
+                // Update UI
+                document.getElementById('urgency-score').innerText = urgencyCount > 0 ? "DETECTED (" + urgencyCount + ")" : "LOW";
+                document.getElementById('urgency-score').className = urgencyCount > 0 ? "text-sm font-mono text-red-400" : "text-sm font-mono text-zinc-500";
+
+                document.getElementById('authority-score').innerText = authorityCount > 0 ? "MIMICRY (" + authorityCount + ")" : "NONE";
+                document.getElementById('warmth-score').innerText = warmthCount > 0 ? "SYNTHETIC" : "NEUTRAL";
+
+                // Animate Counter
+                animateValue(scoreDisplay, 0, finalScore, 1000);
+                threatBar.style.width = finalScore + "%";
+
+                // Verdict Generation
+                setTimeout(() => {
+                    if (finalScore > 75) {
+                        verdictText.innerHTML = "<strong class='text-red-400'>CRITICAL THREAT:</strong> This sample exhibits high-pressure urgency combined with authority mimicry. This pattern matches the 'V-Triad' exploitation model.";
+                    } else if (finalScore > 40) {
+                        verdictText.innerHTML = "<strong class='text-yellow-400'>CAUTION:</strong> Moderate use of persuasive language detected. Verify sender identity via secondary channels.";
+                    } else {
+                        verdictText.innerHTML = "<strong class='text-green-400'>LOW RISK:</strong> Linguistic markers appear consistent with standard communication patterns. Standard vigilance recommended.";
+                    }
+                }, 1000);
+
+            }, 800);
+        }
+
+        function clearAnalysis() {
+            document.getElementById('analyser-input').value = '';
+            document.getElementById('analysis-output').classList.add('hidden');
+        }
+
+        function animateValue(obj, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start) + "%";
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+
+        // --- ROOT SHELL ENGINE ---
+        const terminalOutput = document.getElementById('terminal-output');
+        const inputField = document.getElementById('cli-input');
+        const inputMirror = document.getElementById('input-mirror');
+        const promptText = document.getElementById('prompt-text');
+
+        let currentState = 'SHELL'; // SHELL, PASSWORD
+        let pendingCommand = null;
+        const ROOT_PASS = "42_logic_bomb";
+
+        // Mirror Input Logic
+        inputField.addEventListener('input', function () {
+            // If in password mode, mask the mirror
+            if (currentState === 'PASSWORD') {
+                inputMirror.textContent = ''; // Standard Linux behavior (no feedback)
+            } else {
+                inputMirror.textContent = this.value;
+            }
+        });
+
+        const fileSystem = {
+            '/home/rohail': ['secret_intel', 'todo.txt'],
+            '/etc': ['credentials', 'hosts'],
+            '/var/logs': ['sony_2014', 'system_auth.log']
+        };
+
+        const fileContents = {
+            'secret_intel': "TOP SECRET // CLEARANCE L5 ONLY\n--------------------------------\nSUBJECT: ROHAIL M.A\nSTATUS: FIRST-CLASS BENG HONS\n\n> Specialised in Generative AI Threats\n> 4th Place Formula Student (AI Perception)\n> Architected Secure Auth for Fitness App\n\nRecruitment Recommendation: HIRE IMMEDIATELY.",
+            'todo.txt': "- Refactor portfolio\n- Capture the flag (check /var/logs)\n- Applied for security roles\n- REMINDER: Server (root) password is stored in /etc/credentials",
+            'credentials': "root:42_logic_bomb\nuser:guest_access",
+            'sony_2014': "LOG ENTRY #4092\nAttack Vector: Spear Phishing\nCost: $100 Million\nMethod: Manual Social Engineering\n\nCONTRAST: Current AI threats can replicate this scale in seconds.",
+            '.flag.txt': "CTF FLAG CONTENT"
+        };
+
+        let commandHistory = [];
+        let historyIndex = -1;
+
+        inputField.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                const input = this.value; // Don't trim immediately to preserve password spaces if needed, but usually trim
+
+                if (currentState === 'PASSWORD') {
+                    // Handle Password Input
+                    printLine(""); // Newline
+                    if (input === ROOT_PASS) {
+                        currentState = 'SHELL';
+                        promptText.innerText = "root@rohail:~$";
+                        this.value = '';
+                        inputMirror.textContent = '';
+
+                        // Execute the pending privileged command
+                        if (pendingCommand === 'sudo cat .flag.txt') {
+                            triggerCTF();
+                        } else {
+                            printLine("Password accepted.", "text-white");
+                        }
+                    } else {
+                        printLine("Sorry, try again.", "text-red-500");
+                        currentState = 'SHELL';
+                        promptText.innerText = "root@rohail:~$";
+                        this.value = '';
+                        inputMirror.textContent = '';
+                    }
+                    pendingCommand = null;
+                } else {
+                    // Standard Shell Input
+                    printLine(`root@rohail:~$ ${input}`, 'text-zinc-400');
+                    if (input.trim()) {
+                        commandHistory.push(input);
+                        historyIndex = commandHistory.length;
+                        processCommand(input.trim().toLowerCase());
+                    }
+                    this.value = '';
+                    inputMirror.textContent = '';
+                }
+
+                // Auto scroll to bottom
+                const terminal = document.getElementById('terminal');
+                // Use setTimeout to allow DOM update
+                setTimeout(() => {
+                    terminal.scrollTop = terminal.scrollHeight;
+                }, 10);
+
+            } else if (e.key === 'ArrowUp') {
+                if (currentState === 'SHELL') {
+                    e.preventDefault();
+                    if (historyIndex > 0) {
+                        historyIndex--;
+                        this.value = commandHistory[historyIndex];
+                        inputMirror.textContent = this.value;
+                    }
+                }
+            } else if (e.key === 'ArrowDown') {
+                if (currentState === 'SHELL') {
+                    e.preventDefault();
+                    if (historyIndex < commandHistory.length - 1) {
+                        historyIndex++;
+                        this.value = commandHistory[historyIndex];
+                        inputMirror.textContent = this.value;
+                    } else {
+                        historyIndex = commandHistory.length;
+                        this.value = '';
+                        inputMirror.textContent = '';
+                    }
+                }
+            }
+        });
+
+        function printLine(text, cssClass = 'text-zinc-400') {
+            const div = document.createElement('div');
+            div.className = `mb-1 ${cssClass} whitespace-pre-wrap break-words`;
+            div.textContent = text;
+            terminalOutput.appendChild(div);
+        }
+
+        function processCommand(cmd) {
+            const args = cmd.split(' ');
+            const main = args[0];
+
+            switch (main) {
+                case 'help':
+                    printLine(`AVAILABLE COMMANDS:\n  help        Show this list\n  ls          List directory contents\n  cat [file]  View file contents\n  whoami      Display current user\n  clean       Clear terminal screen\n  sudo        Execute with admin privileges`);
+                    break;
+                case 'ls':
+                    printLine("/home/rohail/secret_intel   /home/rohail/todo.txt\n/etc/credentials            /var/logs/sony_2014\n.flag.txt (r-- root only)", "text-blue-400");
+                    break;
+                case 'cat':
+                    if (args[1]) {
+                        if (args[1] === '.flag.txt') {
+                            printLine("cat: .flag.txt: Permission denied (Requires root)", "text-red-500");
+                        } else if (fileContents[args[1]]) {
+                            printLine(fileContents[args[1]], "text-green-400");
+                        } else {
+                            printLine(`cat: ${args[1]}: No such file or directory`, "text-red-500");
+                        }
+                    } else {
+                        printLine("usage: cat [filename]");
+                    }
+                    break;
+                case 'whoami':
+                    printLine("root investigator [access: level 5]", "text-purple-400");
+                    break;
+                case 'sudo':
+                    if (args[1] === 'cat' && args[2] === '.flag.txt') {
+                        promptPassword(`sudo ${args.slice(1).join(' ')}`);
+                    } else {
+                        printLine("Access Denied: Please contact administrator at rohail0202@gmail.com for elevated privileges.", "text-red-500 font-bold");
+                    }
+                    break;
+                case 'clear':
+                case 'clean':
+                    terminalOutput.innerHTML = '';
+                    break;
+                case '':
+                    break;
+                default:
+                    printLine(`bash: ${main}: command not found`, "text-red-500");
+            }
+        }
+
+        function promptPassword(cmd) {
+            currentState = 'PASSWORD';
+            pendingCommand = cmd;
+            promptText.innerText = "[sudo] password for root:";
+            printLine("[sudo] password for root:", "text-white"); // Also print it to history for realism
+            // But we actually modify the prompt line in the UI
+        }
+
+        function triggerCTF() {
+            const modal = document.getElementById('ctf-modal');
+            const content = document.getElementById('ctf-content');
+            modal.classList.remove('hidden');
+            // Slight delay for fade in
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }, 10);
+
+            printLine(">>> ACCESS GRANTED. FLAG CAPTURED. <<<", "text-green-500 font-bold");
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('ctf-modal');
+            modal.classList.add('hidden');
+        }
+    </script>
+</body>
+
+</html>
