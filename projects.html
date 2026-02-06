@@ -8,35 +8,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
-        :root {
-            --napier-red: #E31B23;
-            --zinc-950: #09090b;
-        }
-
-        body {
-            background-color: var(--zinc-950);
-            color: white;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            overflow-x: hidden;
-        }
-
         .font-mono {
             font-family: 'JetBrains+Mono', monospace;
-        }
-
-        .fixed-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            background-image: url('background.jpg'), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000');
-            background-size: cover;
-            filter: brightness(0.2);
         }
 
         .nav-dock {
@@ -100,7 +81,11 @@
 </head>
 
 <body>
+    <div class="texture-overlay"></div>
     <div class="fixed-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
 
     <nav class="fixed bottom-8 left-0 right-0 z-50 flex justify-center px-4">
         <div class="nav-dock px-8 py-5 rounded-full flex gap-10 items-center shadow-2xl">
@@ -114,6 +99,13 @@
                 class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Games</a>
             <a href="contact.html"
                 class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Contact</a>
+
+            <!-- Light/Dark Toggle -->
+            <button id="theme-toggle"
+                class="p-2 ml-4 rounded-full bg-white/10 hover:bg-white/20 transition-all text-white border border-white/10 flex items-center justify-center">
+                <span id="icon-sun" class="flex"><i data-lucide="sun" class="w-4 h-4"></i></span>
+                <span id="icon-moon" class="hidden flex"><i data-lucide="moon" class="w-4 h-4"></i></span>
+            </button>
         </div>
     </nav>
 
