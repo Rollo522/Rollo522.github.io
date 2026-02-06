@@ -1,4 +1,4 @@
-=<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-GB">
 
 <head>
@@ -8,126 +8,106 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-
-        :root {
-            --napier-red: #E31B23;
-            --zinc-950: #09090b;
-        }
-
-        body {
-            background-color: var(--zinc-950);
-            color: white;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            scroll-behavior: smooth;
-        }
 
         .font-mono {
             font-family: 'JetBrains+Mono', monospace;
         }
 
         .section-wrap {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            padding: 120px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
 
-        .bg-fixed {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            background-image: url('background.jpg'), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000');
-            background-size: cover;
-            filter: brightness(0.2) blur(8px);
-        }
-
-        .glass-panel {
-            background: rgba(20, 20, 20, 0.7);
-            backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 3rem;
-            border-radius: 2rem;
-            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-
-        .glass-panel:hover {
-            border-color: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
-            transform: translateY(-5px);
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 1s ease-out;
-        }
-
-        .fade-in.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .stat-huge {
-            font-size: clamp(4rem, 10vw, 8rem);
-            line-height: 1;
-            font-weight: 800;
-            letter-spacing: -0.05em;
-            position: relative;
-            display: inline-block;
-        }
-
-        .stat-huge::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--napier-red), transparent);
-            animation: expandWidth 2s ease-out forwards;
-        }
-
-        @keyframes expandWidth {
-            from {
-                width: 0%;
+            .glass-panel {
+                background: rgba(20, 20, 20, 0.7);
+                backdrop-filter: blur(30px);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                padding: 3rem;
+                border-radius: 2rem;
+                transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
             }
 
-            to {
+            .glass-panel:hover {
+                border-color: rgba(255, 255, 255, 0.15);
+                box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+                transform: translateY(-5px);
+            }
+
+            .fade-in {
+                opacity: 0;
+                transform: translateY(40px);
+                transition: all 1s ease-out;
+            }
+
+            .fade-in.active {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .stat-huge {
+                font-size: clamp(4rem, 10vw, 8rem);
+                line-height: 1;
+                font-weight: 800;
+                letter-spacing: -0.05em;
+                position: relative;
+                display: inline-block;
+            }
+
+            .stat-huge::after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 0;
                 width: 100%;
+                height: 4px;
+                background: linear-gradient(90deg, var(--napier-red), transparent);
+                animation: expandWidth 2s ease-out forwards;
             }
-        }
 
-        .redacted {
-            background: white;
-            color: white;
-            transition: 0.4s ease;
-            padding: 0 4px;
-            cursor: help;
-        }
+            @keyframes expandWidth {
+                from {
+                    width: 0%;
+                }
 
-        .redacted:hover {
-            background: transparent;
-            color: var(--napier-red);
-        }
+                to {
+                    width: 100%;
+                }
+            }
 
-        .nav-dock {
-            background: rgba(20, 20, 20, 0.5);
-            backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            .redacted {
+                background: white;
+                color: white;
+                transition: 0.4s ease;
+                padding: 0 4px;
+                cursor: help;
+            }
+
+            .redacted:hover {
+                background: transparent;
+                color: var(--napier-red);
+            }
+
+            .nav-dock {
+                background: rgba(20, 20, 20, 0.5);
+                backdrop-filter: blur(30px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
         }
     </style>
 </head>
 
 <body class="antialiased">
 
-    <div class="bg-fixed"></div>
+    <div class="texture-overlay"></div>
+    <div class="fixed-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
+
 
     <nav class="fixed bottom-8 left-0 right-0 z-50 flex justify-center px-4">
         <div class="nav-dock px-8 py-5 rounded-full flex gap-10 items-center shadow-2xl">
@@ -141,16 +121,23 @@
                 class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Games</a>
             <a href="contact.html"
                 class="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors">Contact</a>
+
+            <!-- Light/Dark Toggle -->
+            <button id="theme-toggle"
+                class="p-2 ml-4 rounded-full bg-white/10 hover:bg-white/20 transition-all text-white border border-white/10 flex items-center justify-center">
+                <span id="icon-sun" class="flex"><i data-lucide="sun" class="w-4 h-4"></i></span>
+                <span id="icon-moon" class="hidden flex"><i data-lucide="moon" class="w-4 h-4"></i></span>
+            </button>
         </div>
     </nav>
 
     <!-- 01: INTRODUCTION -->
-    <section class="section-wrap px-8 lg:px-24">
+    <section class="section-wrap px-8 lg:px-24 py-24">
         <div class="max-w-6xl mx-auto w-full">
             <div class="fade-in active">
                 <span class="font-mono text-red-500 text-[10px] tracking-[0.5em] uppercase block mb-8">> DISSERTATION:
                     HONOURS_PROJECT_2025</span>
-                <h1 class="text-6xl md:text-[100px] font-bold tracking-tighter mb-12 leading-[0.85]">
+                <h1 class="text-6xl md:text-[100px] font-bold tracking-tighter mb-12 leading-[0.9]">
                     Linguistic <br /> <span class="opacity-30 italic font-light">Realism.</span>
                 </h1>
                 <p class="text-2xl md:text-4xl text-zinc-400 font-light leading-relaxed max-w-5xl">
@@ -170,7 +157,7 @@
     </section>
 
     <!-- 02: LITERATURE REVIEW -->
-    <section class="section-wrap px-8 lg:px-24 bg-white/[0.01]">
+    <section class="section-wrap px-8 lg:px-24 py-24 bg-white/[0.01]">
         <div class="max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-20 items-start">
             <div class="fade-in">
                 <h2 class="text-xs font-bold uppercase tracking-[0.4em] text-red-600 mb-10">01. The Problem Space</h2>
@@ -217,7 +204,7 @@
     </section>
 
     <!-- 03: METHODOLOGY -->
-    <section class="section-wrap px-8 lg:px-24">
+    <section class="section-wrap px-8 lg:px-24 py-24">
         <div class="max-w-6xl mx-auto w-full">
             <div class="fade-in mb-20">
                 <h2 class="text-xs font-bold uppercase tracking-[0.4em] text-red-600 mb-6">02. Methodology Lab</h2>
@@ -271,7 +258,7 @@
     </section>
 
     <!-- 04: RESULTS -->
-    <section class="section-wrap px-8 lg:px-24 bg-zinc-900/50">
+    <section class="section-wrap px-8 lg:px-24 py-24 results-bg">
         <div class="max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-20 items-center">
             <div class="fade-in">
                 <h2 class="text-xs font-bold uppercase tracking-[0.4em] text-red-600 mb-6">03. The Verdict</h2>
