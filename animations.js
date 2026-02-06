@@ -7,13 +7,80 @@
 // INITIALIZATION
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
     initScrollProgress();
-    initCustomCursor();
+    // initCustomCursor();
     initParticleSystem();
     initScrollAnimations();
     initSmoothScroll();
     initPreloader();
 });
+
+// ========================================
+// THEME MANAGEMENT
+// ========================================
+function initTheme() {
+    const html = document.documentElement;
+    const savedTheme = localStorage.getItem('theme');
+
+    // Default is LIGHT now.
+    // Ensure we set the correct classes
+    if (savedTheme === 'dark') {
+        html.classList.add('dark-mode');
+        html.classList.remove('light-mode');
+    } else {
+        html.classList.add('light-mode');
+        html.classList.remove('dark-mode');
+    }
+
+    // Initialize toggle button if present
+    const toggleBtn = document.getElementById('theme-toggle');
+    if (toggleBtn) {
+        updateThemeUI(html.classList.contains('dark-mode'));
+
+        toggleBtn.addEventListener('click', () => {
+            if (html.classList.contains('dark-mode')) {
+                html.classList.remove('dark-mode');
+                html.classList.add('light-mode');
+                localStorage.setItem('theme', 'light');
+                updateThemeUI(false);
+            } else {
+                html.classList.remove('light-mode');
+                html.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+                updateThemeUI(true);
+            }
+        });
+    }
+}
+
+function updateThemeUI(isDark) {
+    const toggleBtn = document.getElementById('theme-toggle');
+    if (!toggleBtn) return;
+
+    const sunSpan = document.getElementById('icon-sun');
+    const moonSpan = document.getElementById('icon-moon');
+
+    if (isDark) {
+        // Dark Mode Active
+        // Show Sun (to switch to light)
+        if (sunSpan) sunSpan.classList.remove('hidden');
+        if (moonSpan) moonSpan.classList.add('hidden');
+
+        // Button styling for Dark Mode
+        toggleBtn.classList.add('text-white', 'bg-white/10', 'hover:bg-white/20');
+        toggleBtn.classList.remove('text-zinc-900', 'bg-black/10', 'hover:bg-black/20', 'border-black/10');
+    } else {
+        // Light Mode Active (Default)
+        // Show Moon (to switch to dark)
+        if (sunSpan) sunSpan.classList.add('hidden');
+        if (moonSpan) moonSpan.classList.remove('hidden');
+
+        // Button styling for Light Mode
+        toggleBtn.classList.remove('text-white', 'bg-white/10', 'hover:bg-white/20');
+        toggleBtn.classList.add('text-zinc-900', 'bg-black/10', 'hover:bg-black/20', 'border-black/10');
+    }
+}
 
 // ========================================
 // SCROLL PROGRESS INDICATOR
